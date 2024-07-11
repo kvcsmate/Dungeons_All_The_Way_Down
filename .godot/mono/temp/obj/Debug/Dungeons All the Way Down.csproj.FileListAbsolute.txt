@@ -1,0 +1,34 @@
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.deps.json
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.runtimeconfig.json
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.dll
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.pdb
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.AssemblyReference.cache
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfoInputs.cache
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfo.cs
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CoreCompileInputs.cache
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CopyComplete
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.dll
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\refint\Dungeons All the Way Down.dll
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.pdb
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.genruntimeconfig.cache
+C:\Users\Mate\Documents\Dungeons All the Way Down\.godot\mono\temp\obj\Debug\ref\Dungeons All the Way Down.dll
+D:\DungeonsAllTheWayDown\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.deps.json
+D:\DungeonsAllTheWayDown\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.runtimeconfig.json
+D:\DungeonsAllTheWayDown\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.dll
+D:\DungeonsAllTheWayDown\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.pdb
+D:\DungeonsAllTheWayDown\.godot\mono\temp\bin\Debug\GodotSharp.dll
+D:\DungeonsAllTheWayDown\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.AssemblyReference.cache
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.GeneratedMSBuildEditorConfig.editorconfig
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfoInputs.cache
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfo.cs
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CoreCompileInputs.cache
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CopyComplete
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.dll
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\refint\Dungeons All the Way Down.dll
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.pdb
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.genruntimeconfig.cache
+D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\ref\Dungeons All the Way Down.dll

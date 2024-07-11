@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c06mp3pp5r7oh"]
+
+[ext_resource type="Texture2D" uid="uid://chghvmq7d1hgx" path="res://icon.svg" id="1_fgbwd"]
+[ext_resource type="PackedScene" uid="uid://c58b6jo2a4h40" path="res://Character/Player.tscn" id="2_ptplq"]
+
+[node name="Testmap" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+visibility_layer = 2
+z_index = -2
+position = Vector2(2, -2)
+scale = Vector2(0.328125, 0.265625)
+texture = ExtResource("1_fgbwd")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ptplq")]

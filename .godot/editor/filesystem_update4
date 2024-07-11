@@ -1,0 +1,12 @@
+res://Character/Player.tscn
+res://Maps/Testmap.tscn
+res://HUD/Indicator/Indicator.tscn
+res://Spells/Fireball/FireballEffect.tscn
+res://Spells/Fireball/Fireball.tscn
+res://Spells/Dash/Dash.tscn
+res://Spells/Dash/DashEffect.tscn
+res://BaseClasses/Spell.cs
+res://Character/Player.cs
+res://Spells/Dash/Dash.cs
+res://Spells/Fireball/Fireball.cs
+res://Spells/Fireball/FireballEffect.cs
