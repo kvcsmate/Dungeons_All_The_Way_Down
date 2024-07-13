@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1720869736
+::res://::1720871724
 icon.svg::CompressedTexture2D::5277012716454200703::1720867577::1720868011::1::::<><>::
 README.md::TextFile::-1::1720867577::0::1::::<><>::
 TODO.txt::TextFile::-1::1720867577::0::1::::<><>::
@@ -10,12 +10,12 @@ plugin.cfg::TextFile::-1::1720868843::0::1::::<><>::
 THIRDPARTY.md::TextFile::-1::1720868843::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1720868843
 ::res://addons/godot-git-plugin/macos/::1720868843
-::res://addons/godot-git-plugin/win64/::1720869729
+::res://addons/godot-git-plugin/win64/::1720871717
 ::res://BaseClasses/::1720867576
 Spell.cs::CSharpScript::-1::1720867576::0::1::::<>Node2D<>::
-::res://Character/::1720867576
+::res://Character/::1720871647
 Player.cs::CSharpScript::-1::1720867576::0::1::::<>CharacterBody2D<>::
-Player.tscn::PackedScene::6946747714580282967::1720867576::0::1::::<><>::res://Character/Player.cs<>uid://53mxo8nyt5wb::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Idle.png<>uid://bv4rbfpmjmnyu::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Walk.png
+Player.tscn::PackedScene::6946747714580282967::1720871647::0::1::::<><>::res://Character/Player.cs<>uid://53mxo8nyt5wb::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Idle.png<>uid://bv4rbfpmjmnyu::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Walk.png
 ::res://Game Assets/::1720867576
 ::res://Game Assets/HUD/::1720867576
 07.png::CompressedTexture2D::3309916509459370093::1720867576::1720867576::1::::<><>::
@@ -345,17 +345,17 @@ Wizard-Idle.png::CompressedTexture2D::2164238350356617949::1720867577::172086757
 Wizard-Walk.png::CompressedTexture2D::3921287615977005992::1720867577::1720867577::1::::<><>::
 Wizard.png::CompressedTexture2D::996955919719949236::1720867577::1720867577::1::::<><>::
 ::res://HUD/::1720867577
-::res://HUD/Indicator/::1720867577
-Indicator.tscn::PackedScene::335639507418618663::1720867577::0::1::::<><>::uid://bnfl3utqe5csr::::res://Game Assets/HUD/07.png
-::res://Maps/::1720867577
-Testmap.tscn::PackedScene::6592315054082833131::1720867577::0::1::::<><>::uid://chghvmq7d1hgx::::res://icon.svg<>uid://c58b6jo2a4h40::::res://Character/Player.tscn
+::res://HUD/Indicator/::1720871647
+Indicator.tscn::PackedScene::335639507418618663::1720871647::0::1::::<><>::uid://bnfl3utqe5csr::::res://Game Assets/HUD/07.png
+::res://Maps/::1720871366
+Testmap.tscn::PackedScene::6592315054082833131::1720871366::0::1::::<><>::uid://chghvmq7d1hgx::::res://icon.svg<>uid://c58b6jo2a4h40::::res://Character/Player.tscn
 ::res://Spells/::1720867577
-::res://Spells/Dash/::1720867577
-Dash.cs::CSharpScript::-1::1720867577::0::1::::<>Node2D<>::
-Dash.tscn::PackedScene::4015292796756977699::1720867577::0::1::::<><>::res://Spells/Dash/Dash.cs
-DashEffect.tscn::PackedScene::4527965758839015802::1720867577::0::1::::<><>::uid://bty0hd774l0hf::::res://Game Assets/Spells/Explosion SpriteSheet.png
-::res://Spells/Fireball/::1720867577
+::res://Spells/Dash/::1720871647
+Dash.cs::CSharpScript::-1::1720871647::0::1::::<>Node2D<>::
+Dash.tscn::PackedScene::4015292796756977699::1720871367::0::1::::<><>::res://Spells/Dash/Dash.cs
+DashEffect.tscn::PackedScene::4527965758839015802::1720871647::0::1::::<><>::uid://bty0hd774l0hf::::res://Game Assets/Spells/Explosion SpriteSheet.png
+::res://Spells/Fireball/::1720871647
 Fireball.cs::CSharpScript::-1::1720867577::0::1::::<>Node2D<>::
-Fireball.tscn::PackedScene::8695228782440064692::1720867577::0::1::::<><>::res://Spells/Fireball/Fireball.cs<>uid://dryr55b1e0o6m::::res://Spells/Fireball/FireballEffect.tscn
+Fireball.tscn::PackedScene::8695228782440064692::1720871366::0::1::::<><>::res://Spells/Fireball/Fireball.cs<>uid://dryr55b1e0o6m::::res://Spells/Fireball/FireballEffect.tscn
 FireballEffect.cs::CSharpScript::-1::1720867577::0::1::::<>Node2D<>::
-FireballEffect.tscn::PackedScene::8403104800150440042::1720867577::0::1::::<><>::res://Spells/Fireball/FireballEffect.cs<>uid://bty0hd774l0hf::::res://Game Assets/Spells/Explosion SpriteSheet.png
+FireballEffect.tscn::PackedScene::8403104800150440042::1720871647::0::1::::<><>::res://Spells/Fireball/FireballEffect.cs<>uid://bty0hd774l0hf::::res://Game Assets/Spells/Explosion SpriteSheet.png
