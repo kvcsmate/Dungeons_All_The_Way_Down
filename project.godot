@@ -24,6 +24,11 @@ window/stretch/scale=1.68
 
 project/assembly_name="Dungeons All the Way Down"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [input]
 
 Q={

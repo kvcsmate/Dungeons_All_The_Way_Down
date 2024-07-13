@@ -1,2 +1,2 @@
-﻿58331
-C:/Users/Mate/Downloads/Godot_v4.2-stable_mono_win64/Godot_v4.2-stable_mono_win64/Godot_v4.2-stable_mono_win64.exe
+﻿51762
+C:/Users/User/Downloads/Godot_v4.2.2-stable_mono_win64/Godot_v4.2.2-stable_mono_win64/Godot_v4.2.2-stable_mono_win64.exe
