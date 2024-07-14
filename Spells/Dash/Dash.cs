@@ -3,21 +3,29 @@ using System;
 
 public partial class Dash : Spell
 {
-    [Export] public float DashDistance = 200f;
-    [Export] public float DashSpeed = 1000f;
+    [Export] public float DashDistance = 600f;
+    [Export] public float DashSpeed = 5000f;
     private Vector2 _dashDirection;
     private float _dashDistance;
     private bool _isDashing = false;
+    Player _player;
 
-    [Signal]
-    public delegate void DashFinishedEventHandler();
+    //[Signal]
+   // public delegate void DashFinishedEventHandler();
     // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        _player = this.GetParent<Player>();
+        //DashFinished += _player.StopMovement;
+    }
+
     public override void Cast(Vector2 position)
     {
         _dashDirection = (position - ((CharacterBody2D)GetParent()).GlobalPosition).Normalized();
         _isDashing = true;
-
+        //_player.StopMovement();
         _dashDistance = DashDistance;
+        _player.IsDisplaced = true;
         StartCooldown();
     }
 
@@ -25,25 +33,28 @@ public partial class Dash : Spell
     {
         if (_isDashing)
         {
-            CharacterBody2D parent = (CharacterBody2D)GetParent();
             Vector2 movement = _dashDirection * DashSpeed * (float)delta;
-            float remainingDistance = _dashDistance - parent.GlobalPosition.DistanceTo(parent.GlobalPosition + movement);
+            float remainingDistance = _dashDistance - _player.GlobalPosition.DistanceTo(_player.GlobalPosition + movement);
 
-            GD.Print("parent global pos:" + parent.GlobalPosition);
+            GD.Print("parent global pos:" + _player.GlobalPosition);
             GD.Print("movement:" + movement);
             if (remainingDistance <= 0)
             {
+
                 _isDashing = false;
-                
-                parent.Velocity = _dashDirection * remainingDistance;
-                parent.MoveAndSlide(); // Finish the dash movement 
+
+                _player.Velocity = Vector2.Zero;// _dashDirection * remainingDistance;
+                _player.MoveAndSlide(); // Finish the dash movement 
+
+                _player.IsDisplaced = false;
+             //   EmitSignal(SignalName.DashFinished);
             }
             else
             {
-                parent.Velocity = movement;
-                parent.MoveAndSlide();
+                
+                _player.Velocity = movement;
+                _player.MoveAndSlide();
                 _dashDistance -= movement.Length();
-                EmitSignal(SignalName.DashFinished);
             }
         }
     }

@@ -2,6 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://bnfl3utqe5csr" path="res://Game Assets/HUD/07.png" id="1_grvh3"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_elnjc"]
+animation = &"Click"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v436a"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kqq6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4chgd"]
+states/Click/node = SubResource("AnimationNodeAnimation_elnjc")
+states/Click/position = Vector2(558, 95)
+transitions = ["Start", "Click", SubResource("AnimationNodeStateMachineTransition_v436a"), "Click", "End", SubResource("AnimationNodeStateMachineTransition_0kqq6")]
+
 [sub_resource type="Animation" id="Animation_1n1kr"]
 resource_name = "Click"
 length = 0.3
@@ -40,28 +55,10 @@ _data = {
 "RESET": SubResource("Animation_owtq3")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_elnjc"]
-animation = &"Click"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v436a"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kqq6"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4chgd"]
-states/Click/node = SubResource("AnimationNodeAnimation_elnjc")
-states/Click/position = Vector2(558, 95)
-transitions = ["Start", "Click", SubResource("AnimationNodeStateMachineTransition_v436a"), "Click", "End", SubResource("AnimationNodeStateMachineTransition_0kqq6")]
-
 [node name="Indicator" type="Node2D"]
 z_index = -1
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_p1iqa")
-}
 tree_root = SubResource("AnimationNodeStateMachine_4chgd")
 anim_player = NodePath("../AnimationPlayer")
 

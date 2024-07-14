@@ -74,9 +74,6 @@ region_rect = Rect2(0, 0, 256, 256)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_ktl8f")
-}
 tree_root = SubResource("AnimationNodeStateMachine_g6bln")
 anim_player = NodePath("../AnimationPlayer")
 

@@ -4,5 +4,3 @@
 
 [node name="Fireball" type="Node2D"]
 script = ExtResource("1_7157p")
-
-[connection signal="DashFinished" from="." to="." method="OnDashFInished"]

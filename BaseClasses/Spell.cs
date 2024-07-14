@@ -7,6 +7,7 @@ public abstract partial class Spell : Node2D
     [Export] public float Cooldown = 0.5f;
     public bool IsReady = true;
     [Export] public PackedScene SpellEffectScene;
+    Player _player;
 
     public abstract void Cast(Vector2 position);
     

@@ -8,6 +8,14 @@ public partial class Player : CharacterBody2D
     private Vector2 _targetPosition;
     private bool _isMoving = false;
 
+    private bool _isDisplaced;
+
+    public bool IsDisplaced
+    {
+        get { return _isDisplaced; }
+        set { _isDisplaced = value; }
+    }
+
     public Sprite2D PlayerSprite;
 
     private Node2D _currentIndicator;
@@ -73,6 +81,7 @@ public partial class Player : CharacterBody2D
         _dashSpell = (Spell)DashScene.Instantiate();
         AddChild(_dashSpell);
 
+        
     }
 
     public override void _Input(InputEvent @event)
@@ -109,22 +118,14 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (_isMoving)
+        if (_isMoving && !IsDisplaced)
         {
             Vector2 direction = (_targetPosition - Position).Normalized();
             Vector2 movement = direction * Speed * (float)delta;
 
             if (Position.DistanceTo(_targetPosition) <= .125 )
             {
-                //Position = _targetPosition;
-                _isMoving = false;
-                this.Velocity = Vector2.Zero;
-
-                if (_currentIndicator != null)
-                {
-                    _currentIndicator.QueueFree();
-                    _currentIndicator = null;
-                }
+                StopMovement(); 
             }
             else
             {
@@ -159,6 +160,18 @@ public partial class Player : CharacterBody2D
         else if (Velocity.X < 0)
         {
             PlayerSprite.FlipH = true;
+        }
+    }
+    public void StopMovement()
+    {
+        //Position = _targetPosition;
+        _isMoving = false;
+        this.Velocity = Vector2.Zero;
+
+        if (_currentIndicator != null)
+        {
+            _currentIndicator.QueueFree();
+            _currentIndicator = null;
         }
     }
 }

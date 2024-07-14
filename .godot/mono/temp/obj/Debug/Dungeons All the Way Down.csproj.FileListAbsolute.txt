@@ -32,3 +32,20 @@ D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\refint\Dungeons All the Way 
 D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.pdb
 D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.genruntimeconfig.cache
 D:\DungeonsAllTheWayDown\.godot\mono\temp\obj\Debug\ref\Dungeons All the Way Down.dll
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.deps.json
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.runtimeconfig.json
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.dll
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.pdb
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.AssemblyReference.cache
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfoInputs.cache
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfo.cs
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CopyComplete
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.dll
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\refint\Dungeons All the Way Down.dll
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.pdb
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.genruntimeconfig.cache
+C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\ref\Dungeons All the Way Down.dll
