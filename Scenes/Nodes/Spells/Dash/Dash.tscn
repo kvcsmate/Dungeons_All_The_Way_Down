@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxhbjyj8hldot"]
+
+[ext_resource type="Script" path="res://Scenes/Nodes/Spells/Dash/Dash.cs" id="1_7157p"]
+[ext_resource type="Texture2D" uid="uid://jsmtdbowqa2e" path="res://Game Assets/Spells/Water Effect and Bullet 16x16.png" id="2_b8v44"]
+
+[sub_resource type="Animation" id="Animation_2etxx"]
+resource_name = "Effect"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_llqt1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl8f"]
+_data = {
+"Effect": SubResource("Animation_2etxx"),
+"RESET": SubResource("Animation_llqt1")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgimm"]
+animation = &"Effect"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iq5mu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pwy2f"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g6bln"]
+states/Effect/node = SubResource("AnimationNodeAnimation_fgimm")
+states/Effect/position = Vector2(579, 94)
+transitions = ["Start", "Effect", SubResource("AnimationNodeStateMachineTransition_iq5mu"), "Effect", "End", SubResource("AnimationNodeStateMachineTransition_pwy2f")]
+
+[sub_resource type="PackedScene" id="PackedScene_tq0wv"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("SpellEffect", "Node2D", "AnimationPlayer", "root_node", "libraries", "Sprite2D", "z_index", "scale", "texture", "hframes", "region_enabled", "region_rect", "AnimationTree", "tree_root", "anim_player"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 0, 0, 2, 2, -1, 2, 3, 0, 4, 1, 0, 0, 0, 5, 5, -1, 6, 6, 2, 7, 3, 8, 4, 9, 5, 10, 6, 11, 7, 0, 0, 0, 12, 12, -1, 3, 3, 0, 13, 8, 14, 9, 0),
+"variants": [NodePath("../Sprite2D"), {
+"": SubResource("AnimationLibrary_ktl8f")
+}, -1, Vector2(0.1, 0.1), ExtResource("2_b8v44"), 7, true, Rect2(464, 96, 112, 16), SubResource("AnimationNodeStateMachine_g6bln"), NodePath("../AnimationPlayer")],
+"version": 3
+}
+
+[node name="Dash" type="Node2D"]
+script = ExtResource("1_7157p")
+SpellEffectScene = SubResource("PackedScene_tq0wv")

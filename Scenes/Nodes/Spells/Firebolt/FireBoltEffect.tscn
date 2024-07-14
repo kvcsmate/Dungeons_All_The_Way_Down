@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://xatyopoan4ag"]
+
+[ext_resource type="Texture2D" uid="uid://djesp1n8uovi6" path="res://Game Assets/Spells/firebolt.png" id="1_cjs0i"]
+[ext_resource type="Script" path="res://Scenes/Nodes/Spells/Firebolt/FireBoltEffect.cs" id="1_o6cj4"]
+
+[sub_resource type="Animation" id="Animation_2etxx"]
+resource_name = "Effect"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 13]
+}
+
+[sub_resource type="Animation" id="Animation_llqt1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl8f"]
+_data = {
+"Effect": SubResource("Animation_2etxx"),
+"RESET": SubResource("Animation_llqt1")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgimm"]
+animation = &"Effect"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iq5mu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pwy2f"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g6bln"]
+states/Effect/node = SubResource("AnimationNodeAnimation_fgimm")
+states/Effect/position = Vector2(579, 94)
+states/Start/position = Vector2(196, 100)
+transitions = ["Start", "Effect", SubResource("AnimationNodeStateMachineTransition_iq5mu"), "Effect", "End", SubResource("AnimationNodeStateMachineTransition_pwy2f")]
+
+[node name="SpellEffect" type="Node2D"]
+script = ExtResource("1_o6cj4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_ktl8f")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cjs0i")
+hframes = 15
+region_enabled = true
+region_rect = Rect2(0, 0, 240, 16)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_g6bln")
+anim_player = NodePath("../AnimationPlayer")

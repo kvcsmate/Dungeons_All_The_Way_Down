@@ -20,13 +20,15 @@ public partial class Player : CharacterBody2D
 
     private Node2D _currentIndicator;
 
-    public String IndicatorLocation = "res://HUD//Indicator//Indicator.tscn";
+    public String IndicatorLocation = "res://Scenes//HUD//Indicator//Indicator.tscn";
 
-    public PackedScene FireballScene = (PackedScene)GD.Load("res://Spells//Fireball//Fireball.tscn");
-    public PackedScene DashScene = (PackedScene)GD.Load("res://Spells//Dash//Dash.tscn");
+    public PackedScene FireballScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Fireball//Fireball.tscn");
+    public PackedScene DashScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Dash//Dash.tscn");
+    public PackedScene FireBoltScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//FireBolt//FireBolt.tscn");
 
     private Spell _fireballSpell;
     private Spell _dashSpell;
+    private Spell _fireboltSpell;
 
     public PackedScene IndicatorScene;
 
@@ -81,6 +83,10 @@ public partial class Player : CharacterBody2D
         _dashSpell = (Spell)DashScene.Instantiate();
         AddChild(_dashSpell);
 
+        _fireboltSpell = (Spell)FireBoltScene.Instantiate();
+        AddChild(_fireboltSpell);
+
+        
         
     }
 
@@ -103,7 +109,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            if (Input.IsActionJustPressed("Q"))
+            if (Input.IsActionJustPressed("W"))
             {
                 Vector2 spellPosition = GetGlobalMousePosition();
                 _fireballSpell.Cast(spellPosition);
@@ -112,6 +118,11 @@ public partial class Player : CharacterBody2D
             {
                 Vector2 spellPosition = GetGlobalMousePosition();
                 _dashSpell.Cast(spellPosition);
+            }
+            if (Input.IsActionJustPressed("Q"))
+            {
+                Vector2 spellPosition = GetGlobalMousePosition();
+                _fireboltSpell.Cast(spellPosition);
             }
         }
     }

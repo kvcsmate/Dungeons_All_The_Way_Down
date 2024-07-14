@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxhbjyj8hldot"]
-
-[ext_resource type="Script" path="res://Spells/Dash/Dash.cs" id="1_7157p"]
-
-[node name="Fireball" type="Node2D"]
-script = ExtResource("1_7157p")

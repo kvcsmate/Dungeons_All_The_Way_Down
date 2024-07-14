@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gakfd2srbewv"]
+
+[ext_resource type="Script" path="res://Scenes/Nodes/Spells/Firebolt/FireBolt.cs" id="1_lv52x"]
+[ext_resource type="PackedScene" uid="uid://xatyopoan4ag" path="res://Scenes/Nodes/Spells/Firebolt/FireBoltEffect.tscn" id="2_iwpw8"]
+
+[node name="Spell" type="Node2D"]
+script = ExtResource("1_lv52x")
+Speed = 50.0
+SpellEffectScene = ExtResource("2_iwpw8")

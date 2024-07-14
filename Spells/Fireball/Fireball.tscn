@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv5bfaxswgt0g"]
-
-[ext_resource type="Script" path="res://Spells/Fireball/Fireball.cs" id="1_l4sg1"]
-[ext_resource type="PackedScene" uid="uid://dryr55b1e0o6m" path="res://Spells/Fireball/FireballEffect.tscn" id="2_u0por"]
-
-[node name="Fireball" type="Node2D"]
-script = ExtResource("1_l4sg1")
-SpellEffectScene = ExtResource("2_u0por")
