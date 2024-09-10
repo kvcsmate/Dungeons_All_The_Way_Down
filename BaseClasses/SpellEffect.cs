@@ -7,7 +7,7 @@ public abstract partial class SpellEffect : Node2D
 
     public AnimationNodeStateMachinePlayback StateMachine;
 
-
+    public bool Disposable = true;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -29,7 +29,17 @@ public abstract partial class SpellEffect : Node2D
 
     public void GarbageCollection()
     {
-        if (StateMachine.GetCurrentNode() == "End")
+        if (Disposable)
+        {
+            if (StateMachine.GetCurrentNode() != "Effect")
+            {
+                StateMachine.Travel("Effect");
+            }
+        }
+
+        GD.Print(StateMachine.GetCurrentNode());
+
+        if (StateMachine.GetCurrentNode() == "End" && Disposable)
         {
             this.QueueFree();
         }

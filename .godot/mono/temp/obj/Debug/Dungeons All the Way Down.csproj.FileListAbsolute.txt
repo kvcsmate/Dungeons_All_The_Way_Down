@@ -49,3 +49,20 @@ C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\De
 C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.pdb
 C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.genruntimeconfig.cache
 C:\Users\User\Documents\GitHub\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\ref\Dungeons All the Way Down.dll
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.deps.json
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.runtimeconfig.json
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.dll
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\Dungeons All the Way Down.pdb
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\GodotSharp.dll
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.AssemblyReference.cache
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfoInputs.cache
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.AssemblyInfo.cs
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CoreCompileInputs.cache
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.csproj.CopyComplete
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.dll
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\refint\Dungeons All the Way Down.dll
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.pdb
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\Dungeons All the Way Down.genruntimeconfig.cache
+D:\Dungeons_All_The_Way_Down\.godot\mono\temp\obj\Debug\ref\Dungeons All the Way Down.dll

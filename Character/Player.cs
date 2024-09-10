@@ -1,3 +1,4 @@
+using DungeonsAlltheWayDown.AbilitySystem;
 using Godot;
 using System;
 using System.Diagnostics;
@@ -10,6 +11,9 @@ public partial class Player : CharacterBody2D
 
     private bool _isDisplaced;
 
+    SpellLoader spellLoader;
+    SpellBook spellBook;
+    AbilityInputMap abilityInputMap;
     public bool IsDisplaced
     {
         get { return _isDisplaced; }
@@ -21,7 +25,8 @@ public partial class Player : CharacterBody2D
     private Node2D _currentIndicator;
 
     public String IndicatorLocation = "res://Scenes//HUD//Indicator//Indicator.tscn";
-
+    
+    /*
     public PackedScene FireballScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Fireball//Fireball.tscn");
     public PackedScene DashScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Dash//Dash.tscn");
     public PackedScene FireBoltScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//FireBolt//FireBolt.tscn");
@@ -29,7 +34,7 @@ public partial class Player : CharacterBody2D
     private Spell _fireballSpell;
     private Spell _dashSpell;
     private Spell _fireboltSpell;
-
+    */
     public PackedScene IndicatorScene;
 
     public AnimationTree AnimationTree;
@@ -65,6 +70,14 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
+        spellLoader = new SpellLoader();
+        spellBook = new SpellBook(spellLoader,this);
+        abilityInputMap = new AbilityInputMap(spellBook);
+
+        GD.Print(spellLoader.SpellDirectory);
+        spellBook.Swap(0,"Firebolt");
+        spellBook.Swap(1,"Fireball");
+        spellBook.Swap(2,"Dash");
 
         IndicatorScene = (PackedScene)GD.Load(IndicatorLocation);
 
@@ -76,7 +89,7 @@ public partial class Player : CharacterBody2D
 
         CurrentState = (int)StateEnum.Idle;
         _targetPosition = Position;
-
+        /*
         _fireballSpell = (Spell)FireballScene.Instantiate();
         AddChild(_fireballSpell);
 
@@ -86,12 +99,13 @@ public partial class Player : CharacterBody2D
         _fireboltSpell = (Spell)FireBoltScene.Instantiate();
         AddChild(_fireboltSpell);
 
-        
+        */
         
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _UnhandledInput(InputEvent @event)
     {
+        
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Right)
         {
             _targetPosition = GetGlobalMousePosition();
@@ -107,23 +121,29 @@ public partial class Player : CharacterBody2D
             _currentIndicator.Position = _targetPosition;
             GetParent().AddChild(_currentIndicator);
         }
-        else
+        else if (@event is InputEvent keyevent && keyevent.IsPressed())
         {
+            Spell.SpellParams spellParams = new Spell.SpellParams()
+            {
+                Position = GetGlobalMousePosition()
+        };
+            abilityInputMap.HandleInput(@event, spellParams);
+            /*
+            Spell.SpellParams spellp = new Spell.SpellParams { Position = GetGlobalMousePosition() };
             if (Input.IsActionJustPressed("W"))
             {
-                Vector2 spellPosition = GetGlobalMousePosition();
-                _fireballSpell.Cast(spellPosition);
+                _fireballSpell.Cast(spellp);
             }
             if (Input.IsActionJustPressed("F"))
             {
                 Vector2 spellPosition = GetGlobalMousePosition();
-                _dashSpell.Cast(spellPosition);
+                _dashSpell.Cast(spellp);
             }
             if (Input.IsActionJustPressed("Q"))
             {
                 Vector2 spellPosition = GetGlobalMousePosition();
-                _fireboltSpell.Cast(spellPosition);
-            }
+                _fireboltSpell.Cast(spellp);
+            }*/
         }
     }
 

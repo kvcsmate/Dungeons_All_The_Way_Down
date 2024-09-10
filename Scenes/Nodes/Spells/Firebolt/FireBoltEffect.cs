@@ -1,12 +1,12 @@
 using Godot;
 using System;
 
-public partial class FireBoltEffect : SpellEffect
+public partial class FireboltEffect : SpellEffect
 {
     public Vector2 Direction;
     public int Damage;
     public float Speed;
-    [Export] public float MaxDistance = 500f;
+    public float MaxDistance;
     CollisionObject2D _collider;
 
     private Vector2 _startPosition;
@@ -21,10 +21,9 @@ public partial class FireBoltEffect : SpellEffect
 
     public override void OnFrame(double delta)
     {
-        GD.Print(Direction.Angle());
         Rotation = Direction.Angle();
         Vector2 movement = Direction * Speed * (float)delta;
-        Position += movement;
+  
         _distanceTraveled += movement.Length();
 
         // Handle collision detection
@@ -45,9 +44,14 @@ public partial class FireBoltEffect : SpellEffect
         //}
 
         // Check if the fire bolt has traveled the maximum distance
-        if (_distanceTraveled >= MaxDistance)
+
+        Disposable = _distanceTraveled >= MaxDistance;
+        if (Disposable)
         {
-            QueueFree(); // Destroy the fire bolt after exceeding the maximum distance
+            movement = Vector2.Zero;
         }
+
+        Position += movement;
+
     }
 }

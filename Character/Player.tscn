@@ -161,7 +161,7 @@ scale = Vector2(0.999999, 1.09115)
 shape = SubResource("RectangleShape2D_jrar1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(15, 15)
+zoom = Vector2(10, 10)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_nrn5y")

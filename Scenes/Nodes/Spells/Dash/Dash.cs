@@ -18,9 +18,9 @@ public partial class Dash : Spell
         _player = this.GetParent<Player>();
     }
 
-    public override void Cast(Vector2 position)
+    public override void Cast(SpellParams p)
     {
-        _dashDirection = (position - ((CharacterBody2D)GetParent()).GlobalPosition).Normalized();
+        _dashDirection = (p.Position - ((CharacterBody2D)GetParent()).GlobalPosition).Normalized();
         _isDashing = true;
         //_player.StopMovement();
         _dashDistance = DashDistance;
@@ -49,6 +49,7 @@ public partial class Dash : Spell
                 _player.MoveAndSlide(); // Finish the dash movement 
 
                 _player.IsDisplaced = false;
+                
              //   EmitSignal(SignalName.DashFinished);
             }
             else

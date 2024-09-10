@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cns4lbvarhihn"]
+
+[ext_resource type="Script" path="res://Scenes/Templates/NPC/Enemy/Enemy.cs" id="1_hfalk"]
+
+[node name="NpcTemplate" type="Node2D"]
+script = ExtResource("1_hfalk")

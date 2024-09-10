@@ -1,12 +1,15 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dungeons All the Way Down", "Dungeons All the Way Down.csproj", "{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dungeons All the Way Down", "Dungeons All the Way Down.csproj", "{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-	Debug|Any CPU = Debug|Any CPU
-	ExportDebug|Any CPU = ExportDebug|Any CPU
-	ExportRelease|Any CPU = ExportRelease|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -15,5 +18,11 @@ Global
 		{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2FF7120-5647-4408-A6A8-D39FA27E7D66}
 	EndGlobalSection
 EndGlobal

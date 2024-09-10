@@ -88,19 +88,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Mate\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj",
+      "projectUniqueName": "D:\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj",
       "projectName": "Dungeons All the Way Down",
-      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Dungeons_All_The_Way_Down\\.godot\\mono\\temp\\obj\\",
+      "projectPath": "D:\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj",
+      "packagesPath": "C:\\Users\\Mate\\.nuget\\packages\\",
+      "outputPath": "D:\\Dungeons_All_The_Way_Down\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mate\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

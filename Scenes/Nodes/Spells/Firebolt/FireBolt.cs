@@ -1,14 +1,13 @@
 using Godot;
 using System;
 
-public partial class FireBolt : Spell
+public partial class Firebolt : Spell
 {
     [Export] public int Damage = 40;
     [Export] public float Speed = 100f;
-    [Export] public float MaxDistance = 500f;
-
-    public override void Cast(Vector2 position)
+    public override void Cast(SpellParams p)
     {
+        
         if (!IsReady) return;
 
         // Spawn Fire Bolt effect
@@ -17,13 +16,13 @@ public partial class FireBolt : Spell
         GetTree().Root.AddChild(fireBoltEffect);
 
         // Set the direction of the Fire Bolt
-        var fireBoltScript = fireBoltEffect as FireBoltEffect;
+        var fireBoltScript = fireBoltEffect as FireboltEffect;
         if (fireBoltScript != null)
         {
-            fireBoltScript.Direction = (position - ((CharacterBody2D)GetParent()).GlobalPosition).Normalized();
+            fireBoltScript.Direction = (p.Position - ((CharacterBody2D)GetParent()).GlobalPosition).Normalized();
             fireBoltScript.Damage = Damage;
             fireBoltScript.Speed = Speed;
-            fireBoltScript.MaxDistance = MaxDistance;
+            fireBoltScript.MaxDistance = this.SpellRange;
         }
 
         StartCooldown();

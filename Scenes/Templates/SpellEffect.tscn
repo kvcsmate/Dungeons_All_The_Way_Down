@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwqrf0qgtymvq"]
+[gd_scene load_steps=14 format=3 uid="uid://cwqrf0qgtymvq"]
 
 [ext_resource type="Texture2D" uid="uid://jsmtdbowqa2e" path="res://Game Assets/Spells/Water Effect and Bullet 16x16.png" id="1_s83wd"]
 
@@ -33,14 +33,21 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_3l7wt"]
+resource_name = "Travel"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl8f"]
 _data = {
 "Effect": SubResource("Animation_2etxx"),
-"RESET": SubResource("Animation_llqt1")
+"RESET": SubResource("Animation_llqt1"),
+"Travel": SubResource("Animation_3l7wt")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgimm"]
 animation = &"Effect"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tb351"]
+animation = &"Travel"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iq5mu"]
 advance_mode = 2
@@ -49,10 +56,18 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_men0o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gpt70"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g6bln"]
 states/Effect/node = SubResource("AnimationNodeAnimation_fgimm")
 states/Effect/position = Vector2(579, 94)
-transitions = ["Start", "Effect", SubResource("AnimationNodeStateMachineTransition_iq5mu"), "Effect", "End", SubResource("AnimationNodeStateMachineTransition_pwy2f")]
+states/Travel/node = SubResource("AnimationNodeAnimation_tb351")
+states/Travel/position = Vector2(451, 179)
+transitions = ["Start", "Effect", SubResource("AnimationNodeStateMachineTransition_iq5mu"), "Effect", "End", SubResource("AnimationNodeStateMachineTransition_pwy2f"), "Start", "Travel", SubResource("AnimationNodeStateMachineTransition_men0o"), "Travel", "Effect", SubResource("AnimationNodeStateMachineTransition_gpt70")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6depo"]
 radius = 1.0
