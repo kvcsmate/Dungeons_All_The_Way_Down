@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1726002141
+::res://::1727886414
 icon.svg::CompressedTexture2D::5277012716454200703::1718557813::1720990011::1::::<><>::
 README.md::TextFile::-1::1720735718::0::1::::<><>::
 TODO.txt::TextFile::-1::1720735282::0::1::::<><>::
@@ -14,13 +14,13 @@ plugin.cfg::TextFile::-1::1720989864::0::1::::<><>::
 THIRDPARTY.md::TextFile::-1::1720989863::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1720989863
 ::res://addons/godot-git-plugin/macos/::1720989863
-::res://addons/godot-git-plugin/win64/::1726000492
+::res://addons/godot-git-plugin/win64/::1727886409
 ::res://BaseClasses/::1725827961
 Spell.cs::CSharpScript::-1::1725817277::0::1::::<>Node2D<>::
 SpellEffect.cs::CSharpScript::-1::1725827961::0::1::::<>Node2D<>::
-::res://Character/::1725997379
+::res://Character/::1727602385
 Player.cs::CSharpScript::-1::1725992518::0::1::::<>CharacterBody2D<>::
-Player.tscn::PackedScene::6946747714580282967::1725997379::0::1::::<><>::res://Character/Player.cs<>uid://53mxo8nyt5wb::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Idle.png<>uid://bv4rbfpmjmnyu::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Walk.png
+Player.tscn::PackedScene::6946747714580282967::1727602385::0::1::::<><>::res://Character/Player.cs<>uid://53mxo8nyt5wb::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Idle.png<>uid://bv4rbfpmjmnyu::::res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Walk.png
 ::res://Game Assets/::1720369263
 ::res://Game Assets/HUD/::1720349399
 07.png::CompressedTexture2D::3309916509459370093::1720349399::1720349399::1::::<><>::
@@ -499,37 +499,36 @@ Wizard-Hurt.png::CompressedTexture2D::4141373847579605354::1720288722::172028873
 Wizard-Idle.png::CompressedTexture2D::2164238350356617949::1720288722::1720288731::1::::<><>::
 Wizard-Walk.png::CompressedTexture2D::3921287615977005992::1720288722::1720288731::1::::<><>::
 Wizard.png::CompressedTexture2D::996955919719949236::1720288722::1720288731::1::::<><>::
-::res://Maps/::1725992736
-Testmap.tscn::PackedScene::6592315054082833131::1725992736::0::1::::<><>::uid://chghvmq7d1hgx::::res://icon.svg<>uid://c58b6jo2a4h40::::res://Character/Player.tscn
+::res://Maps/::1727602385
+Testmap.tscn::PackedScene::6592315054082833131::1727602385::0::1::::<><>::uid://chghvmq7d1hgx::::res://icon.svg<>uid://c58b6jo2a4h40::::res://Character/Player.tscn
 ::res://Properties/::1725810244
 launchSettings.json::JSON::-1::1725810244::0::1::::<><>::
 ::res://Scenes/::1725806685
 ::res://Scenes/HUD/::1720989863
-::res://Scenes/HUD/Indicator/::1725992736
-Indicator.tscn::PackedScene::335639507418618663::1725992736::0::1::::<><>::uid://bnfl3utqe5csr::::res://Game Assets/HUD/07.png
+::res://Scenes/HUD/Indicator/::1727602385
+Indicator.tscn::PackedScene::335639507418618663::1727602385::0::1::::<><>::uid://bnfl3utqe5csr::::res://Game Assets/HUD/07.png
 ::res://Scenes/Nodes/::1720989863
 ::res://Scenes/Nodes/Spells/::1720989863
-::res://Scenes/Nodes/Spells/Dash/::1725992736
+::res://Scenes/Nodes/Spells/Dash/::1727602385
 Dash.cs::CSharpScript::-1::1725821132::0::1::::<>Node2D<>::
-Dash.tscn::PackedScene::4015292796756977699::1725992736::0::1::::<><>::res://Scenes/Nodes/Spells/Dash/Dash.cs<>uid://jsmtdbowqa2e::::res://Game Assets/Spells/Water Effect and Bullet 16x16.png
+Dash.tscn::PackedScene::4015292796756977699::1727602385::0::1::::<><>::res://Scenes/Nodes/Spells/Dash/Dash.cs<>uid://jsmtdbowqa2e::::res://Game Assets/Spells/Water Effect and Bullet 16x16.png
 DashEffect.cs::CSharpScript::-1::1725821129::0::1::::<>Node2D<>::
-DashEffect.tscn::PackedScene::5077979539310662873::1725992736::0::1::::<><>::uid://jsmtdbowqa2e::::res://Game Assets/Spells/Water Effect and Bullet 16x16.png
-::res://Scenes/Nodes/Spells/Fireball/::1725992736
+DashEffect.tscn::PackedScene::5077979539310662873::1727602385::0::1::::<><>::uid://jsmtdbowqa2e::::res://Game Assets/Spells/Water Effect and Bullet 16x16.png
+::res://Scenes/Nodes/Spells/Fireball/::1727602385
 Fireball.cs::CSharpScript::-1::1725805081::0::1::::<>Node2D<>::
-Fireball.tscn::PackedScene::8695228782440064692::1725992736::0::1::::<><>::res://Scenes/Nodes/Spells/Fireball/Fireball.cs<>uid://dryr55b1e0o6m::::res://Scenes/Nodes/Spells/Fireball/FireballEffect.tscn
+Fireball.tscn::PackedScene::8695228782440064692::1727602385::0::1::::<><>::res://Scenes/Nodes/Spells/Fireball/Fireball.cs<>uid://dryr55b1e0o6m::::res://Scenes/Nodes/Spells/Fireball/FireballEffect.tscn
 FireballEffect.cs::CSharpScript::-1::1720989863::0::1::::<>Node2D<>::
-FireballEffect.tscn::PackedScene::8403104800150440042::1725992736::0::1::::<><>::res://Scenes/Nodes/Spells/Fireball/FireballEffect.cs<>uid://bty0hd774l0hf::::res://Game Assets/Spells/Explosion SpriteSheet.png
-::res://Scenes/Nodes/Spells/Firebolt/::1725992736
+FireballEffect.tscn::PackedScene::8403104800150440042::1727602385::0::1::::<><>::res://Scenes/Nodes/Spells/Fireball/FireballEffect.cs<>uid://bty0hd774l0hf::::res://Game Assets/Spells/Explosion SpriteSheet.png
+::res://Scenes/Nodes/Spells/Firebolt/::1727602385
 Firebolt.cs::CSharpScript::-1::1725992500::0::1::::<>Node2D<>::
-Firebolt.tscn::PackedScene::421749360845753129::1725992736::0::1::::<><>::res://Scenes/Nodes/Spells/Firebolt/Firebolt.cs<>uid://xatyopoan4ag::::res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.tscn
+Firebolt.tscn::PackedScene::421749360845753129::1727602385::0::1::::<><>::res://Scenes/Nodes/Spells/Firebolt/Firebolt.cs<>uid://xatyopoan4ag::::res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.tscn
 FireboltEffect.cs::CSharpScript::-1::1725992495::0::1::::<>Node2D<>::
-FireboltEffect.tscn::PackedScene::1615540644726633826::1725992736::0::1::::<><>::uid://djesp1n8uovi6::::res://Game Assets/Spells/firebolt.png<>res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.cs<>uid://m60soy0cg66l::::res://Game Assets/Spells/Fire Effect and Bullet 16x16.png
-::res://Scenes/Templates/::1726001861
-Spell.tscn::PackedScene::6808520248328357467::1725992736::0::1::::<><>::
-SpellEffect.tscn::PackedScene::6351068427434010426::1725992736::0::1::::<><>::uid://jsmtdbowqa2e::::res://Game Assets/Spells/Water Effect and Bullet 16x16.png
-::res://Scenes/Templates/NPC/::1726002266
-NPC.cs::CSharpScript::-1::1726002248::0::1::::<><>::
-NPC.tscn::PackedScene::3882335846621756261::1726002108::0::1::::<><>::
-::res://Scenes/Templates/NPC/Enemy/::1726002266
-Enemy.tscn::PackedScene::3220985466520309697::1726002284::0::1::::<><>::
-NPC.tscn::PackedScene::5724235655764125603::1726002372::0::1::::<><>::
+FireboltEffect.tscn::PackedScene::1615540644726633826::1727602385::0::1::::<><>::uid://djesp1n8uovi6::::res://Game Assets/Spells/firebolt.png<>res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.cs<>uid://m60soy0cg66l::::res://Game Assets/Spells/Fire Effect and Bullet 16x16.png
+::res://Scenes/Templates/::1727602385
+Spell.tscn::PackedScene::6808520248328357467::1727602385::0::1::::<><>::
+SpellEffect.tscn::PackedScene::6351068427434010426::1727602385::0::1::::<><>::uid://jsmtdbowqa2e::::res://Game Assets/Spells/Water Effect and Bullet 16x16.png
+::res://Scenes/Templates/NPC/::1727815523
+NPC.cs::CSharpScript::-1::1726002248::0::1::::<>Node2D<>::
+NPC.tscn::PackedScene::3882335846621756261::1727815523::0::1::::<><>::
+::res://Scenes/Templates/NPC/Enemy/::1727804765
+Enemy.cs::CSharpScript::-1::1726002413::0::1::::<>Node2D<>::
