@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DUNGEONS_ALL_THE_WAY_DOWN\\Dungeons All the Way Down.csproj": {}
+    "D:\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj": {}
   },
   "projects": {
-    "D:\\DUNGEONS_ALL_THE_WAY_DOWN\\Dungeons All the Way Down.csproj": {
+    "D:\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DUNGEONS_ALL_THE_WAY_DOWN\\Dungeons All the Way Down.csproj",
+        "projectUniqueName": "D:\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj",
         "projectName": "Dungeons All the Way Down",
-        "projectPath": "D:\\DUNGEONS_ALL_THE_WAY_DOWN\\Dungeons All the Way Down.csproj",
+        "projectPath": "D:\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj",
         "packagesPath": "C:\\Users\\Mate\\.nuget\\packages\\",
-        "outputPath": "D:\\DUNGEONS_ALL_THE_WAY_DOWN\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "D:\\Dungeons_All_The_Way_Down\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\Mate\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,7 +38,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -69,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading;
 
 public partial class FireboltEffect : SpellEffect
 {
@@ -12,46 +13,48 @@ public partial class FireboltEffect : SpellEffect
     private Vector2 _startPosition;
     private float _distanceTraveled = 0f;
 
-    public override void OnInit()
+    public override void _Ready()
     {
-        
+        base._Ready();
         _startPosition = GlobalPosition;
         //_collider = this.GetParent<StaticBody2D>();
     }
 
-    public override void OnFrame(double delta)
+    public override void _PhysicsProcess(double delta)
     {
+        base._PhysicsProcess(delta);
         Rotation = Direction.Angle();
         Vector2 movement = Direction * Speed * (float)delta;
   
         _distanceTraveled += movement.Length();
 
-        // Handle collision detection
-        //var spaceState = GetWorld2D().DirectSpaceState;
-
-        //var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, GlobalPosition + movement);
-        //query.Exclude = new Godot.Collections.Array<Rid> { _collider.GetRid() };
-        //var collision = spaceState.IntersectRay(query);
-
-        //if (collision.Count > 0)
-        //{
-        //    var collider = collision["collider"] as Node2D;
-        //    if (collider is IDamageable damageable)
-        //    {
-        //        damageable.TakeDamage(Damage);
-        //    }
-        //    QueueFree(); // Destroy the fire bolt after collision
-        //}
-
-        // Check if the fire bolt has traveled the maximum distance
-
-        Disposable = _distanceTraveled >= MaxDistance;
         if (Disposable)
         {
             movement = Vector2.Zero;
         }
+        else
+        {
+            if (_distanceTraveled >= MaxDistance)
+            {
+                Disposable = true;
+            }
 
-        Position += movement;
+            var collision = MoveAndCollide(movement);
+            if (collision != null)
+            {
+                GD.Print("HIT");
+                //Velocity = Velocity.Bounce(collision.GetNormal());
+
+                if (collision.GetCollider().HasMethod("OnHit"))
+                {
+                    
+                    collision.GetCollider().Call("OnHit", Damage);
+                }
+                Disposable = true;
+            }
+        }
+       
+        //Position += movement;
 
     }
 }

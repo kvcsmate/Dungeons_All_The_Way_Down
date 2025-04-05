@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vQt5gbyZeJ1n6ClabCf49Ux6KamqA9LXlq5jNmGiu1/HFMi27Ne6wSARi8Yd+kt2wzrm611SSQiA3m9v4+/2VQ==",
+  "dgSpecHash": "CtkcrnLM26E=",
   "success": true,
-  "projectFilePath": "D:\\DUNGEONS_ALL_THE_WAY_DOWN\\Dungeons All the Way Down.csproj",
+  "projectFilePath": "D:\\Dungeons_All_The_Way_Down\\Dungeons All the Way Down.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mate\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
     "C:\\Users\\Mate\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",

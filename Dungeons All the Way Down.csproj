@@ -7,4 +7,7 @@
     <RootNamespace>DungeonsAlltheWayDown</RootNamespace>
     <OutputType>Library</OutputType>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Scenes\Templates\NPC\Enemy\" />
+  </ItemGroup>
 </Project>

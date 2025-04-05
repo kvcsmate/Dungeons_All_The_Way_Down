@@ -54,7 +54,7 @@ states/Effect/node = SubResource("AnimationNodeAnimation_fgimm")
 states/Effect/position = Vector2(579, 94)
 transitions = ["Start", "Effect", SubResource("AnimationNodeStateMachineTransition_iq5mu"), "Effect", "End", SubResource("AnimationNodeStateMachineTransition_pwy2f")]
 
-[node name="SpellEffect" type="Node2D"]
+[node name="SpellEffect" type="CharacterBody2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
