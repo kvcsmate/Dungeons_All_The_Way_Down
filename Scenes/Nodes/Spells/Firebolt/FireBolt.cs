@@ -4,7 +4,7 @@ using System;
 public partial class Firebolt : Spell
 {
     [Export] public int Damage = 40;
-    [Export] public float Speed = 100f;
+    [Export] public float Speed = 500f;
     public override void Cast(SpellParams p)
     {
         
@@ -12,7 +12,7 @@ public partial class Firebolt : Spell
 
         // Spawn Fire Bolt effect
         var fireBoltEffect = (Node2D)SpellEffectScene.Instantiate();
-        fireBoltEffect.GlobalPosition = ((CharacterBody2D)GetParent()).GlobalPosition;
+        fireBoltEffect.GlobalPosition = p.Player.GlobalPosition;
         GetTree().Root.AddChild(fireBoltEffect);
 
         // Set the direction of the Fire Bolt
@@ -23,6 +23,7 @@ public partial class Firebolt : Spell
             fireBoltScript.Damage = Damage;
             fireBoltScript.Speed = Speed;
             fireBoltScript.MaxDistance = this.SpellRange;
+            fireBoltScript.Caster = p.Player;
         }
 
         StartCooldown();

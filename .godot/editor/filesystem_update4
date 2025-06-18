@@ -1,3 +1,4 @@
+res://Scenes/Nodes/Spells/Dash/Dash.tscn
 res://Maps/Testmap.tscn
 res://Scenes/Nodes/HUD/Indicator/Indicator.tscn
 res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.tscn
@@ -6,7 +7,6 @@ res://Scenes/Nodes/Templates/SpellEffect.tscn
 res://Scenes/Nodes/Spells/Firebolt/Firebolt.tscn
 res://Scenes/Nodes/Spells/Fireball/Fireball.tscn
 res://Scenes/Nodes/Spells/Fireball/FireballEffect.tscn
-res://Scenes/Nodes/Spells/Dash/Dash.tscn
 res://Scenes/Nodes/Spells/Dash/DashEffect.tscn
 res://Scenes/Nodes/Templates/NPC/NPC.tscn
 res://Scenes/Nodes/Templates/NPC/Enemy/TestEnemy_1.tscn

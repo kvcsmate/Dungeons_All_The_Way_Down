@@ -12,10 +12,11 @@ namespace DungeonsAlltheWayDown.AbilitySystem
     public class SpellLoader
     {
         public Dictionary<String, PackedScene> SpellScenes = new Dictionary<String, PackedScene>();
+        public Dictionary<String, PackedScene> SpellEffectScenes = new Dictionary<String, PackedScene>();
 
         public string SpellDirectory = "Scenes//Nodes//Spells";
 
-        static private string Root = ":res/";
+        // static private readonly string Root = ":res/";
         public SpellLoader()
         {
             SceneLoader(SpellDirectory);
@@ -29,7 +30,7 @@ namespace DungeonsAlltheWayDown.AbilitySystem
         private void SceneLoader(string targetDirectory)
         {
             // Process the list of files found in the directory.
-            string[] fileEntries = Directory.GetFiles(targetDirectory, "*.tscn").Where(x => !x.EndsWith("Effect.tscn")).ToArray();
+            string[] fileEntries = Directory.GetFiles(targetDirectory, "*.tscn").ToArray();
             foreach (string fileName in fileEntries)
             {
                 AddScene(fileName);
@@ -46,8 +47,11 @@ namespace DungeonsAlltheWayDown.AbilitySystem
         {
 
             string spellName = Path.GetFileNameWithoutExtension(filename);
-
-            SpellScenes.Add(spellName, (PackedScene)GD.Load(filename));
+            
+            if (spellName.EndsWith("Effect"))
+                SpellEffectScenes.Add(spellName.Substring(0, spellName.Length - 6), (PackedScene)GD.Load(filename));
+            else
+                SpellScenes.Add(spellName, (PackedScene)GD.Load(filename));
 
         }
 

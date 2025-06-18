@@ -3,68 +3,56 @@
   "WorkspaceRootPath": "D:\\Dungeons_All_The_Way_Down\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\pathfinding\\navigation_region_2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\pathfinding\\navigation_region_2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\character\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\character\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\abilitysystem\\spellloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:abilitysystem\\spellloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\abilitysystem\\abilityinputmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:abilitysystem\\abilityinputmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\abilitysystem\\spellbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:abilitysystem\\spellbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Dungeons_All_The_Way_Down\\Scenes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scenes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\baseclasses\\levelentities\\levelentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:baseclasses\\levelentities\\levelentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\baseclasses\\levelentities\\npc\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:baseclasses\\levelentities\\npc\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\firebolt\\firebolteffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\firebolt\\firebolteffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\firebolt\\firebolt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\firebolt\\firebolt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\fireball\\fireballeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\fireball\\fireballeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\fireball\\fireball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\fireball\\fireball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\baseclasses\\spell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:baseclasses\\spell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\dash\\dash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\dash\\dash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\dash\\dasheffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\dash\\dasheffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\firebolt\\firebolteffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\firebolt\\firebolteffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\abilitysystem\\abilityinputmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:abilitysystem\\abilityinputmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\baseclasses\\levelentities\\npc\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:baseclasses\\levelentities\\npc\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\firebolt\\firebolt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\firebolt\\firebolt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\character\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\character\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\fireball\\fireball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\fireball\\fireball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\npc\\enemies\\testenemy_1\\testenemy_1script.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\npc\\enemies\\testenemy_1\\testenemy_1script.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\pathfinding\\navigation_region_2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\pathfinding\\navigation_region_2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\baseclasses\\levelentities\\levelentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:baseclasses\\levelentities\\levelentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\baseclasses\\levelentities\\spelleffect\\spelleffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:baseclasses\\levelentities\\spelleffect\\spelleffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\baseclasses\\spell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:baseclasses\\spell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|d:\\dungeons_all_the_way_down\\scenes\\nodes\\spells\\fireball\\fireballeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0A2B9F-B556-46DF-9033-8C82EC7E54E4}|Dungeons All the Way Down.csproj|solutionrelative:scenes\\nodes\\spells\\fireball\\fireballeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Dungeons_All_The_Way_Down\\Scenes\\Character\\Player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -78,11 +66,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "navigation_region_2d.cs",
               "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Pathfinding\\navigation_region_2d.cs",
               "RelativeDocumentMoniker": "Scenes\\Nodes\\Pathfinding\\navigation_region_2d.cs",
@@ -90,168 +78,48 @@
               "RelativeToolTip": "Scenes\\Nodes\\Pathfinding\\navigation_region_2d.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T18:28:04.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T17:12:42.996Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
+              "Title": "Testenemy_1Script.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
+              "RelativeDocumentMoniker": "Scenes\\Nodes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
+              "RelativeToolTip": "Scenes\\Nodes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwDgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T14:49:01.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Player.cs",
               "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Character\\Player.cs",
               "RelativeDocumentMoniker": "Scenes\\Nodes\\Character\\Player.cs",
               "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Character\\Player.cs",
               "RelativeToolTip": "Scenes\\Nodes\\Character\\Player.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAwwBoAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAYwHsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T18:25:17.705Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T18:25:17.705Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 0,
               "Title": "Spell.cs",
               "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\Spell.cs",
               "RelativeDocumentMoniker": "BaseClasses\\Spell.cs",
               "ToolTip": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\Spell.cs",
               "RelativeToolTip": "BaseClasses\\Spell.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T16:43:02.829Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "SpellEffect.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
-              "RelativeDocumentMoniker": "BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
-              "RelativeToolTip": "BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T22:01:53.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FireboltEffect.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
-              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
-              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwBgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T21:56:04.843Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "FireballEffect.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
-              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
-              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T21:55:53.946Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Player.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Character\\Player.cs",
-              "RelativeDocumentMoniker": "Scenes\\Character\\Player.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Character\\Player.cs",
-              "RelativeToolTip": "Scenes\\Character\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T21:26:47.638Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Testenemy_1Script.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
-              "RelativeDocumentMoniker": "Scenes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
-              "RelativeToolTip": "Scenes\\NPC\\Enemies\\TestEnemy_1\\Testenemy_1Script.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T21:21:32.317Z"
+              "WhenOpened": "2024-11-01T16:43:02.829Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "NPC.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\NPC\\NPC.cs",
-              "RelativeDocumentMoniker": "BaseClasses\\LevelEntities\\NPC\\NPC.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\NPC\\NPC.cs",
-              "RelativeToolTip": "BaseClasses\\LevelEntities\\NPC\\NPC.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAswEQAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T18:57:39.012Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SpellBook.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\SpellBook.cs",
-              "RelativeDocumentMoniker": "AbilitySystem\\SpellBook.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\SpellBook.cs",
-              "RelativeToolTip": "AbilitySystem\\SpellBook.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T18:25:45.712Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AbilityInputMap.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\AbilityInputMap.cs",
-              "RelativeDocumentMoniker": "AbilitySystem\\AbilityInputMap.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\AbilityInputMap.cs",
-              "RelativeToolTip": "AbilitySystem\\AbilityInputMap.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T16:43:15.651Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SpellLoader.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\SpellLoader.cs",
-              "RelativeDocumentMoniker": "AbilitySystem\\SpellLoader.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\SpellLoader.cs",
-              "RelativeToolTip": "AbilitySystem\\SpellLoader.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T18:25:43.675Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DashEffect.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Dash\\DashEffect.cs",
-              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Dash\\DashEffect.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Dash\\DashEffect.cs",
-              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Dash\\DashEffect.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T16:54:23.121Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Dash.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
-              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
-              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T18:47:02.448Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "Fireball.cs",
               "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Fireball\\Fireball.cs",
               "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Fireball\\Fireball.cs",
@@ -263,27 +131,112 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LevelEntity.cs",
-              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\LevelEntity.cs",
-              "RelativeDocumentMoniker": "BaseClasses\\LevelEntities\\LevelEntity.cs",
-              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\LevelEntity.cs",
-              "RelativeToolTip": "BaseClasses\\LevelEntities\\LevelEntity.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBQAAABjAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Dash.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
+              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
+              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T18:45:29.743Z"
+              "WhenOpened": "2025-03-21T18:47:02.448Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
+              "Title": "FireboltEffect.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
+              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
+              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Firebolt\\FireboltEffect.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwDkAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T21:56:04.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AbilityInputMap.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\AbilityInputMap.cs",
+              "RelativeDocumentMoniker": "AbilitySystem\\AbilityInputMap.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\AbilitySystem\\AbilityInputMap.cs",
+              "RelativeToolTip": "AbilitySystem\\AbilityInputMap.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T16:43:15.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NPC.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\NPC\\NPC.cs",
+              "RelativeDocumentMoniker": "BaseClasses\\LevelEntities\\NPC\\NPC.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\NPC\\NPC.cs",
+              "RelativeToolTip": "BaseClasses\\LevelEntities\\NPC\\NPC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwBMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T18:57:39.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Firebolt.cs",
               "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
               "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
               "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
               "RelativeToolTip": "Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-29T22:21:49.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LevelEntity.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\LevelEntity.cs",
+              "RelativeDocumentMoniker": "BaseClasses\\LevelEntities\\LevelEntity.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\LevelEntity.cs",
+              "RelativeToolTip": "BaseClasses\\LevelEntities\\LevelEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T18:45:29.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SpellEffect.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
+              "RelativeDocumentMoniker": "BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
+              "RelativeToolTip": "BaseClasses\\LevelEntities\\Spelleffect\\SpellEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T22:01:53.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FireballEffect.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
+              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
+              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Fireball\\FireballEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T21:55:53.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Character\\Player.cs",
+              "RelativeDocumentMoniker": "Scenes\\Character\\Player.cs",
+              "ToolTip": "D:\\Dungeons_All_The_Way_Down\\Scenes\\Character\\Player.cs",
+              "RelativeToolTip": "Scenes\\Character\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T21:26:47.638Z"
             }
           ]
         }

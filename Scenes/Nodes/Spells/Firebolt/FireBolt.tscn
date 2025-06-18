@@ -6,5 +6,6 @@
 [node name="Spell" type="Node2D"]
 script = ExtResource("1_tah8b")
 Damage = 50
-SpellRange = 20.0
+Speed = 2000.0
+SpellRange = 2000.0
 SpellEffectScene = ExtResource("2_vjdtq")

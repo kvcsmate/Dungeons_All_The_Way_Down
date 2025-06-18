@@ -24,7 +24,7 @@ namespace DungeonsAlltheWayDown.AbilitySystem
             public Spell Spell;
         }
 
-        public void Swap(int key, string _spellId)
+        public void Update(int key, string _spellId)
         {
             // burnt in spell picking, we'll update it later
             if (Pages.ContainsKey(key))
@@ -38,8 +38,8 @@ namespace DungeonsAlltheWayDown.AbilitySystem
                 SpellId = _spellId,
                 Spell = (Spell)_spellLoader.SpellScenes[_spellId].Instantiate()
             };
+            Pages[key].Spell.SpellEffectScene = _spellLoader.SpellEffectScenes[_spellId];
             _node.AddChild(Pages[key].Spell);
-
         }
 
 

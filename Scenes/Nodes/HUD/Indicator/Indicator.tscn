@@ -56,7 +56,10 @@ _data = {
 }
 
 [node name="Indicator" type="Node2D"]
-z_index = -1
+light_mask = 7
+visibility_layer = 7
+z_index = 5
+z_as_relative = false
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_4chgd")
@@ -68,7 +71,9 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+z_index = 4
+z_as_relative = false
+scale = Vector2(10, 10)
 texture = ExtResource("1_ofbqr")
 hframes = 5
 frame = 1

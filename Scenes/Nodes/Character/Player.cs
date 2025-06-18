@@ -11,8 +11,15 @@ public partial class Player : CharacterBody2D
 
     private bool _isDisplaced;
 
+    private Node2D _currentIndicator;
+
+    private StateEnum _currentState;
+
+    public NavigationAgent2D _navigationAgent;
     SpellLoader spellLoader;
+
     SpellBook spellBook;
+
     AbilityInputMap abilityInputMap;
     public bool IsDisplaced
     {
@@ -20,12 +27,17 @@ public partial class Player : CharacterBody2D
         set { _isDisplaced = value; }
     }
 
+    public Vector2 MovementTarget
+    {
+        get { return _navigationAgent.TargetPosition; }
+        set { _navigationAgent.TargetPosition = value; }
+    }
+
     public Sprite2D PlayerSprite;
 
-    private Node2D _currentIndicator;
 
     public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
-    
+
     /*
     public PackedScene FireballScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Fireball//Fireball.tscn");
     public PackedScene DashScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Dash//Dash.tscn");
@@ -41,7 +53,7 @@ public partial class Player : CharacterBody2D
 
     public AnimationNodeStateMachinePlayback StateMachine;
 
-    private StateEnum _currentState;
+
     public StateEnum CurrentState
     {
         get { return _currentState; }
@@ -70,14 +82,12 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
+        GD.Print(OS.GetExecutablePath());
         spellLoader = new SpellLoader();
-        spellBook = new SpellBook(spellLoader,this);
+        spellBook = new SpellBook(spellLoader, this);
         abilityInputMap = new AbilityInputMap(spellBook);
-
-        GD.Print(spellLoader.SpellDirectory);
-        spellBook.Swap(0,"Firebolt");
-        spellBook.Swap(1,"Fireball");
-        spellBook.Swap(2,"Dash");
+        _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+        _navigationAgent.PathDesiredDistance = 1.0f;
 
         IndicatorScene = (PackedScene)GD.Load(IndicatorLocation);
 
@@ -89,44 +99,44 @@ public partial class Player : CharacterBody2D
 
         CurrentState = (int)StateEnum.Idle;
         _targetPosition = Position;
-        /*
-        _fireballSpell = (Spell)FireballScene.Instantiate();
-        AddChild(_fireballSpell);
 
-        _dashSpell = (Spell)DashScene.Instantiate();
-        AddChild(_dashSpell);
+        // DEBUG
 
-        _fireboltSpell = (Spell)FireBoltScene.Instantiate();
-        AddChild(_fireboltSpell);
-
-        */
-        
+        GD.Print(spellLoader.SpellDirectory);
+        spellBook.Update(0, "Firebolt");
+        spellBook.Update(1, "Fireball");
+        spellBook.Update(2, "Dash");
     }
 
-    public override void _UnhandledInput(InputEvent @event)
+    public override void _Input(InputEvent @event)
     {
-        
+
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Right)
         {
-            _targetPosition = GetGlobalMousePosition();
-            _isMoving = true;
+            Vector2 clickedPosition = GetGlobalMousePosition();
 
-            if (_currentIndicator != null)
+            // Check if the position is inside the navigation region
+            _navigationAgent.TargetPosition = clickedPosition;
+            if (!_navigationAgent.IsTargetReachable())
             {
-                _currentIndicator.QueueFree();
-                _currentIndicator = null;
+                // If not reachable, get the closest point inside the navigation region
+                var navMap = _navigationAgent.GetNavigationMap();
+                clickedPosition = NavigationServer2D.MapGetClosestPoint(navMap, clickedPosition);
+                _navigationAgent.TargetPosition = clickedPosition;
             }
 
-            _currentIndicator = (Node2D)IndicatorScene.Instantiate();
-            _currentIndicator.Position = _targetPosition;
-            GetParent().AddChild(_currentIndicator);
+            _targetPosition = clickedPosition;
+            _isMoving = true;
+
+            CreateIndicator(_targetPosition);
         }
         else if (@event is InputEvent keyevent && keyevent.IsPressed())
         {
             Spell.SpellParams spellParams = new Spell.SpellParams()
             {
-                Position = GetGlobalMousePosition()
-        };
+                Position = GetGlobalMousePosition(),
+                Player = this
+            };
             abilityInputMap.HandleInput(@event, spellParams);
             /*
             Spell.SpellParams spellp = new Spell.SpellParams { Position = GetGlobalMousePosition() };
@@ -147,26 +157,67 @@ public partial class Player : CharacterBody2D
         }
     }
 
+    public void CreateIndicator(Vector2 position)
+    {
+        if (_currentIndicator != null)
+        {
+            _currentIndicator.QueueFree();
+            _currentIndicator = null;
+        }
+
+        _currentIndicator = (Node2D)IndicatorScene.Instantiate();
+        _currentIndicator.Position = position;
+        GetParent().AddChild(_currentIndicator);
+    }
+
     public override void _PhysicsProcess(double delta)
     {
+        CharacterMovement(delta);
+
+    }
+
+    private void CharacterMovement(double delta)
+    {
+
+        _navigationAgent.TargetPosition = _targetPosition;
+
         if (_isMoving && !IsDisplaced)
         {
-            Vector2 direction = (_targetPosition - Position).Normalized();
-            Vector2 movement = direction * Speed * (float)delta;
+            Vector2 currentAgentPosition = GlobalTransform.Origin;
+            Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
 
-            if (Position.DistanceTo(_targetPosition) <= .125 )
+            if (Position.DistanceTo(_targetPosition) <= 20)
             {
-                StopMovement(); 
+                StopMovement();
             }
             else
             {
-                this.Velocity = movement;
+                Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * Speed;
                 MoveAndSlide();
             }
         }
+
+
+        //if ()
+        //{
+        //    Vector2 direction = (_targetPosition - Position).Normalized();
+        //    Vector2 movement = direction * Speed * (float)delta;
+
+        //    if (Position.DistanceTo(_targetPosition) <= .125)
+        //    {
+        //        StopMovement();
+        //    }
+        //    else
+        //    {
+        //        this.Velocity = movement;
+        //        MoveAndSlide();
+        //    }
+        //}
+
         SetFlipDirection();
         HandleAnimation();
     }
+
 
     private void HandleAnimation()
     {
@@ -195,7 +246,9 @@ public partial class Player : CharacterBody2D
     }
     public void StopMovement()
     {
-        //Position = _targetPosition;
+
+        //!_navigationAgent.IsNavigationFinished()
+        _targetPosition = Position; // Reset target position to current position
         _isMoving = false;
         this.Velocity = Vector2.Zero;
 

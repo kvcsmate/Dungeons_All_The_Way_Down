@@ -3,16 +3,16 @@ using System;
 
 public partial class Dash : Spell
 {
-    [Export] public float DashDistance = 600f;
-    [Export] public float DashSpeed = 5000f;
+    [Export] public float DashSpeed = 100f;
     private Vector2 _dashDirection;
     private float _dashDistance;
+    private Vector2 _dashTarget;
     private bool _isDashing = false;
     Player _player;
+    Vector2 movement;
 
-    //[Signal]
-   // public delegate void DashFinishedEventHandler();
-    // Called when the node enters the scene tree for the first time.
+    float previousDashDistance = 0f;
+
     public override void _Ready()
     {
         _player = this.GetParent<Player>();
@@ -20,37 +20,69 @@ public partial class Dash : Spell
 
     public override void Cast(SpellParams p)
     {
-        _dashDirection = (p.Position - ((CharacterBody2D)GetParent()).GlobalPosition).Normalized();
-        _isDashing = true;
-        //_player.StopMovement();
-        _dashDistance = DashDistance;
+        _player = p.Player;
         _player.IsDisplaced = true;
+        _isDashing = true;
 
+        // Clear the navigation agent's next point to stop pathfinding during dash
+        _player.StopMovement();
+        SetTravelPoint(p.Position);
 
-
-        StartCooldown();
+        movement = _dashDirection * DashSpeed;
+        previousDashDistance = 0f; // Reset previous dash distance
     }
+
+    private void SetTravelPoint(Vector2 position)
+    {
+        _dashDirection = (position - _player.Position).Normalized();
+        _dashDistance = SpellRange;
+
+        // Raycast to check for obstacles
+        var spaceState = GetWorld2D().DirectSpaceState;
+        _dashTarget = _player.Position + _dashDirection * _dashDistance;
+
+        var result = spaceState.IntersectRay(new PhysicsRayQueryParameters2D
+        {
+            From = _player.Position,
+            To = _dashTarget,
+            Exclude = new Godot.Collections.Array<Godot.Rid> { _player.GetRid() },
+            CollisionMask = 1
+        });
+
+        if (result.Count > 0)
+        {
+            // Stop before the collider
+            //GD.Print("Obstacle detected at: " + result["position"]);
+            _dashTarget = ((Vector2)result["position"]) - _dashDirection * 30;
+            // Adjust the target position to stop before the obstacle :
+            //  _dashDirection moves the target position back by x pixels
+        }
+        //_player.CreateIndicator(_dashTarget); // Debbugging the end point of the dash
+    }
+
 
     public override void _PhysicsProcess(double delta)
     {
+        // Check if the player is dashing
         if (_isDashing)
         {
-            Vector2 movement = _dashDirection * DashSpeed * (float)delta;
-            float remainingDistance = _dashDistance - _player.GlobalPosition.DistanceTo(_player.GlobalPosition + movement);
+            // Calculate the remaining distance to the target
+            float remainingDistance = _player.Position.DistanceTo(_dashTarget);
 
-            GD.Print("parent global pos:" + _player.GlobalPosition);
-            GD.Print("movement:" + movement);
-            if (remainingDistance <= 0)
+            if (!CheckDistance(remainingDistance))
             {
+                _player.Position = _dashTarget; // Snap to the target position if the dash went over the target
+            }
 
+            if (remainingDistance <= 100)
+            {
                 _isDashing = false;
 
-                _player.Velocity = Vector2.Zero;// _dashDirection * remainingDistance;
+                _player.Velocity = Vector2.Zero; // _dashDirection * remainingDistance;
                 _player.MoveAndSlide(); // Finish the dash movement 
-
                 _player.IsDisplaced = false;
-                
-             //   EmitSignal(SignalName.DashFinished);
+
+                StartCooldown();
             }
             else
             {
@@ -60,10 +92,25 @@ public partial class Dash : Spell
                     GetTree().Root.AddChild(spellEffect);
                     spellEffect.GlobalPosition = _player.Position;
                 }
-                _player.Velocity = movement;
+                _player.Velocity = movement * 100; // Move the player in the dash direction
                 _player.MoveAndSlide();
-                _dashDistance -= movement.Length();
             }
+        }
+    }
+    private bool CheckDistance(float distance)
+    {
+        GD.Print("Distance: " + distance + " Previous Distance: " + previousDashDistance);
+        if (previousDashDistance != 0f && previousDashDistance < distance)
+        {
+            GD.Print("Dash distance too far, resetting dash.");
+            // If the previous dash distance is less than the current distance, it means the player is trying to dash too far
+            return false;
+        }
+        else
+        {
+            // If the previous dash distance is greater than or equal to the current distance, update the previous distance
+            previousDashDistance = distance;
+            return true;
         }
     }
 

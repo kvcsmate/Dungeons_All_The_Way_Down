@@ -308,14 +308,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi5b3"]
-size = Vector2(18.4404, 25.276)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdxql"]
+radius = 17.022
 
 [node name="TestEnemy1" type="CharacterBody2D"]
-scale = Vector2(0.1, 0.1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_fnm3s")
+IsHostile = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -330,9 +330,15 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8uahh")
-frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -7.45058e-07)
-scale = Vector2(0.704972, 0.791263)
-shape = SubResource("RectangleShape2D_mi5b3")
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-1, -1)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_cdxql")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_point_size = 0.47

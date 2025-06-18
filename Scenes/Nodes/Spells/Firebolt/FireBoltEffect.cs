@@ -9,7 +9,7 @@ public partial class FireboltEffect : SpellEffect
     public float Speed;
     public float MaxDistance;
     CollisionObject2D _collider;
-
+    public GodotObject Caster;
     private Vector2 _startPosition;
     private float _distanceTraveled = 0f;
 
@@ -40,7 +40,8 @@ public partial class FireboltEffect : SpellEffect
             }
 
             var collision = MoveAndCollide(movement);
-            if (collision != null)
+            
+            if (collision != null && collision.GetCollider() != Caster)
             {
                 GD.Print("HIT");
                 //Velocity = Velocity.Bounce(collision.GetNormal());
@@ -51,6 +52,10 @@ public partial class FireboltEffect : SpellEffect
                     collision.GetCollider().Call("OnHit", Damage);
                 }
                 Disposable = true;
+            }
+            if (collision !=null)
+            {
+                GD.Print(collision.GetCollider());
             }
         }
        

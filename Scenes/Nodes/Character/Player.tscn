@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://53mxo8nyt5wb" path="res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Idle.png" id="2_nrn5y"]
 [ext_resource type="Texture2D" uid="uid://bv4rbfpmjmnyu" path="res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Walk.png" id="3_ix8kv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrar1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
 [sub_resource type="Animation" id="Animation_bva7f"]
 resource_name = "Idle"
@@ -152,22 +152,21 @@ states/Start/position = Vector2(190, 90)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_p5jp4")]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-scale = Vector2(0.1, 0.1)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_m8ucb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.84217e-13)
-scale = Vector2(0.999999, 1.09115)
-shape = SubResource("RectangleShape2D_jrar1")
-
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(10, 10)
+zoom = Vector2(0.1, 0.1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_nrn5y")
 hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_iabyq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -178,3 +177,9 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_vgbgk")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 20.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_point_size = 0.47

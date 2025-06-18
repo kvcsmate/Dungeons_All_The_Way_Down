@@ -8,17 +8,18 @@ public abstract partial class Spell : Node2D
     [Export] public float SpellRange;
     public bool IsReady = true;
     [Export] public PackedScene SpellEffectScene;
-    Player _player;
+
 
     public class SpellParams
     {
         public Vector2 Position;
+        public Player Player;
     }
     public abstract void Cast(SpellParams p);
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
         // Initialize the spell (e.g., load resources, set up effects)
     }
 
@@ -28,4 +29,5 @@ public abstract partial class Spell : Node2D
         await ToSignal(GetTree().CreateTimer(Cooldown), "timeout");
         IsReady = true;
     }
+    
 }

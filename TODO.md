@@ -1,0 +1,64 @@
+# TODO
+
+## 1. Core Gameplay Loop
+
+### Implement enemy spawning and progression system
+   - Enemy Alert system
+   - Make a Hostile baseclass:
+      - OnAlert() function, what the enemy should do when notices the player
+      - MoveToPlayer, MoveUntilPlayerVisible, etc.
+   - Enemy ability system
+   - Ranged and Melee attacks
+   - NPC communication system (Make an "overlord")
+
+### Add player and enemy health, damage, and death mechanics
+
+## 2. Combat & Abilities
+
+### Expand spell system (more spells, cooldowns, effects)
+
+### Implement spell upgrades/modifiers
+
+### Add melee/ranged weapon support (optional)
+
+## 3. Level Generation
+
+### Create procedural or modular dungeon/room generation
+
+### Add doors, keys, and simple puzzles/obstacles
+
+## 4. User Interface
+
+### Add HUD (health, mana, spell icons, minimap)
+
+### Implement menus (pause, game over, settings)
+
+## 5. Audio & Visuals
+
+### Add sound effects (movement, spells, hits, deaths)
+
+### Add basic animations (player, enemies)
+
+### Improve visual feedback (particles, screen shake, etc.)
+
+## 6. Progression & Replayability
+
+### Implement progression system (score, currency, upgrades)
+
+### Add unlockable spells, characters, or items
+
+### Add random events/modifiers for replay value
+
+## 7. Polish & Optimization
+
+### Playtest and balance gameplay
+
+### Optimize performance
+
+### Fix bugs and improve code structure
+
+## 8. Content Expansion
+
+### Add more enemy types, bosses, and spell variety
+
+### Expand level themes and visuals

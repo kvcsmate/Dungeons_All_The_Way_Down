@@ -65,7 +65,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(10, 10)
 texture = ExtResource("2_r0r2h")
 hframes = 4
 vframes = 4

@@ -5,7 +5,7 @@
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hlnd1"]
 vertices = PackedVector2Array(-154, 70, -122, 70, -122, 86, -182, 102, -86, 86, -86, 70, 250, 70, 10, 90, -26, 90, -74, -58, 70, -58, 70, 38, -86, 38, -86, -138, -74, -90, 262, -138, 106, -90, 262, -74, 118, -74, 106, 38, 118, -42, 250, 38, 262, -42, 262, 102, 10, 102, -26, 102, -182, -10, -154, 38, -134, -10, -122, 38, -122, -138, -134, -42, -182, -42, -182, -102, -374, -138, -218, -102, -374, 102, -218, 102, 330, -270, 339, 170, 314, 134, 314, -182, -479, 189, -410, 134, -470, -279, -410, -182)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(9, 12, 13, 14), PackedInt32Array(14, 13, 15, 16), PackedInt32Array(16, 15, 17, 18), PackedInt32Array(19, 16, 18, 20), PackedInt32Array(21, 19, 20, 22), PackedInt32Array(21, 22, 23, 6), PackedInt32Array(6, 23, 24, 7), PackedInt32Array(4, 8, 25, 3, 2), PackedInt32Array(0, 3, 26, 27), PackedInt32Array(27, 26, 28, 29), PackedInt32Array(30, 29, 28, 31), PackedInt32Array(31, 32, 33, 30), PackedInt32Array(34, 30, 33, 35), PackedInt32Array(36, 34, 35, 37), PackedInt32Array(38, 39, 40, 41), PackedInt32Array(40, 39, 42, 43), PackedInt32Array(43, 42, 44, 45), PackedInt32Array(45, 44, 38, 41)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-480, -290, 340, -280, 350, 180, -490, 200)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4035, -1790, 3095, -1755, 3070, 1290, -4110, 1295)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D"]

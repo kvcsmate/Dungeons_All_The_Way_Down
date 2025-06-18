@@ -1,23 +1,24 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class Testenemy_1Script : NPC
 {
-    //[Export]
-    //new string SpriteName = "AnimatedSprite2D";
+    [Export]
+    public float MovementSpeed = 500.0f;
+    [Export]
+    public float SightRadius = 1000.0f;
+    [Export]
+    public float SightRaycastMargin = 2.0f; // Small margin to avoid self-collision
 
     private NavigationAgent2D _navigationAgent;
-
-    private float _movementSpeed = 5.0f;
-    //private Vector2 _movementTargetPosition = new Vector2(70.0f, 226.0f);
     private Node2D _target;
-
     public new AnimatedSprite2D CharacterSprite;
+
     public override void LoadSprite(string SpriteName)
     {
         CharacterSprite = this.GetNode<AnimatedSprite2D>(SpriteName);
     }
-
 
     public Vector2 MovementTarget
     {
@@ -28,45 +29,65 @@ public partial class Testenemy_1Script : NPC
     public override void _Ready()
     {
         base._Ready();
-        _target =  GetParent().GetNode<CharacterBody2D>("Player");
+        _target = GetParent().GetNode<CharacterBody2D>("Player");
         _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 
-        // These values need to be adjusted for the actor's speed
-        // and the navigation layout.
         _navigationAgent.PathDesiredDistance = 1.0f;
-        //_navigationAgent.TargetDesiredDistance = 4.0f;
-
-        // Make sure to not await during _Ready.
-        //Callable.From(ActorSetup).CallDeferred();
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        _navigationAgent.TargetPosition = _target.Position;
-
-        if (_navigationAgent.IsNavigationFinished())
+        if (PlayerInSight())
         {
+            _navigationAgent.TargetPosition = _target.Position;
+        }
+        else
+        {
+            // Stop moving if player is not in sight
+            _navigationAgent.TargetPosition = GlobalPosition;
+            Velocity = Vector2.Zero;
+            MoveAndSlide();
             return;
         }
 
-        Vector2 currentAgentPosition = GlobalTransform.Origin;
-        Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
+        if (!_navigationAgent.IsNavigationFinished())
+        {
+            Vector2 currentAgentPosition = GlobalTransform.Origin;
+            Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
 
-
-        Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * _movementSpeed;
-        MoveAndSlide();
+            Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * MovementSpeed;
+            MoveAndSlide();
+        }
     }
 
-    //private async void ActorSetup()
-    //{
-    //    // Wait for the first physics frame so the NavigationServer can sync.
-    //    await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+    private bool PlayerInSight()
+    {
+        // Check radius
+        if (GlobalPosition.DistanceTo(_target.GlobalPosition) > SightRadius)
+            return false;
 
-    //    // Now that the navigation map is no longer empty, set the movement target.
-    //    MovementTarget = _movementTargetPosition;
-    //}
+        // Raycast to player
+        var spaceState = GetWorld2D().DirectSpaceState;
 
+        var exclude = new Array<Rid>{ this.GetRid() }; // Exclude self from raycast
+        var result = spaceState.IntersectRay(
+            new PhysicsRayQueryParameters2D
+            {
+                From = Position,
+                To = _target.Position,
+                CollisionMask = 2, // Adjust as needed for your collision layers
+                Exclude = exclude
+            }
+        );
 
+        // If nothing blocks the ray or the first hit is the player, player is in sight
+        if (result.Count == 0)
+            return true;
+
+        Node2D collider = result["collider"].As<Node2D>();
+        GD.Print("Collider detected: " + collider.Name);
+        return collider == _target;
+    }
 }

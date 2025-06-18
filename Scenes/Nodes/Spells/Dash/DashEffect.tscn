@@ -55,6 +55,9 @@ states/Effect/position = Vector2(579, 94)
 transitions = ["Start", "Effect", SubResource("AnimationNodeStateMachineTransition_iq5mu"), "Effect", "End", SubResource("AnimationNodeStateMachineTransition_pwy2f")]
 
 [node name="SpellEffect" type="CharacterBody2D"]
+light_mask = 3
+visibility_layer = 3
+z_index = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -63,8 +66,8 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-scale = Vector2(0.1, 0.1)
+z_index = 2
+scale = Vector2(10, 10)
 texture = ExtResource("1_ueq1u")
 hframes = 7
 region_enabled = true

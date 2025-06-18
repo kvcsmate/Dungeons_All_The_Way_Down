@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dungeons All the Way Down")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fecae517c2d05151b7ba82b504f0f1289c2f386")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd0dfa823573329325f384e82c7d3c4f0b294a58")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dungeons All the Way Down")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dungeons All the Way Down")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
