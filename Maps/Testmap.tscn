@@ -1737,6 +1737,8 @@ collision_mask = 2
 position = Vector2(1294, -1)
 scale = Vector2(10, 10)
 MovementSpeed = 0.0
+MovementSpeed = 0.0
+Spells = Array[Node2D]([null, null])
 
 [node name="NavigationRegion2D" parent="." instance=ExtResource("10_0fnm3")]
 z_index = 0

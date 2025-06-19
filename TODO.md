@@ -10,7 +10,11 @@
    - Enemy ability system
    - Ranged and Melee attacks
    - NPC communication system (Make an "overlord")
-
+   - PlayerSight Matrix:
+      - körben raycast minden irányban, leírva azt a pontot amit a player még "lát"
+      - minél több raycast, annál pontosabb kör
+      - caster ellenfelek a legközelebbi raycast point-player vonal legközelebbi pontjára ha mozognak, akkor még látják a playert, és nem futnak oda ahol legutoljára látták
+      - lehet csinálni ellenfeleket, amik előszeretettel mozognak az "árnyékban"/ fedezékben
 ### Add player and enemy health, damage, and death mechanics
 
 ## 2. Combat & Abilities

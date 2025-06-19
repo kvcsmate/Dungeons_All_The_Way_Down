@@ -2,14 +2,12 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class Testenemy_1Script : NPC
+public partial class Testenemy_1Script : HostileNPC
 {
     [Export]
     public float MovementSpeed = 500.0f;
     [Export]
     public float SightRadius = 1000.0f;
-    [Export]
-    public float SightRaycastMargin = 2.0f; // Small margin to avoid self-collision
 
     private NavigationAgent2D _navigationAgent;
     private Node2D _target;
