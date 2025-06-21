@@ -159,7 +159,7 @@ public abstract partial class HostileNPC : LevelEntity
             return true;
 
         Node2D collider = result["collider"].As<Node2D>();
-        GD.Print("Collider detected: " + collider.Name);
+        //GD.Print("Collider detected: " + collider.Name);
         return collider == _target;
     }
     public string GetSpriteName()

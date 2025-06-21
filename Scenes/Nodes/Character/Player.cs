@@ -1,4 +1,5 @@
 using DungeonsAlltheWayDown.AbilitySystem;
+using DungeonsAlltheWayDown.Scenes.Nodes.Character;
 using Godot;
 using System;
 using System.Diagnostics;
@@ -16,6 +17,9 @@ public partial class Player : CharacterBody2D
     private StateEnum _currentState;
 
     public NavigationAgent2D _navigationAgent;
+
+    public PlayerSight playerSight;
+
     SpellLoader spellLoader;
 
     SpellBook spellBook;
@@ -99,6 +103,9 @@ public partial class Player : CharacterBody2D
 
         CurrentState = (int)StateEnum.Idle;
         _targetPosition = Position;
+
+        playerSight = new PlayerSight(30,100,this);
+        this.AddChild(playerSight);
 
         // DEBUG
 

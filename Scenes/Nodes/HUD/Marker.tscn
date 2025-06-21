@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bothqne5ltj0h"]
+
+[ext_resource type="Texture2D" uid="uid://m60soy0cg66l" path="res://Game Assets/Spells/Fire Effect and Bullet 16x16.png" id="1_josb3"]
+
+[node name="Marker" type="Node2D"]
+z_index = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_josb3")
+region_enabled = true
+region_rect = Rect2(320, 80, 16, 16)

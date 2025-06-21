@@ -1750,6 +1750,7 @@ navigation_layers = 1
 y_sort_enabled = true
 scale = Vector2(10, 10)
 tile_set = SubResource("TileSet_cl5vn")
+collision_visibility_mode = 1
 format = 2
 layer_0/name = "Wall"
 layer_0/y_sort_enabled = true

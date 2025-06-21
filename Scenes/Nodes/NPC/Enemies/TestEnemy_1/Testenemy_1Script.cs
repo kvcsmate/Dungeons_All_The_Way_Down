@@ -85,7 +85,7 @@ public partial class Testenemy_1Script : HostileNPC
             return true;
 
         Node2D collider = result["collider"].As<Node2D>();
-        GD.Print("Collider detected: " + collider.Name);
+        //GD.Print("Collider detected: " + collider.Name);
         return collider == _target;
     }
 }
