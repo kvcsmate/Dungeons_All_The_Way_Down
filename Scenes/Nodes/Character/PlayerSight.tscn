@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://11pgegftarmf"]
+
+[node name="PlayerSight" type="Node2D"]

@@ -2,6 +2,7 @@ using DungeonsAlltheWayDown.AbilitySystem;
 using DungeonsAlltheWayDown.Scenes.Nodes.Character;
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 public partial class Player : CharacterBody2D
@@ -56,6 +57,8 @@ public partial class Player : CharacterBody2D
     public AnimationTree AnimationTree;
 
     public AnimationNodeStateMachinePlayback StateMachine;
+    private Vector2 rotationvector;
+    private Vector2 testvector;
 
 
     public StateEnum CurrentState
@@ -76,6 +79,13 @@ public partial class Player : CharacterBody2D
             }
         }
     }
+
+    public string MarkerLocation = "res://Scenes/Nodes/HUD/Marker.tscn";
+
+
+    public PackedScene MarkerScene;
+
+    private List<Node2D> testMarkers;
 
     public enum StateEnum
     {
@@ -104,8 +114,9 @@ public partial class Player : CharacterBody2D
         CurrentState = (int)StateEnum.Idle;
         _targetPosition = Position;
 
-        playerSight = new PlayerSight(30,100,this);
-        this.AddChild(playerSight);
+        //playerSight = new PlayerSight(30,100,this);
+        //this.AddChild(playerSight);
+        //playerSight.Position = Position;
 
         // DEBUG
 
@@ -113,6 +124,7 @@ public partial class Player : CharacterBody2D
         spellBook.Update(0, "Firebolt");
         spellBook.Update(1, "Fireball");
         spellBook.Update(2, "Dash");
+
     }
 
     public override void _Input(InputEvent @event)
@@ -180,7 +192,6 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         CharacterMovement(delta);
-
     }
 
     private void CharacterMovement(double delta)

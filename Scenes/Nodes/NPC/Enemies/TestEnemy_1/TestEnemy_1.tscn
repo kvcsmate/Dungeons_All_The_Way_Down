@@ -315,7 +315,8 @@ radius = 17.022
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_fnm3s")
-IsHostile = true
+MovementSpeed = 0.0
+MovementSpeed = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -330,6 +331,7 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8uahh")
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3

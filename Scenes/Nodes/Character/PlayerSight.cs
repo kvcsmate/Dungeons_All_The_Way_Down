@@ -12,6 +12,12 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
     {
         public List<Vector2> SightMatrix;
 
+        [Export]
+        public int Precision = 100;
+
+        [Export]
+        public float Radius = 1000f;
+
         private int _precision;
         private float _radius;
 
@@ -26,19 +32,18 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 
         private List<Node2D> testMarkers;
 
-        private Player _player;
-
-        public PlayerSight(int precision,float radius,Player player)
+        public PlayerSight()
         {
-            testvector = new Vector2(1, 0) * 100;
-            rotationvector = new Vector2(1, 0) * 100;
-            _precision = precision;
-            _radius = radius;
-            _player = player;
+            testvector = new Vector2(1, 0);
+            rotationvector = new Vector2(1, 0);
+            _precision = Precision;
+            _radius = Radius;
+            //Position = player.Position;
             SightMatrix = new List<Vector2>();
-            testMarkers = new List<Node2D>();
 
-            for (int i = 0; i < precision; i++)
+
+
+            for (int i = 0; i < _precision; i++)
             {
 
                 SightMatrix.Add(new Vector2(1, 0).Rotated(i * (6.283f / _precision))*_radius);
@@ -47,24 +52,22 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 
         public override void _Ready()
         {
-            rotationvector = new Vector2(1, 0).Rotated(0 * (6.283f / _precision)) * _radius;
             MarkerScene = (PackedScene)GD.Load(MarkerLocation);
-            //if (currentMarker != null)
-            //{
-            //    currentMarker.QueueFree();
-            //}
 
-            for (int i = 0; i < 2 ; i++) //_precision
+            //AddTestMarkers();
+
+        }
+
+        private void AddTestMarkers()
+        { 
+            testMarkers = new List<Node2D>();
+            for (int i = 0; i < _precision; i++)
             {
                 testMarkers.Add(new Node2D());
                 testMarkers[i] = (Node2D)MarkerScene.Instantiate();
                 this.AddChild(testMarkers[i]);
                 GD.Print("Testmarker added:" + i);
             }
-
-            //currentMarker = (Node2D)MarkerScene.Instantiate();
-            //this.AddChild(currentMarker);
-
         }
         public override void _PhysicsProcess(double delta)
         {
@@ -73,70 +76,32 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
             {
                 var spaceState = GetWorld2D().DirectSpaceState;
 
-                //for (int i = 0; i < _precision; i++)
-                //{
+                for (int i = 0; i < _precision; i++)
+                {
 
-                //    rotationvector = new Vector2(1, 0).Rotated(i * (6.283f / _precision)) * _radius;
-                //    //GD.Print(rotationvector.Angle()*180/3.14);
-                //    var result = spaceState.IntersectRay(
-                //        new PhysicsRayQueryParameters2D
-                //        {
-                //            From = Position,
-                //            To = rotationvector,
-                //            CollisionMask = 1 // Adjust as needed for your collision layers
-                //        }
-                //    );
+                    rotationvector = GlobalPosition + new Vector2(1, 0).Rotated(i * (6.283f / _precision)) * _radius;
+                    //GD.Print(rotationvector.Angle()*180/3.14);
+                    var result = spaceState.IntersectRay(
+                        new PhysicsRayQueryParameters2D
+                        {
+                            From = GlobalPosition,
+                            To = rotationvector,
+                            CollisionMask = 1 // Adjust as needed for your collision layers
+                        }
+                    );
 
-                //    // If nothing blocks the ray or the first hit is the player, player is in sight
-                //    if (result.Count == 0)
-                //    {
-                //        SightMatrix[i] = rotationvector;
-                //    }
-                //    else
-                //    {
-                //        GD.Print("collision");
-                //        SightMatrix[i] = ((Vector2)result["position"]);
-
-                //    }
-                //    //GD.Print(SightMatrix[i]);
-                //    testMarkers[i].Position = SightMatrix[i];
-
-                //}
-
-                //rotationvector = new Vector2(1, 0).Rotated(0 * (6.283f / _precision)) * _radius;
-                
-                var exclude = new Array<Rid> { _player.GetRid() }; // Exclude self from raycast
-                //GD.Print(rotationvector.Angle()*180/3.14);
-
-                var result = spaceState.IntersectRay(
-                    new PhysicsRayQueryParameters2D
+                    // If nothing blocks the ray or the first hit is the player, player is in sight
+                    if (result.Count == 0)
                     {
-                        From = Position,
-                        To = rotationvector,
-                        Exclude = exclude,
-                        CollisionMask = 1 // Adjust as needed for your collision layers
+                        SightMatrix[i] = rotationvector;
                     }
-                );
-
-                // If nothing blocks the ray or the first hit is the player, player is in sight
-                GD.Print(result.Count);
-                if (result.Count == 0)
-                {
-                    testvector = rotationvector;
+                    else
+                    {
+                        SightMatrix[i] = (Vector2)result["position"];
+                    }
+                    //testMarkers[i].GlobalPosition = SightMatrix[i];
                 }
-                else
-                {
-                    GD.Print(result["collider"]);
-                    testvector = ((Vector2)result["position"]);
-
-                }
-                //GD.Print(SightMatrix[i]);
-                testMarkers[0].Position = rotationvector;
-                testMarkers[1].Position = Position;
-
             }
-
-
         }
     }
 }
