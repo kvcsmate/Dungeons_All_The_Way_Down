@@ -10,10 +10,13 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 {
     public partial class PlayerSight : Node2D
     {
-        public List<Vector2> SightMatrix;
+        private readonly List<Vector2> SightMatrix;
 
         [Export]
-        public int Precision = 100;
+        public bool ShowDebugMarkers = false;
+
+        [Export]
+        public int Precision = 180;
 
         [Export]
         public float Radius = 1000f;
@@ -41,12 +44,10 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
             //Position = player.Position;
             SightMatrix = new List<Vector2>();
 
-
-
             for (int i = 0; i < _precision; i++)
             {
 
-                SightMatrix.Add(new Vector2(1, 0).Rotated(i * (6.283f / _precision))*_radius);
+                SightMatrix.Add(new Vector2(1, 0).Rotated(i * (6.283f / _precision)) * _radius);
             }
         }
 
@@ -54,19 +55,21 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
         {
             MarkerScene = (PackedScene)GD.Load(MarkerLocation);
 
-            //AddTestMarkers();
+            if (ShowDebugMarkers)
+            {
+                AddTestMarkers();
+            }
 
         }
 
         private void AddTestMarkers()
-        { 
+        {
             testMarkers = new List<Node2D>();
             for (int i = 0; i < _precision; i++)
             {
                 testMarkers.Add(new Node2D());
                 testMarkers[i] = (Node2D)MarkerScene.Instantiate();
                 this.AddChild(testMarkers[i]);
-                GD.Print("Testmarker added:" + i);
             }
         }
         public override void _PhysicsProcess(double delta)
@@ -99,9 +102,31 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
                     {
                         SightMatrix[i] = (Vector2)result["position"];
                     }
-                    //testMarkers[i].GlobalPosition = SightMatrix[i];
+                    
+                    if (ShowDebugMarkers)
+                    {
+                        testMarkers[i].GlobalPosition = SightMatrix[i];
+                    }
                 }
             }
+        }
+        
+        public Vector2 GetClosestSightPoint(Vector2 position)
+        {
+            Vector2 closestPoint = SightMatrix[0];
+            float closestDistance = position.DistanceTo(closestPoint);
+
+            foreach (var point in SightMatrix)
+            {
+                float distance = position.DistanceTo(point);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestPoint = point;
+                }
+            }
+
+            return closestPoint;
         }
     }
 }

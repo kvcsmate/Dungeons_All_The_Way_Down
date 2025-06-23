@@ -1735,6 +1735,7 @@ slide_on_ceiling = false
 [node name="TestEnemy1" parent="." instance=ExtResource("3_7ss2s")]
 position = Vector2(1294, -1)
 scale = Vector2(10, 10)
+MovementSpeed = 500.0
 Spells = Array[Node2D]([null, null])
 
 [node name="NavigationRegion2D" parent="." instance=ExtResource("10_0fnm3")]

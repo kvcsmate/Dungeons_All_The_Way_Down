@@ -6,7 +6,6 @@
 z_index = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
 texture = ExtResource("1_josb3")
 region_enabled = true
 region_rect = Rect2(320, 80, 16, 16)

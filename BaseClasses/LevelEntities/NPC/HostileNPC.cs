@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonsAlltheWayDown.Scenes.Nodes.Character;
 using Godot;
 using Godot.Collections;
 
@@ -25,12 +26,17 @@ public abstract partial class HostileNPC : LevelEntity
     [Export]
     public Godot.Collections.Array<PackedScene> Spells;
 
-    private NavigationAgent2D _navigationAgent;
-    private Node2D _target;
+    protected bool onAlert = false;
+
+    protected NavigationAgent2D _navigationAgent;
+    private Player _target;
 
     public Sprite2D CharacterSprite;
 
     private StateEnum _currentState;
+    private Vector2 lastKnownPosition;
+
+
     public StateEnum CurrentState
     {
         get { return _currentState; }
@@ -51,6 +57,7 @@ public abstract partial class HostileNPC : LevelEntity
         }
     }
 
+
     public enum StateEnum
     {
         Idle,
@@ -68,38 +75,24 @@ public abstract partial class HostileNPC : LevelEntity
 
     public override void _Ready()
     {
+
         AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
         //AnimationTree.AnimationStarted += OnAnimationFinished;
         //get State machine
         StateMachine = (AnimationNodeStateMachinePlayback)AnimationTree.Get("parameters/playback");
-        _target = GetParent().GetNode<CharacterBody2D>("Player");
+        _target = GetParent().GetNode<Player>("Player");
         _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         _navigationAgent.PathDesiredDistance = 10.0f;
-        GD.Print(StateMachine + this.Name);
+        lastKnownPosition = GlobalPosition;
+        //GD.Print(_navigationAgent);
 
         LoadSprite(GetSpriteName());
-
-
 
     }
     
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-
-        if (PlayerInSight())
-        {
-            NPCAlert();
-            
-        }
-        else
-        {
-            // Stop moving if player is not in sight
-            _navigationAgent.TargetPosition = GlobalPosition;
-            Velocity = Vector2.Zero;
-            MoveAndSlide();
-            return;
-        }
 
         if (!_navigationAgent.IsNavigationFinished())
         {
@@ -108,12 +101,33 @@ public abstract partial class HostileNPC : LevelEntity
 
             Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * MovementSpeed;
             MoveAndSlide();
+
+            SetFlipDirection();
         }
     }
 
-    private void NPCAlert()
+    public void MoveToPlayerOrLastKnownPosition()
     {
-        // Here, decide how the NPC should react when the player is in sight.
+        if (CheckForPlayerInSight())
+        {
+            MoveToPlayer();
+        }
+        else
+        {
+            MoveToLastKnownPosition();
+        }
+    }
+
+    public void MoveToRangeOrLastKnownPosition()
+    {
+        if (GlobalPosition.DistanceTo(_target.GlobalPosition) > SightRadius)
+        {
+            MoveUntilPlayerInSight();
+        }
+        else
+        { 
+            MoveToLastKnownPosition();
+        }
     }
 
     private void MoveToPlayer()
@@ -121,21 +135,47 @@ public abstract partial class HostileNPC : LevelEntity
         _navigationAgent.TargetPosition = _target.Position;
     }
 
+    private void MoveToLastKnownPosition()
+    {
+        _navigationAgent.TargetPosition = lastKnownPosition;
+    }
+
     private void MoveUntilPlayerInSight()
     {
-        if (!PlayerInSight())
+        if (!CheckForPlayerInSight())
         {
-            MoveToPlayer();
+            GD.Print(_target);
+            //GD.Print(_target.playerSight);
+            GD.Print(_target.GetNode<PlayerSight>("PlayerSight").GetClosestSightPoint(Position));
+            _navigationAgent.TargetPosition = _target.GetNode<PlayerSight>("PlayerSight").GetClosestSightPoint(Position);
         }
         else
-        { 
-            _navigationAgent.TargetPosition = GlobalPosition;
-            Velocity = Vector2.Zero;
-            MoveAndSlide();
+        {
+            StopMovement();
         }
     }
 
-    private bool PlayerInSight()
+    protected void StopMovement()
+    {
+        _navigationAgent.TargetPosition = GlobalPosition;
+        Velocity = Vector2.Zero;
+        MoveAndSlide();
+    }
+
+    private void SetFlipDirection()
+    {
+        if (Velocity.X < 0)
+        {
+            CharacterSprite.FlipH = true;
+        }
+        else if (Velocity.X > 0)
+        {
+            CharacterSprite.FlipH = false;
+        }
+    }
+
+
+    protected bool CheckForPlayerInSight()
     {
         // Check radius
         if (GlobalPosition.DistanceTo(_target.GlobalPosition) > SightRadius)
@@ -156,11 +196,22 @@ public abstract partial class HostileNPC : LevelEntity
 
         // If nothing blocks the ray or the first hit is the player, player is in sight
         if (result.Count == 0)
+        {
+            onAlert = true;
             return true;
+        }
 
         Node2D collider = result["collider"].As<Node2D>();
         //GD.Print("Collider detected: " + collider.Name);
-        return collider == _target;
+        if (collider is Player)
+        {
+            onAlert = true;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public string GetSpriteName()
     {

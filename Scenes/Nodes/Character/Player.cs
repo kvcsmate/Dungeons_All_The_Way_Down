@@ -194,6 +194,7 @@ public partial class Player : CharacterBody2D
         CharacterMovement(delta);
     }
 
+
     private void CharacterMovement(double delta)
     {
 
@@ -235,7 +236,6 @@ public partial class Player : CharacterBody2D
         SetFlipDirection();
         HandleAnimation();
     }
-
 
     private void HandleAnimation()
     {

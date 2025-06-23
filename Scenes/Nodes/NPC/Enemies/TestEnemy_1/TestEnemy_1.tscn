@@ -316,7 +316,6 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_fnm3s")
 MovementSpeed = 0.0
-MovementSpeed = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
