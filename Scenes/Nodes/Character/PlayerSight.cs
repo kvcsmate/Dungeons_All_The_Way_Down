@@ -10,7 +10,7 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 {
     public partial class PlayerSight : Node2D
     {
-        private readonly List<Vector2> SightMatrix;
+        public readonly List<Vector2> SightMatrix;
 
         [Export]
         public bool ShowDebugMarkers = false;
@@ -20,6 +20,9 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 
         [Export]
         public float Radius = 1000f;
+
+        [Export]
+        public float RaycastRadius = 50f;
 
         private int _precision;
         private float _radius;
@@ -81,28 +84,46 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 
                 for (int i = 0; i < _precision; i++)
                 {
-
                     rotationvector = GlobalPosition + new Vector2(1, 0).Rotated(i * (6.283f / _precision)) * _radius;
-                    //GD.Print(rotationvector.Angle()*180/3.14);
+                    Vector2 direction = (rotationvector - GlobalPosition).Normalized();
+                    Vector2 perpendicular = direction.Orthogonal() * RaycastRadius;
+
+                    // First raycast: offset by +perpendicular
                     var result = spaceState.IntersectRay(
                         new PhysicsRayQueryParameters2D
                         {
-                            From = GlobalPosition,
-                            To = rotationvector,
+                            From = GlobalPosition + perpendicular,
+                            To = rotationvector + perpendicular,
                             CollisionMask = 1 // Adjust as needed for your collision layers
                         }
                     );
 
-                    // If nothing blocks the ray or the first hit is the player, player is in sight
-                    if (result.Count == 0)
+                    if (result.Count != 0)
                     {
-                        SightMatrix[i] = rotationvector;
+                        SightMatrix[i] = (Vector2)result["position"] - perpendicular;
                     }
                     else
                     {
-                        SightMatrix[i] = (Vector2)result["position"];
+                        // Second raycast: offset by -perpendicular (only if first raycast hits nothing)
+                        var result2 = spaceState.IntersectRay(
+                            new PhysicsRayQueryParameters2D
+                            {
+                                From = GlobalPosition - perpendicular,
+                                To = rotationvector - perpendicular,
+                                CollisionMask = 1 // Adjust as needed
+                            }
+                        );
+
+                        if (result2.Count != 0)
+                        {
+                            SightMatrix[i] = (Vector2)result2["position"] + perpendicular;
+                        }
+                        else
+                        {
+                            SightMatrix[i] = rotationvector;
+                        }
                     }
-                    
+
                     if (ShowDebugMarkers)
                     {
                         testMarkers[i].GlobalPosition = SightMatrix[i];

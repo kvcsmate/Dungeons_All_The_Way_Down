@@ -102,7 +102,7 @@ public abstract partial class HostileNPC : LevelEntity
             Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * MovementSpeed;
             MoveAndSlide();
 
-            SetFlipDirection();
+            //SetFlipDirection();
         }
     }
 
@@ -146,13 +146,45 @@ public abstract partial class HostileNPC : LevelEntity
         {
             GD.Print(_target);
             //GD.Print(_target.playerSight);
-            GD.Print(_target.GetNode<PlayerSight>("PlayerSight").GetClosestSightPoint(Position));
-            _navigationAgent.TargetPosition = _target.GetNode<PlayerSight>("PlayerSight").GetClosestSightPoint(Position);
+            _navigationAgent.TargetPosition = GetClosestSightPoint(_target.GlobalPosition);
+            lastKnownPosition = _target.GlobalPosition;
         }
         else
         {
             StopMovement();
         }
+    }
+
+    public Vector2 GetClosestSightPoint(Vector2 position)
+    {
+        List<Vector2> SightMatrix = _target.GetNode<PlayerSight>("PlayerSight").SightMatrix;
+        Vector2 closestPoint = SightMatrix[0];
+        float closestDistance = position.DistanceTo(closestPoint);
+
+            foreach (var point in SightMatrix)
+            {
+                _navigationAgent.TargetPosition = point;
+                float distance = _navigationAgent.DistanceToTarget();
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestPoint = point;
+                }
+            }
+            _navigationAgent.TargetPosition = closestPoint;
+            return closestPoint;
+        }
+
+
+    public static Vector2 ClosestPointOnSegment(Vector2 A, Vector2 B, Vector2 C)
+    {
+        Vector2 AB = B - A;
+        Vector2 AC = C - A;
+
+        float t = AC.Dot(AB) / AB.LengthSquared();
+        t = Mathf.Clamp(t, 0.0f, 1.0f);
+
+        return A + AB * t;
     }
 
     protected void StopMovement()
