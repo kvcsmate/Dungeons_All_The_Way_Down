@@ -8,6 +8,10 @@ using System.Diagnostics;
 public partial class Player : CharacterBody2D
 {
     [Export] public int Speed = 400;
+    [Export] public int MaxHealth = 100;
+    [Export] public int Health = 100;
+
+    private PlayerHealthBar _healthBar;
     private Vector2 _targetPosition;
     private bool _isMoving = false;
 
@@ -106,6 +110,12 @@ public partial class Player : CharacterBody2D
         IndicatorScene = (PackedScene)GD.Load(IndicatorLocation);
 
         PlayerSprite = this.GetNode<Sprite2D>("Sprite");
+
+        _healthBar = GetNode<PlayerHealthBar>("PlayerHealthBar");
+        if (_healthBar != null)
+        {
+            _healthBar.UpdateHealth(Health, MaxHealth);
+        }
 
         AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
         // get State machine 
@@ -274,6 +284,18 @@ public partial class Player : CharacterBody2D
         {
             _currentIndicator.QueueFree();
             _currentIndicator = null;
+        }
+    }
+
+    public void OnHit(int damage)
+    {
+        Health -= damage;
+        if (Health < 0)
+            Health = 0;
+
+        if (_healthBar != null)
+        {
+            _healthBar.UpdateHealth(Health, MaxHealth);
         }
     }
 }

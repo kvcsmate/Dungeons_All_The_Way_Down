@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c58b6jo2a4h40"]
+[gd_scene load_steps=15 format=3 uid="uid://c58b6jo2a4h40"]
 
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
 [ext_resource type="Texture2D" uid="uid://53mxo8nyt5wb" path="res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Idle.png" id="2_nrn5y"]
 [ext_resource type="Texture2D" uid="uid://bv4rbfpmjmnyu" path="res://Game Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Wizard/Wizard with shadows/Wizard-Walk.png" id="3_ix8kv"]
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
+[ext_resource type="PackedScene" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
@@ -190,3 +191,5 @@ debug_path_custom_point_size = 0.47
 [node name="PlayerSight" type="Node2D" parent="."]
 script = ExtResource("4_ymb08")
 ShowDebugMarkers = true
+[node name="PlayerHealthBar" parent="." instance=ExtResource("5_phb")]
+position = Vector2(0, -20)
