@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://c58b6jo2a4h40"]
+
 
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
 [ext_resource type="Texture2D" uid="uid://chyahuewyct2g" path="res://Game Assets/Wizard_assetpack.png" id="2_dsu3v"]
 [ext_resource type="Texture2D" uid="uid://b5mt146ibcwyc" path="res://Game Assets/wizard_anims/idle.png" id="3_kbbyf"]
 [ext_resource type="Texture2D" uid="uid://c1mgeayn8x1wh" path="res://Game Assets/wizard_anims/run.png" id="4_y7enw"]
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
+[ext_resource type="PackedScene" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
@@ -476,3 +477,5 @@ debug_path_custom_point_size = 0.47
 [node name="PlayerSight" type="Node2D" parent="."]
 script = ExtResource("4_ymb08")
 ShowDebugMarkers = true
+[node name="PlayerHealthBar" parent="." instance=ExtResource("5_phb")]
+position = Vector2(0, -20)
