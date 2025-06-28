@@ -98,6 +98,29 @@ public partial class Player : CharacterBody2D
     }
 
 
+    private FacingDirection _facing = FacingDirection.Front;
+    public FacingDirection Facing
+    {
+        get { return _facing; }
+        set
+        {
+            if (_facing != value)
+            {
+                _facing = value;
+                // Use StateMachine to travel to the correct facing state if needed
+                // (Optional: you can use this for future expansion)
+            }
+        }
+    }
+
+    public enum FacingDirection
+    {
+        Front,
+        Back,
+        Left,
+        Right
+    }
+
     public override void _Ready()
     {
         GD.Print(OS.GetExecutablePath());
@@ -242,34 +265,53 @@ public partial class Player : CharacterBody2D
         //        MoveAndSlide();
         //    }
         //}
-
-        SetFlipDirection();
         HandleAnimation();
     }
 
     private void HandleAnimation()
     {
+        // Determine facing direction based on velocity
+        if (Velocity.Length() == 0)
+        {
+            // Keep previous facing direction
+        }
+        else if (Mathf.Abs(Velocity.X) > Mathf.Abs(Velocity.Y))
+        {
+            Facing = Velocity.X > 0 ? FacingDirection.Right : FacingDirection.Left;
+        }
+        else
+        {
+            Facing = Velocity.Y > 0 ? FacingDirection.Front : FacingDirection.Back;
+        }
+
+        // Set state and play correct animation
         if (Velocity == Vector2.Zero)
         {
             CurrentState = StateEnum.Idle;
-            // GD.Print(StateMachine.GetCurrentNode());
+            PlayDirectionalAnimation("Idle");
         }
-        if (Velocity != Vector2.Zero)
+        else
         {
             CurrentState = StateEnum.Run;
-            //GD.Print(StateMachine.GetCurrentNode());
+            PlayDirectionalAnimation("Running");
         }
     }
 
-    private void SetFlipDirection()
+    private void PlayDirectionalAnimation(string baseName)
     {
-        if (Velocity.X > 0)
+        string anim = baseName + "_";
+        switch (Facing)
         {
-            PlayerSprite.FlipH = false;
+            case FacingDirection.Front: anim += "Front"; break;
+            case FacingDirection.Back: anim += "Back"; break;
+            case FacingDirection.Left: anim += "Left"; break;
+            case FacingDirection.Right: anim += "Right"; break;
         }
-        else if (Velocity.X < 0)
+
+        // Use StateMachine to travel to the correct animation node
+        if (StateMachine != null)
         {
-            PlayerSprite.FlipH = true;
+            StateMachine.Travel(anim);
         }
     }
     public void StopMovement()

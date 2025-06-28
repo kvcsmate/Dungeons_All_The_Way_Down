@@ -25,7 +25,18 @@
 ## 2. Combat & Abilities
 
 ### Expand spell system (more spells, cooldowns, effects)
-
+Ötlet: 
+- Spell upgrades (Thorgast szerűen)
+- Spell modifiers (modifier, amit bármelyik spellre rá lehet rakni, de csak egyet) pl- manát ad vissza, következő damage spell CD lecsökken, etc
+- 6 ability: 
+   Q - damage (Red)
+   W - defensive (blue)
+   E - interrupt - cc  (purple)
+   R - big damage (orange/ fire red)
+   D - movement (green)
+   F - utility (silver)
+   spellek color code-olva vannak, minden slotba csak a megfelelő spell kerülhet 
+- itemek, RoR, Slay the Spire
 ### Implement spell upgrades/modifiers
 
 ### Add melee/ranged weapon support (optional)
