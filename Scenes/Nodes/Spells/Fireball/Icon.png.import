@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfqh64oeed0ae"
-path="res://.godot/imported/Dash.png-d4364de90354a50a793b5eb296242f8d.ctex"
+uid="uid://dkcor7q84knlf"
+path="res://.godot/imported/Icon.png-33cd7e8873a26f9c6a411be6f4967e50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/HUD/Spell_icons/Wizard/Dash.png"
-dest_files=["res://.godot/imported/Dash.png-d4364de90354a50a793b5eb296242f8d.ctex"]
+source_file="res://Scenes/Nodes/Spells/Fireball/Icon.png"
+dest_files=["res://.godot/imported/Icon.png-33cd7e8873a26f9c6a411be6f4967e50.ctex"]
 
 [params]
 

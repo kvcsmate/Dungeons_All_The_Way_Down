@@ -1,6 +1,8 @@
 using Godot;
 using System.Collections.Generic;
 using DungeonsAlltheWayDown.AbilitySystem;
+using System;
+using System.Text;
 
 public partial class SpellHUD : CanvasLayer
 {
@@ -43,9 +45,6 @@ public partial class SpellHUD : CanvasLayer
             if (SpellBook.Pages.ContainsKey(i))
             {
                 var spell = SpellBook.Pages[i].Spell;
-                if (slot.Icon.Texture == null)
-                    slot.Icon.Texture = DefaultIcon;
-                slot.KeyLabel.Text = GetKeyName(i);
                 slot.Icon.Modulate = spell.IsReady ? Colors.White : new Color(1,1,1,0.5f);
 
                 if (slot.CooldownLabel != null)
@@ -83,4 +82,57 @@ public partial class SpellHUD : CanvasLayer
             _ => string.Empty
         };
     }
+
+    public void UpdateSpellHUD(int key)
+    {
+        // Handle the spellbook swap (update UI, etc.)
+
+        var slot = _slots[key];
+        if (SpellBook.Pages.ContainsKey(key))
+        {
+            var spell = SpellBook.Pages[key].Spell;
+
+            slot.Icon.Texture = LoadIcon(SpellBook.Pages[key]);
+            if (slot.CooldownLabel != null)
+            {
+                if (spell.IsReady)
+                {
+                    slot.CooldownLabel.Visible = false;
+                }
+                else
+                {
+                    slot.CooldownLabel.Visible = true;
+                    slot.CooldownLabel.Text = Mathf.Ceil(spell.CooldownRemaining).ToString();
+                }
+            }
+        }
+        else
+        {
+            slot.Icon.Texture = DefaultIcon;
+            slot.KeyLabel.Text = GetKeyName(key);
+            slot.Icon.Modulate = new Color(1, 1, 1, 0.25f);
+            if (slot.CooldownLabel != null)
+                slot.CooldownLabel.Visible = false;
+            GD.Print("Spell not found for key: " + key);
+        }
+    }
+
+    private Texture2D LoadIcon(SpellBook.Page page)
+    {
+        GD.Print("Loading icon for spell: " + page.SpellId);
+        if (page == null || page.Spell == null || page.Spell.SpellEffectScene == null)
+        {
+            return DefaultIcon;
+        }
+        string iconPath = $"res://Scenes/Nodes/Spells/{page.SpellId}/Icon.png";
+        GD.Print("Icon path: " + iconPath);
+        var Icon =  GD.Load<Texture2D>(iconPath);
+
+        
+        // Fallback if no icon is found
+        return Icon ?? DefaultIcon;
+    }
+
+
 }
+

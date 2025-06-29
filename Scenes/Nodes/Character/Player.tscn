@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c58b6jo2a4h40"]
+[gd_scene load_steps=29 format=3 uid="uid://c58b6jo2a4h40"]
 
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
 [ext_resource type="Texture2D" uid="uid://chyahuewyct2g" path="res://Game Assets/Wizard_assetpack.png" id="2_dsu3v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1mgeayn8x1wh" path="res://Game Assets/wizard_anims/run.png" id="4_y7enw"]
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
 [ext_resource type="PackedScene" uid="uid://yik37x68b1ek" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
+[ext_resource type="PackedScene" uid="uid://y0og8l57cq8u" path="res://Scenes/Nodes/HUD/SpellHUD.tscn" id="6_sphud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
@@ -480,3 +481,5 @@ ShowDebugMarkers = true
 
 [node name="PlayerHealthBar" parent="." instance=ExtResource("5_phb")]
 position = Vector2(0, -20)
+
+[node name="SpellHUD" parent="." instance=ExtResource("6_sphud")]

@@ -10,7 +10,6 @@ public abstract partial class Spell : Node2D
     public float CooldownRemaining { get; private set; }
     [Export] public PackedScene SpellEffectScene;
 
-
     public class SpellParams
     {
         public Vector2 Position;

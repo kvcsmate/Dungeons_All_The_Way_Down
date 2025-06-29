@@ -144,7 +144,7 @@ public abstract partial class HostileNPC : LevelEntity
     {
         if (!CheckForPlayerInSight())
         {
-            GD.Print(_target);
+            //GD.Print(_target);
             //GD.Print(_target.playerSight);
             _navigationAgent.TargetPosition = GetClosestSightPoint(_target.GlobalPosition);
             lastKnownPosition = _target.GlobalPosition;

@@ -48,7 +48,6 @@ public partial class Player : CharacterBody2D
 
     public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
 
-
     /*
     public PackedScene FireballScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Fireball//Fireball.tscn");
     public PackedScene DashScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Dash//Dash.tscn");
@@ -142,10 +141,11 @@ public partial class Player : CharacterBody2D
             _healthBar.UpdateHealth(Health, MaxHealth);
         }
 
-        _spellHUD = GetParent().GetNode<SpellHUD>("SpellHUD");
+        _spellHUD = GetNode<SpellHUD>("SpellHUD");
         if (_spellHUD != null)
         {
             _spellHUD.SpellBook = spellBook;
+            
         }
 
         AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
@@ -162,9 +162,9 @@ public partial class Player : CharacterBody2D
         // DEBUG
 
         GD.Print(spellLoader.SpellDirectory);
-        spellBook.Update(0, "Firebolt");
-        spellBook.Update(1, "Fireball");
-        spellBook.Update(2, "Dash");
+        UpdateSpellbook(0, "Firebolt");
+        UpdateSpellbook(1, "Fireball");
+        UpdateSpellbook(2, "Dash");
 
     }
 
@@ -233,7 +233,7 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         CharacterMovement(delta);
-        
+
         OnHit(1); //for testing purposes, remove later
     }
 
@@ -350,4 +350,17 @@ public partial class Player : CharacterBody2D
             _healthBar.UpdateHealth(Health, MaxHealth);
         }
     }
+    public void UpdateSpellbook(int index, string spellName)
+    {
+        if (spellBook != null)
+        {
+            spellBook.Update(index, spellName);
+            _spellHUD.UpdateSpellHUD(index);
+        }
+        else
+        {
+            GD.PrintErr("SpellBook is not initialized.");
+        }
+    }
 }
+
