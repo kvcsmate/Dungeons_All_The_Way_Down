@@ -34,6 +34,11 @@ offset_bottom = 20.0
 text = "Q"
 metadata/_edit_use_anchors_ = true
 
+[node name="CooldownLabel" type="Label" parent="Control/Slot0"]
+offset_top = -5.0
+offset_bottom = -5.0
+text = ""
+
 [node name="Slot1" type="Node2D" parent="Control"]
 position = Vector2(48, 0)
 
@@ -45,6 +50,11 @@ offset_top = 20.0
 offset_bottom = 20.0
 text = "W"
 metadata/_edit_use_anchors_ = true
+
+[node name="CooldownLabel" type="Label" parent="Control/Slot1"]
+offset_top = -5.0
+offset_bottom = -5.0
+text = ""
 
 [node name="Slot2" type="Node2D" parent="Control"]
 position = Vector2(96, 0)
@@ -58,6 +68,11 @@ offset_bottom = 20.0
 text = "E"
 metadata/_edit_use_anchors_ = true
 
+[node name="CooldownLabel" type="Label" parent="Control/Slot2"]
+offset_top = -5.0
+offset_bottom = -5.0
+text = ""
+
 [node name="Slot3" type="Node2D" parent="Control"]
 position = Vector2(144, 0)
 
@@ -69,3 +84,8 @@ offset_top = 20.0
 offset_bottom = 20.0
 text = "R"
 metadata/_edit_use_anchors_ = true
+
+[node name="CooldownLabel" type="Label" parent="Control/Slot3"]
+offset_top = -5.0
+offset_bottom = -5.0
+text = ""
