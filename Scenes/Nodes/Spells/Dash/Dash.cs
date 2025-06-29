@@ -20,6 +20,10 @@ public partial class Dash : Spell
 
     public override void Cast(SpellParams p)
     {
+        if (!IsReady)
+        {
+            return;
+        }
         _player = p.Player;
         _player.IsDisplaced = true;
         _isDashing = true;

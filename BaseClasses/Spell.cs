@@ -3,6 +3,7 @@ using System;
 
 public abstract partial class Spell : Node2D
 {
+    [Export] public float ChannelTime = 0;
     [Export] public int ManaCost = 10;
     [Export] public float Cooldown = 0.5f;
     [Export] public float SpellRange;
