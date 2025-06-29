@@ -1,39 +1,53 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://y0og8l57cq8u"]
 
 [ext_resource type="Script" path="res://Scenes/Nodes/HUD/SpellHUD.cs" id="1"]
-[ext_resource type="Texture2D" path="res://Game Assets/HUD/07.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://et2h2cx0mc6s" path="res://Game Assets/Spells/Spell_icons/Wizard/Firebolt.png" id="2_wa6ry"]
+[ext_resource type="Texture2D" uid="uid://dkcor7q84knlf" path="res://Game Assets/Spells/Spell_icons/Wizard/FireBall.png" id="3_x4bqx"]
+[ext_resource type="Texture2D" uid="uid://cfqh64oeed0ae" path="res://Game Assets/Spells/Spell_icons/Wizard/Dash.png" id="4_hbqfd"]
+[ext_resource type="Texture2D" uid="uid://dvircqepfqcry" path="res://Game Assets/Spells/Spell_icons/Wizard/Meteor.png" id="5_e1et7"]
 
 [node name="SpellHUD" type="Node2D"]
 script = ExtResource("1")
 
 [node name="Slot0" type="Node2D" parent="."]
-position = Vector2(0, 0)
+
 [node name="Icon" type="Sprite2D" parent="Slot0"]
-texture = ExtResource("2")
+texture = ExtResource("2_wa6ry")
+
 [node name="KeyLabel" type="Label" parent="Slot0"]
-position = Vector2(0, 20)
+offset_top = 20.0
+offset_bottom = 20.0
 text = "Q"
 
 [node name="Slot1" type="Node2D" parent="."]
-position = Vector2(24, 0)
+position = Vector2(48, 0)
+
 [node name="Icon" type="Sprite2D" parent="Slot1"]
-texture = ExtResource("2")
+texture = ExtResource("3_x4bqx")
+
 [node name="KeyLabel" type="Label" parent="Slot1"]
-position = Vector2(0, 20)
+offset_top = 20.0
+offset_bottom = 20.0
 text = "W"
 
 [node name="Slot2" type="Node2D" parent="."]
-position = Vector2(48, 0)
+position = Vector2(96, 0)
+
 [node name="Icon" type="Sprite2D" parent="Slot2"]
-texture = ExtResource("2")
+texture = ExtResource("4_hbqfd")
+
 [node name="KeyLabel" type="Label" parent="Slot2"]
-position = Vector2(0, 20)
+offset_top = 20.0
+offset_bottom = 20.0
 text = "E"
 
 [node name="Slot3" type="Node2D" parent="."]
-position = Vector2(72, 0)
+position = Vector2(144, 0)
+
 [node name="Icon" type="Sprite2D" parent="Slot3"]
-texture = ExtResource("2")
+texture = ExtResource("5_e1et7")
+
 [node name="KeyLabel" type="Label" parent="Slot3"]
-position = Vector2(0, 20)
+offset_top = 20.0
+offset_bottom = 20.0
 text = "R"
