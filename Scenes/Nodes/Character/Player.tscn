@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1mgeayn8x1wh" path="res://Game Assets/wizard_anims/run.png" id="4_y7enw"]
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
+[ext_resource type="PackedScene" path="res://Scenes/Nodes/HUD/SpellHUD.tscn" id="6_spellhud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
@@ -479,3 +480,5 @@ script = ExtResource("4_ymb08")
 ShowDebugMarkers = true
 [node name="PlayerHealthBar" parent="." instance=ExtResource("5_phb")]
 position = Vector2(0, -20)
+[node name="SpellHUD" parent="." instance=ExtResource("6_spellhud")]
+position = Vector2(-36, 20)
