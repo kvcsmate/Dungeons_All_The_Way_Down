@@ -16,12 +16,16 @@ public partial class DirectionIndicator : Node2D
 			Input.GetJoyAxis(0, JoyAxis.RightY));
 		if (direction.Length() ==0)
 		{
-			direction = new Vector2(
+				direction = new Vector2(
 				Input.GetJoyAxis(0, JoyAxis.LeftX),
 				Input.GetJoyAxis(0, JoyAxis.LeftY));
 			
 		}
-		Rotation = direction.Angle() + Mathf.Pi / 2f; // Correct for 90 degree offset
+		if(direction.Length() > 0.1f)
+		{
+			Rotation = direction.Angle() + Mathf.Pi / 2f; // Correct for 90 degree offset
+		}
+
 
 	}
 }

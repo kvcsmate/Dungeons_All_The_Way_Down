@@ -352,7 +352,12 @@ public partial class Player : CharacterBody2D
     {
 
         //!_navigationAgent.IsNavigationFinished()
-        _targetPosition = Position; // Reset target position to current position
+        if (CurrentMovementMode == MovementMode.Click)
+        {
+
+            _targetPosition = Position; // Reset target position to current position
+        }
+
         _isMoving = false;
         this.Velocity = Vector2.Zero;
 
