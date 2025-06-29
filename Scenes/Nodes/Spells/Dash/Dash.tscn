@@ -4,4 +4,5 @@
 
 [node name="Dash" type="Node2D"]
 script = ExtResource("1_7157p")
+Cooldown = 10.0
 SpellRange = 500.0

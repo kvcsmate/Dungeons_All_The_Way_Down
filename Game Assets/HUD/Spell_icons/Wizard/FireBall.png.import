@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4v0l102lkhx0"
-path="res://.godot/imported/fb759.png-45844f1eff2b48a06606eba64fcdc8d5.ctex"
+uid="uid://dkcor7q84knlf"
+path="res://.godot/imported/FireBall.png-4df8114ab08cf30cfb1cb4dfc7390e01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Spells/Spell_icons/Wizard/fb759.png"
-dest_files=["res://.godot/imported/fb759.png-45844f1eff2b48a06606eba64fcdc8d5.ctex"]
+source_file="res://Game Assets/HUD/Spell_icons/Wizard/FireBall.png"
+dest_files=["res://.godot/imported/FireBall.png-4df8114ab08cf30cfb1cb4dfc7390e01.ctex"]
 
 [params]
 

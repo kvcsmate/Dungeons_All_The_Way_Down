@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvircqepfqcry"
-path="res://.godot/imported/Meteor.png-b364aaa634506699ec44744caa2c6754.ctex"
+uid="uid://et2h2cx0mc6s"
+path="res://.godot/imported/Firebolt.png-527ed732c0a3cc256dc1524e6b84cab5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Spells/Spell_icons/Wizard/Meteor.png"
-dest_files=["res://.godot/imported/Meteor.png-b364aaa634506699ec44744caa2c6754.ctex"]
+source_file="res://Game Assets/HUD/Spell_icons/Wizard/Firebolt.png"
+dest_files=["res://.godot/imported/Firebolt.png-527ed732c0a3cc256dc1524e6b84cab5.ctex"]
 
 [params]
 

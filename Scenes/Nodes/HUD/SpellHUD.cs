@@ -2,7 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using DungeonsAlltheWayDown.AbilitySystem;
 
-public partial class SpellHUD : Node2D
+public partial class SpellHUD : CanvasLayer
 {
     private class Slot
     {
@@ -13,20 +13,19 @@ public partial class SpellHUD : Node2D
 
     private List<Slot> _slots = new();
 
-    [Export] public Texture2D DefaultIcon;
+    [Export] public Texture2D DefaultIcon = GD.Load<Texture2D>("res://Game Assets//HUD//Spell_icons//defaultIcon.png");
 
     public SpellBook SpellBook { get; set; }
-
     public override void _Ready()
     {
         if (DefaultIcon == null)
         {
-            DefaultIcon = GD.Load<Texture2D>("res://Game Assets/HUD/Spell_icons/defaultIcon.png");
+            DefaultIcon = GD.Load<Texture2D>("res://Game Assets//HUD//Spell_icons//defaultIcon.png");
         }
 
         for (int i = 0; i < 4; i++)
         {
-            var slotNode = GetNode<Node2D>($"Slot{i}");
+            var slotNode = GetNode<Node2D>($"Control/Slot{i}");
             var icon = slotNode.GetNode<Sprite2D>("Icon");
             var label = slotNode.GetNode<Label>("KeyLabel");
             var cdLabel = slotNode.GetNodeOrNull<Label>("CooldownLabel");

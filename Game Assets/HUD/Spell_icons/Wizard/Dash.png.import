@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://et2h2cx0mc6s"
-path="res://.godot/imported/Firebolt.png-1cb3f2bd7089e1641863591e47a11258.ctex"
+uid="uid://cfqh64oeed0ae"
+path="res://.godot/imported/Dash.png-d4364de90354a50a793b5eb296242f8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Spells/Spell_icons/Wizard/Firebolt.png"
-dest_files=["res://.godot/imported/Firebolt.png-1cb3f2bd7089e1641863591e47a11258.ctex"]
+source_file="res://Game Assets/HUD/Spell_icons/Wizard/Dash.png"
+dest_files=["res://.godot/imported/Dash.png-d4364de90354a50a793b5eb296242f8d.ctex"]
 
 [params]
 

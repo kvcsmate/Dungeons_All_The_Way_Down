@@ -142,7 +142,7 @@ public partial class Player : CharacterBody2D
             _healthBar.UpdateHealth(Health, MaxHealth);
         }
 
-        _spellHUD = GetNode<SpellHUD>("Camera2D/SpellHUD");
+        _spellHUD = GetParent().GetNode<SpellHUD>("SpellHUD");
         if (_spellHUD != null)
         {
             _spellHUD.SpellBook = spellBook;
