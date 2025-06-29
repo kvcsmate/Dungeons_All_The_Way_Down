@@ -7,6 +7,7 @@ public abstract partial class Spell : Node2D
     [Export] public float Cooldown = 0.5f;
     [Export] public float SpellRange;
     public bool IsReady = true;
+    public float CooldownRemaining { get; private set; }
     [Export] public PackedScene SpellEffectScene;
 
 
@@ -23,11 +24,23 @@ public abstract partial class Spell : Node2D
         // Initialize the spell (e.g., load resources, set up effects)
     }
 
-    protected async void StartCooldown()
+    protected void StartCooldown()
     {
         IsReady = false;
-        await ToSignal(GetTree().CreateTimer(Cooldown), "timeout");
-        IsReady = true;
+        CooldownRemaining = Cooldown;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!IsReady)
+        {
+            CooldownRemaining -= (float)delta;
+            if (CooldownRemaining <= 0)
+            {
+                CooldownRemaining = 0;
+                IsReady = true;
+            }
+        }
     }
     
 }
