@@ -20,7 +20,7 @@ public partial class SpellHUD : Node2D
     {
         if (DefaultIcon == null)
         {
-            DefaultIcon = GD.Load<Texture2D>("res://Game Assets/HUD/07.png");
+            DefaultIcon = GD.Load<Texture2D>("res://Game Assets/HUD/Spell_icons/defaultIcon.png");
         }
 
         for (int i = 0; i < 4; i++)
