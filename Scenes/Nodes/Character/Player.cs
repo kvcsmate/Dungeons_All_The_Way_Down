@@ -12,6 +12,7 @@ public partial class Player : CharacterBody2D
     [Export] public int Health = 100;
 
     private PlayerHealthBar _healthBar;
+    private SpellHUD _spellHUD;
     private Vector2 _targetPosition;
     private bool _isMoving = false;
 
@@ -47,6 +48,8 @@ public partial class Player : CharacterBody2D
 
     public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
 
+    public string SpellHUDLocation = "res://Scenes/Nodes/HUD/SpellHUD.tscn";
+
     /*
     public PackedScene FireballScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Fireball//Fireball.tscn");
     public PackedScene DashScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Dash//Dash.tscn");
@@ -57,6 +60,7 @@ public partial class Player : CharacterBody2D
     private Spell _fireboltSpell;
     */
     public PackedScene IndicatorScene;
+    public PackedScene SpellHUDScene;
 
     public AnimationTree AnimationTree;
 
@@ -131,6 +135,7 @@ public partial class Player : CharacterBody2D
         _navigationAgent.PathDesiredDistance = 1.0f;
 
         IndicatorScene = (PackedScene)GD.Load(IndicatorLocation);
+        SpellHUDScene = (PackedScene)GD.Load(SpellHUDLocation);
 
         PlayerSprite = this.GetNode<Sprite2D>("Sprite");
 
@@ -138,6 +143,13 @@ public partial class Player : CharacterBody2D
         if (_healthBar != null)
         {
             _healthBar.UpdateHealth(Health, MaxHealth);
+        }
+
+        if (SpellHUDScene != null)
+        {
+            _spellHUD = (SpellHUD)SpellHUDScene.Instantiate();
+            AddChild(_spellHUD);
+            _spellHUD.SpellBook = spellBook;
         }
 
         AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
