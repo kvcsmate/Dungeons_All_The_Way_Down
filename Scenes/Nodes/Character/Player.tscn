@@ -1,4 +1,4 @@
-
+[gd_scene load_steps=27 format=3 uid="uid://c58b6jo2a4h40"]
 
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
 [ext_resource type="Texture2D" uid="uid://chyahuewyct2g" path="res://Game Assets/Wizard_assetpack.png" id="2_dsu3v"]

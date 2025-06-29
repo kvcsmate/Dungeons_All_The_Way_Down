@@ -1,0 +1,16 @@
+[gd_resource type="CanvasTexture" load_steps=5 format=3 uid="uid://v0ynlgwi8vg5"]
+
+[sub_resource type="Gradient" id="Gradient_s5o50"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sje1f"]
+color_ramp = SubResource("Gradient_s5o50")
+
+[sub_resource type="Gradient" id="Gradient_wnq8h"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yfv0u"]
+gradient = SubResource("Gradient_wnq8h")
+
+[resource]
+diffuse_texture = SubResource("NoiseTexture2D_sje1f")
+normal_texture = SubResource("GradientTexture2D_yfv0u")
+specular_color = Color(0, 1, 0, 1)
