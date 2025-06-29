@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1mgeayn8x1wh" path="res://Game Assets/wizard_anims/run.png" id="4_y7enw"]
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
 [ext_resource type="PackedScene" uid="uid://yik37x68b1ek" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
+[ext_resource type="PackedScene" uid="uid://y0og8l57cq8u" path="res://Scenes/Nodes/HUD/SpellHUD.tscn" id="6_sphud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
@@ -445,6 +446,8 @@ script = ExtResource("1_m8ucb")
 zoom = Vector2(0.1, 0.1)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="SpellHUD" parent="Camera2D" instance=ExtResource("6_sphud")]
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -3)

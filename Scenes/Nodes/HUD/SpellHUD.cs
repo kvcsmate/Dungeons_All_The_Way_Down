@@ -8,6 +8,7 @@ public partial class SpellHUD : Node2D
     {
         public Sprite2D Icon;
         public Label KeyLabel;
+        public Label CooldownLabel;
     }
 
     private List<Slot> _slots = new();
@@ -28,7 +29,8 @@ public partial class SpellHUD : Node2D
             var slotNode = GetNode<Node2D>($"Slot{i}");
             var icon = slotNode.GetNode<Sprite2D>("Icon");
             var label = slotNode.GetNode<Label>("KeyLabel");
-            _slots.Add(new Slot { Icon = icon, KeyLabel = label });
+            var cdLabel = slotNode.GetNodeOrNull<Label>("CooldownLabel");
+            _slots.Add(new Slot { Icon = icon, KeyLabel = label, CooldownLabel = cdLabel });
         }
     }
 
@@ -46,12 +48,27 @@ public partial class SpellHUD : Node2D
                     slot.Icon.Texture = DefaultIcon;
                 slot.KeyLabel.Text = GetKeyName(i);
                 slot.Icon.Modulate = spell.IsReady ? Colors.White : new Color(1,1,1,0.5f);
+
+                if (slot.CooldownLabel != null)
+                {
+                    if (spell.IsReady)
+                    {
+                        slot.CooldownLabel.Visible = false;
+                    }
+                    else
+                    {
+                        slot.CooldownLabel.Visible = true;
+                        slot.CooldownLabel.Text = Mathf.Ceil(spell.CooldownRemaining).ToString();
+                    }
+                }
             }
             else
             {
                 slot.Icon.Texture = DefaultIcon;
                 slot.KeyLabel.Text = GetKeyName(i);
                 slot.Icon.Modulate = new Color(1,1,1,0.25f);
+                if (slot.CooldownLabel != null)
+                    slot.CooldownLabel.Visible = false;
             }
         }
     }
