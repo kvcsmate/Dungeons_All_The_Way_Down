@@ -31,6 +31,15 @@ public partial class Player : CharacterBody2D
     SpellBook spellBook;
 
     AbilityInputMap abilityInputMap;
+
+    public enum MovementMode
+    {
+        Click,
+        Joystick
+    }
+
+    [Export]
+    public MovementMode CurrentMovementMode = MovementMode.Joystick;
     public bool IsDisplaced
     {
         get { return _isDisplaced; }
@@ -170,16 +179,31 @@ public partial class Player : CharacterBody2D
 
     public override void _Input(InputEvent @event)
     {
+        if (CurrentMovementMode == MovementMode.Click)
+        {
+            HandlePointClickInput(@event);
+        }
 
+        if (@event is InputEvent keyevent && keyevent.IsPressed())
+        {
+            Spell.SpellParams spellParams = new Spell.SpellParams()
+            {
+                Position = GetGlobalMousePosition(),
+                Player = this
+            };
+            abilityInputMap.HandleInput(@event, spellParams);
+        }
+    }
+
+    private void HandlePointClickInput(InputEvent @event)
+    {
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Right)
         {
             Vector2 clickedPosition = GetGlobalMousePosition();
 
-            // Check if the position is inside the navigation region
             _navigationAgent.TargetPosition = clickedPosition;
             if (!_navigationAgent.IsTargetReachable())
             {
-                // If not reachable, get the closest point inside the navigation region
                 var navMap = _navigationAgent.GetNavigationMap();
                 clickedPosition = NavigationServer2D.MapGetClosestPoint(navMap, clickedPosition);
                 _navigationAgent.TargetPosition = clickedPosition;
@@ -189,31 +213,6 @@ public partial class Player : CharacterBody2D
             _isMoving = true;
 
             CreateIndicator(_targetPosition);
-        }
-        else if (@event is InputEvent keyevent && keyevent.IsPressed())
-        {
-            Spell.SpellParams spellParams = new Spell.SpellParams()
-            {
-                Position = GetGlobalMousePosition(),
-                Player = this
-            };
-            abilityInputMap.HandleInput(@event, spellParams);
-            /*
-            Spell.SpellParams spellp = new Spell.SpellParams { Position = GetGlobalMousePosition() };
-            if (Input.IsActionJustPressed("W"))
-            {
-                _fireballSpell.Cast(spellp);
-            }
-            if (Input.IsActionJustPressed("F"))
-            {
-                Vector2 spellPosition = GetGlobalMousePosition();
-                _dashSpell.Cast(spellp);
-            }
-            if (Input.IsActionJustPressed("Q"))
-            {
-                Vector2 spellPosition = GetGlobalMousePosition();
-                _fireboltSpell.Cast(spellp);
-            }*/
         }
     }
 
@@ -240,7 +239,20 @@ public partial class Player : CharacterBody2D
 
     private void CharacterMovement(double delta)
     {
+        if (CurrentMovementMode == MovementMode.Click)
+        {
+            ClickMovement(delta);
+        }
+        else
+        {
+            JoystickMovement(delta);
+        }
 
+        HandleAnimation();
+    }
+
+    private void ClickMovement(double delta)
+    {
         _navigationAgent.TargetPosition = _targetPosition;
 
         if (_isMoving && !IsDisplaced)
@@ -258,24 +270,24 @@ public partial class Player : CharacterBody2D
                 MoveAndSlide();
             }
         }
+    }
 
+    private void JoystickMovement(double delta)
+    {
+        Vector2 direction = new Vector2(
+            Input.GetJoyAxis(0, (int)JoyAxis.LeftX),
+            Input.GetJoyAxis(0, (int)JoyAxis.LeftY)
+        );
 
-        //if ()
-        //{
-        //    Vector2 direction = (_targetPosition - Position).Normalized();
-        //    Vector2 movement = direction * Speed * (float)delta;
+        if (Mathf.Abs(direction.X) < 0.1f)
+            direction.X = 0;
+        if (Mathf.Abs(direction.Y) < 0.1f)
+            direction.Y = 0;
 
-        //    if (Position.DistanceTo(_targetPosition) <= .125)
-        //    {
-        //        StopMovement();
-        //    }
-        //    else
-        //    {
-        //        this.Velocity = movement;
-        //        MoveAndSlide();
-        //    }
-        //}
-        HandleAnimation();
+        Velocity = direction * Speed;
+        MoveAndSlide();
+        _targetPosition = Position;
+        _isMoving = direction != Vector2.Zero;
     }
 
     private void HandleAnimation()
