@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c58b6jo2a4h40"]
+[gd_scene load_steps=31 format=3 uid="uid://c58b6jo2a4h40"]
 
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
 [ext_resource type="Texture2D" uid="uid://chyahuewyct2g" path="res://Game Assets/Wizard_assetpack.png" id="2_dsu3v"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
 [ext_resource type="PackedScene" uid="uid://yik37x68b1ek" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
 [ext_resource type="PackedScene" uid="uid://y0og8l57cq8u" path="res://Scenes/Nodes/HUD/SpellHUD.tscn" id="6_sphud"]
+[ext_resource type="PackedScene" uid="uid://diwqvyc7rwo3v" path="res://Scenes/Nodes/HUD/DirectionIndicator/DirectionIndicator.tscn" id="8_678xe"]
+[ext_resource type="Script" path="res://Scenes/Nodes/HUD/DirectionIndicator/DirectionIndicator.cs" id="9_3jcuy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
@@ -438,12 +440,12 @@ states/Start/position = Vector2(190, 90)
 transitions = ["Start", "Idle_Back", SubResource("AnimationNodeStateMachineTransition_gtr64")]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_m8ucb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.1, 0.1)
+zoom = Vector2(0.2, 0.2)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
@@ -480,6 +482,11 @@ script = ExtResource("4_ymb08")
 ShowDebugMarkers = true
 
 [node name="PlayerHealthBar" parent="." instance=ExtResource("5_phb")]
-position = Vector2(0, -20)
+position = Vector2(0, -30)
+scale = Vector2(0.2, 0.2)
 
 [node name="SpellHUD" parent="." instance=ExtResource("6_sphud")]
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("8_678xe")]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("9_3jcuy")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://diwqvyc7rwo3v"]
+
+[ext_resource type="Texture2D" uid="uid://jsmtdbowqa2e" path="res://Game Assets/Spells/Water Effect and Bullet 16x16.png" id="1_m33hf"]
+
+[node name="DirectionIndicator" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_m33hf")
+region_enabled = true
+region_rect = Rect2(384, 112, 16.3161, 16)

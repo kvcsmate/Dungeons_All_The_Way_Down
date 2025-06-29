@@ -54,7 +54,6 @@ public partial class Player : CharacterBody2D
 
     public Sprite2D PlayerSprite;
 
-
     public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
 
     /*
@@ -109,6 +108,9 @@ public partial class Player : CharacterBody2D
 
 
     private FacingDirection _facing = FacingDirection.Front;
+    private Vector2 _aimDirection;
+
+
     public FacingDirection Facing
     {
         get { return _facing; }
@@ -154,7 +156,7 @@ public partial class Player : CharacterBody2D
         if (_spellHUD != null)
         {
             _spellHUD.SpellBook = spellBook;
-            
+
         }
 
         AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
@@ -176,6 +178,12 @@ public partial class Player : CharacterBody2D
         UpdateSpellbook(2, "Dash");
 
     }
+    public override void _PhysicsProcess(double delta)
+    {
+        CharacterMovement(delta);
+
+        OnHit(1); //for testing purposes, remove later
+    }
 
     public override void _Input(InputEvent @event)
     {
@@ -188,7 +196,7 @@ public partial class Player : CharacterBody2D
         {
             Spell.SpellParams spellParams = new Spell.SpellParams()
             {
-                Position = GetGlobalMousePosition(),
+                Position = GetAimDirection(),
                 Player = this
             };
             abilityInputMap.HandleInput(@event, spellParams);
@@ -216,7 +224,8 @@ public partial class Player : CharacterBody2D
         }
     }
 
-    public void CreateIndicator(Vector2 position)
+
+        public void CreateIndicator(Vector2 position)
     {
         if (_currentIndicator != null)
         {
@@ -229,14 +238,17 @@ public partial class Player : CharacterBody2D
         GetParent().AddChild(_currentIndicator);
     }
 
-    public override void _PhysicsProcess(double delta)
+    private Vector2 GetAimDirection()
     {
-        CharacterMovement(delta);
-
-        OnHit(1); //for testing purposes, remove later
+        if (CurrentMovementMode == MovementMode.Click)
+        {
+            return GetGlobalMousePosition();
+        }
+        else
+        {
+            return GetJoystickTargetDirection();
+        }
     }
-
-
     private void CharacterMovement(double delta)
     {
         if (CurrentMovementMode == MovementMode.Click)
@@ -275,8 +287,8 @@ public partial class Player : CharacterBody2D
     private void JoystickMovement(double delta)
     {
         Vector2 direction = new Vector2(
-            Input.GetJoyAxis(0, (int)JoyAxis.LeftX),
-            Input.GetJoyAxis(0, (int)JoyAxis.LeftY)
+            Input.GetJoyAxis(0, JoyAxis.LeftX),
+            Input.GetJoyAxis(0, JoyAxis.LeftY)
         );
 
         if (Mathf.Abs(direction.X) < 0.1f)
@@ -373,6 +385,22 @@ public partial class Player : CharacterBody2D
         {
             GD.PrintErr("SpellBook is not initialized.");
         }
+    }
+
+    private Vector2 GetJoystickTargetDirection()
+    {
+       Vector2 direction = new Vector2(
+			Input.GetJoyAxis(0, JoyAxis.RightX),
+			Input.GetJoyAxis(0, JoyAxis.RightY));
+            
+		if (direction.Length() == 0)
+        {
+            direction = new Vector2(
+                Input.GetJoyAxis(0, JoyAxis.LeftX),
+                Input.GetJoyAxis(0, JoyAxis.LeftY));
+
+        }
+        return direction + this.GlobalPosition;
     }
 }
 

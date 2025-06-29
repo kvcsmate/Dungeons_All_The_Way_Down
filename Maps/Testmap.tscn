@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c06mp3pp5r7oh"]
+[gd_scene load_steps=11 format=3 uid="uid://c06mp3pp5r7oh"]
 
 [ext_resource type="Texture2D" uid="uid://md1yfo5tws75" path="res://Game Assets/TileMaps/PixelArt TopDown Basic/TX Tileset Stone Ground.png" id="2_dsi3k"]
 [ext_resource type="PackedScene" uid="uid://c58b6jo2a4h40" path="res://Scenes/Nodes/Character/Player.tscn" id="2_ptplq"]
@@ -13,6 +13,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(2980, -1810, 2990, 1305
 parsed_geometry_type = 1
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 80.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ms3u6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ljse"]
 texture = ExtResource("3_jplkg")
@@ -1719,6 +1721,7 @@ texture = ExtResource("2_dsi3k")
 [sub_resource type="TileSet" id="TileSet_cl5vn"]
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_ms3u6")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Wall"
 terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)
