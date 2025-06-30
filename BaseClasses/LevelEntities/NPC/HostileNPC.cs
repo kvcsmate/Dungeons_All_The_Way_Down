@@ -10,6 +10,9 @@ using Godot.Collections;
 public abstract partial class HostileNPC : LevelEntity
 {
     [Export]
+    public int MaxHealth = 100;
+
+    [Export]
     public int Health = 100;
 
     [Export]
@@ -32,6 +35,8 @@ public abstract partial class HostileNPC : LevelEntity
     private Player _target;
 
     public Sprite2D CharacterSprite;
+
+    private EnemyHealthBar _healthBar;
 
     private StateEnum _currentState;
     private Vector2 lastKnownPosition;
@@ -87,6 +92,12 @@ public abstract partial class HostileNPC : LevelEntity
         //GD.Print(_navigationAgent);
 
         LoadSprite(GetSpriteName());
+
+        _healthBar = GetNodeOrNull<EnemyHealthBar>("EnemyHealthBar");
+        if (_healthBar != null)
+        {
+            _healthBar.UpdateHealth(Health, MaxHealth);
+        }
 
     }
     
@@ -275,6 +286,14 @@ public abstract partial class HostileNPC : LevelEntity
     public virtual void OnHit(int Damage)
     {
         Health -= Damage;
+        if (Health < 0)
+            Health = 0;
+
+        if (_healthBar != null)
+        {
+            _healthBar.UpdateHealth(Health, MaxHealth);
+        }
+
         GD.Print(Health);
 
         DeathCheck();
