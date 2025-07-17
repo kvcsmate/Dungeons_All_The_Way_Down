@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://yik37x68b1ek"]
 
-[ext_resource type="Script" path="res://Scenes/Nodes/HUD/PlayerHealthBar.cs" id="1"]
+[ext_resource type="Script" uid="uid://crsfi6b7qr7k2" path="res://Scenes/Nodes/HUD/PlayerHealthBar.cs" id="1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6csda"]
 bg_color = Color(0, 0, 0, 1)

@@ -38,9 +38,9 @@ resource_name = "Travel"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl8f"]
 _data = {
-"Effect": SubResource("Animation_2etxx"),
-"RESET": SubResource("Animation_llqt1"),
-"Travel": SubResource("Animation_3l7wt")
+&"Effect": SubResource("Animation_2etxx"),
+&"RESET": SubResource("Animation_llqt1"),
+&"Travel": SubResource("Animation_3l7wt")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgimm"]

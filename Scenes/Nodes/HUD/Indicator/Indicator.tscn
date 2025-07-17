@@ -51,8 +51,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p1iqa"]
 _data = {
-"Click": SubResource("Animation_1n1kr"),
-"RESET": SubResource("Animation_owtq3")
+&"Click": SubResource("Animation_1n1kr"),
+&"RESET": SubResource("Animation_owtq3")
 }
 
 [node name="Indicator" type="Node2D"]

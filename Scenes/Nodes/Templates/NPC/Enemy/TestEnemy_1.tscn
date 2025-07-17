@@ -119,10 +119,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7nusy"]
 _data = {
-"Death": SubResource("Animation_3uhl6"),
-"Idle": SubResource("Animation_ob1dr"),
-"RESET": SubResource("Animation_5m56v"),
-"Run": SubResource("Animation_jttk7")
+&"Death": SubResource("Animation_3uhl6"),
+&"Idle": SubResource("Animation_ob1dr"),
+&"RESET": SubResource("Animation_5m56v"),
+&"Run": SubResource("Animation_jttk7")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oxaj"]

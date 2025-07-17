@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dryr55b1e0o6m"]
 
-[ext_resource type="Script" path="res://Scenes/Nodes/Spells/Fireball/FireballEffect.cs" id="1_3harp"]
+[ext_resource type="Script" uid="uid://co2c22hrwem1f" path="res://Scenes/Nodes/Spells/Fireball/FireballEffect.cs" id="1_3harp"]
 [ext_resource type="Texture2D" uid="uid://bty0hd774l0hf" path="res://Game Assets/Spells/Explosion SpriteSheet.png" id="2_r0r2h"]
 
 [sub_resource type="Animation" id="Animation_2etxx"]
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl8f"]
 _data = {
-"Effect": SubResource("Animation_2etxx"),
-"RESET": SubResource("Animation_llqt1")
+&"Effect": SubResource("Animation_2etxx"),
+&"RESET": SubResource("Animation_llqt1")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgimm"]

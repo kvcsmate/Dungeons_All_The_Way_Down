@@ -1,14 +1,14 @@
 [gd_scene load_steps=31 format=3 uid="uid://c58b6jo2a4h40"]
 
-[ext_resource type="Script" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
+[ext_resource type="Script" uid="uid://ddvn83lpxv65c" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
 [ext_resource type="Texture2D" uid="uid://chyahuewyct2g" path="res://Game Assets/Wizard_assetpack.png" id="2_dsu3v"]
 [ext_resource type="Texture2D" uid="uid://b5mt146ibcwyc" path="res://Game Assets/wizard_anims/idle.png" id="3_kbbyf"]
 [ext_resource type="Texture2D" uid="uid://c1mgeayn8x1wh" path="res://Game Assets/wizard_anims/run.png" id="4_y7enw"]
-[ext_resource type="Script" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
+[ext_resource type="Script" uid="uid://ba2t54slixtbk" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
 [ext_resource type="PackedScene" uid="uid://yik37x68b1ek" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
 [ext_resource type="PackedScene" uid="uid://y0og8l57cq8u" path="res://Scenes/Nodes/HUD/SpellHUD.tscn" id="6_sphud"]
 [ext_resource type="PackedScene" uid="uid://diwqvyc7rwo3v" path="res://Scenes/Nodes/HUD/DirectionIndicator/DirectionIndicator.tscn" id="8_678xe"]
-[ext_resource type="Script" path="res://Scenes/Nodes/HUD/DirectionIndicator/DirectionIndicator.cs" id="9_3jcuy"]
+[ext_resource type="Script" uid="uid://cb4s3po5ivpcw" path="res://Scenes/Nodes/HUD/DirectionIndicator/DirectionIndicator.cs" id="9_3jcuy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iabyq"]
 
@@ -381,15 +381,15 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yvqg"]
 _data = {
-"Idle_Back": SubResource("Animation_gv6cs"),
-"Idle_Front": SubResource("Animation_bva7f"),
-"Idle_Left": SubResource("Animation_fawru"),
-"Idle_Right": SubResource("Animation_wox5d"),
-"RESET": SubResource("Animation_nv74w"),
-"Running_Back": SubResource("Animation_hej0r"),
-"Running_Front": SubResource("Animation_q4ilb"),
-"Running_Left": SubResource("Animation_frbpq"),
-"Running_Right": SubResource("Animation_rri1q")
+&"Idle_Back": SubResource("Animation_gv6cs"),
+&"Idle_Front": SubResource("Animation_bva7f"),
+&"Idle_Left": SubResource("Animation_fawru"),
+&"Idle_Right": SubResource("Animation_wox5d"),
+&"RESET": SubResource("Animation_nv74w"),
+&"Running_Back": SubResource("Animation_hej0r"),
+&"Running_Front": SubResource("Animation_q4ilb"),
+&"Running_Left": SubResource("Animation_frbpq"),
+&"Running_Right": SubResource("Animation_rri1q")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_15okl"]

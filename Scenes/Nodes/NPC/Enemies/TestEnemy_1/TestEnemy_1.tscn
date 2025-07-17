@@ -1,10 +1,10 @@
 [gd_scene load_steps=37 format=3 uid="uid://c0jcwm1hcf0mh"]
 
-[ext_resource type="Script" path="res://Scenes/Nodes/NPC/Enemies/TestEnemy_1/Testenemy_1Script.cs" id="1_fnm3s"]
+[ext_resource type="Script" uid="uid://b0c8yvt0i3w5v" path="res://Scenes/Nodes/NPC/Enemies/TestEnemy_1/Testenemy_1Script.cs" id="1_fnm3s"]
 [ext_resource type="Texture2D" uid="uid://blv25nnpswb6f" path="res://Game Assets/Enemy/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png" id="1_x3wkd"]
 [ext_resource type="Texture2D" uid="uid://g876huqlmrdx" path="res://Game Assets/Enemy/Skeleton Crew/Skeleton - Base/Idle/Idle-Sheet.png" id="2_xkkas"]
 [ext_resource type="Texture2D" uid="uid://ctqrsohtq0kfy" path="res://Game Assets/Enemy/Skeleton Crew/Skeleton - Base/Death/Death-Sheet.png" id="3_ge1ai"]
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/HUD/EnemyHealthBar.tscn" id="4_ehb"]
+[ext_resource type="PackedScene" uid="uid://c24l8bk68rhyc" path="res://Scenes/Nodes/HUD/EnemyHealthBar.tscn" id="4_ehb"]
 
 [sub_resource type="Animation" id="Animation_3uhl6"]
 resource_name = "Death"
@@ -133,10 +133,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7nusy"]
 _data = {
-"Death": SubResource("Animation_3uhl6"),
-"Idle": SubResource("Animation_ob1dr"),
-"RESET": SubResource("Animation_5m56v"),
-"Run": SubResource("Animation_jttk7")
+&"Death": SubResource("Animation_3uhl6"),
+&"Idle": SubResource("Animation_ob1dr"),
+&"RESET": SubResource("Animation_5m56v"),
+&"Run": SubResource("Animation_jttk7")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fba25"]

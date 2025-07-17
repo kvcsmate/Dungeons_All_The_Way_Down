@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b01xxa8164feo"]
 
-[ext_resource type="Script" path="res://Scenes/Nodes/Pathfinding/navigation_region_2d.cs" id="1_vaplu"]
+[ext_resource type="Script" uid="uid://clbgi8hlqvq77" path="res://Scenes/Nodes/Pathfinding/navigation_region_2d.cs" id="1_vaplu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hlnd1"]
 vertices = PackedVector2Array(-154, 70, -122, 70, -122, 86, -182, 102, -86, 86, -86, 70, 250, 70, 10, 90, -26, 90, -74, -58, 70, -58, 70, 38, -86, 38, -86, -138, -74, -90, 262, -138, 106, -90, 262, -74, 118, -74, 106, 38, 118, -42, 250, 38, 262, -42, 262, 102, 10, 102, -26, 102, -182, -10, -154, 38, -134, -10, -122, 38, -122, -138, -134, -42, -182, -42, -182, -102, -374, -138, -218, -102, -374, 102, -218, 102, 330, -270, 339, 170, 314, 134, 314, -182, -479, 189, -410, 134, -470, -279, -410, -182)
