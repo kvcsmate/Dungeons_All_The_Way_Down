@@ -1,8 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://xatyopoan4ag"]
 
-[ext_resource type="Script" path="res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.cs" id="1_o6cj4"]
 [ext_resource type="Texture2D" uid="uid://djesp1n8uovi6" path="res://Game Assets/Spells/firebolt.png" id="2_6uioj"]
 [ext_resource type="Texture2D" uid="uid://m60soy0cg66l" path="res://Game Assets/Spells/Fire Effect and Bullet 16x16.png" id="3_kqsgm"]
+
+[sub_resource type="Resource" id="Resource_qs35e"]
+metadata/__load_path__ = "res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.cs"
 
 [sub_resource type="Animation" id="Animation_d3r6h"]
 resource_name = "Effect"
@@ -114,9 +116,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl8f"]
 _data = {
-"Effect": SubResource("Animation_d3r6h"),
-"RESET": SubResource("Animation_llqt1"),
-"Travel": SubResource("Animation_2etxx")
+&"Effect": SubResource("Animation_d3r6h"),
+&"RESET": SubResource("Animation_llqt1"),
+&"Travel": SubResource("Animation_2etxx")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgimm"]
@@ -148,7 +150,7 @@ y_sort_enabled = true
 scale = Vector2(10, 10)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_o6cj4")
+script = SubResource("Resource_qs35e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
