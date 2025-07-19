@@ -1,5 +1,8 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 public abstract partial class Spell : Node2D
 {
@@ -10,6 +13,8 @@ public abstract partial class Spell : Node2D
 	public bool IsReady = true;
 	public float CooldownRemaining { get; private set; }
 	[Export] public PackedScene SpellEffectScene;
+
+	public List<SpellAction> Actions = new List<SpellAction>();
 
 	public class SpellParams
 	{
@@ -41,6 +46,18 @@ public abstract partial class Spell : Node2D
 				IsReady = true;
 			}
 		}
+	}
+	public void LoadActions()
+	{ 
+		            // Process the list of files found in the directory.
+            string[] fileEntries = Directory.GetFiles(this.GetPath(), "*.tscn").ToArray();
+            foreach (string fileName in fileEntries)
+            {
+				var actionScene = (PackedScene)GD.Load(fileName);
+				var action = (SpellAction)actionScene.Instantiate();
+				this.AddChild(action);
+               	Actions.Add(action);
+            }   
 	}
 	
 }
