@@ -16,7 +16,10 @@ public abstract partial class SpellAction : Node
     [Export]
     public bool Enabled { get; set; } = false;
 
-    public virtual void Execute()
+    [Export]
+    public bool OverrideBaseAction = false;
+
+    public virtual void Execute(SpellAttributes attributes)
     {
 
     }
