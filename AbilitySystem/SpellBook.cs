@@ -38,7 +38,7 @@ namespace DungeonsAlltheWayDown.AbilitySystem
                 SpellId = _spellId,
                 Spell = (Spell)_spellLoader.SpellScenes[_spellId].Instantiate()
             };
-            Pages[key].Spell.SpellEffectScene = _spellLoader.SpellEffectScenes[_spellId];
+            Pages[key].Spell._params.SpellEffectScene = _spellLoader.SpellEffectScenes[_spellId];
             _node.AddChild(Pages[key].Spell);
         }
 

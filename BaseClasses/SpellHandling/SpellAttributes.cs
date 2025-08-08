@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SpellAttributes
+public partial class SpellParams
 {
 
     [Export] public float ChannelTime = 0;
@@ -12,5 +12,9 @@ public partial class SpellAttributes
 
     public float CooldownRemaining { get; set; }
     [Export] public PackedScene SpellEffectScene;
+    
+    public Vector2 Position;
+
+    public Player Player;
 
 }

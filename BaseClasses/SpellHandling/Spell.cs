@@ -4,26 +4,33 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-public abstract partial class Spell : Node2D
+public partial class Spell : Node2D
 {
-	
+	public SpellParams _params;
 
-	protected SpellAttributes Attributes { get; set; }
-	public Spell()
+    
+    public Spell()
 	{
-		Attributes = new SpellAttributes();
+		_params = new SpellParams();
 	}
 	
 	public List<SpellAction> Actions = new List<SpellAction>();
 
-	public class SpellParams
+	public virtual void Cast(SpellParams Params)
 	{
-		public Vector2 Position;
-		public Player Player;
-	}
-	public void Cast(SpellParams p)
-	{
-		if (Attributes.IsReady)
+		_params = new SpellParams
+		{
+			ChannelTime = Params.ChannelTime,
+			ManaCost = Params.ManaCost,
+			Cooldown = Params.Cooldown,
+			SpellRange = Params.SpellRange,
+			IsReady = Params.IsReady,
+			CooldownRemaining = Params.CooldownRemaining,
+			Position = Params.Position,
+			SpellEffectScene = _params.SpellEffectScene
+		};
+		
+		if (Params.IsReady)
 		{
 			/* because most of the Actions are modifying variables,
 			   it is really wasteful to call the whole list,
@@ -41,7 +48,7 @@ public abstract partial class Spell : Node2D
 
 				if (Actions[i].Enabled)
 				{
-					Actions[i].Execute(Attributes);
+					Actions[i].Execute(Params);
 				}
 			}
 		}
@@ -55,33 +62,33 @@ public abstract partial class Spell : Node2D
 
 	protected void StartCooldown()
 	{
-		Attributes.IsReady = false;
-		Attributes.CooldownRemaining = Attributes.Cooldown;
+        _params.IsReady = false;
+        _params.CooldownRemaining = _params.Cooldown;
 	}
 
 	public override void _Process(double delta)
 	{
-		if (!Attributes.IsReady)
+		if (!_params.IsReady)
 		{
-			Attributes.CooldownRemaining -= (float)delta;
-			if (Attributes.CooldownRemaining <= 0)
+            _params.CooldownRemaining -= (float)delta;
+			if (_params.CooldownRemaining <= 0)
 			{
-				Attributes.CooldownRemaining = 0;
-				Attributes.IsReady = true;
+                _params.CooldownRemaining = 0;
+                _params.IsReady = true;
 			}
 		}
 	}
 	public void LoadActions()
 	{ 
-		            // Process the list of files found in the directory.
-            string[] fileEntries = Directory.GetFiles(this.GetPath(), "*.tscn").ToArray();
-            foreach (string fileName in fileEntries)
-            {
-				var actionScene = (PackedScene)GD.Load(fileName);
-				var action = (SpellAction)actionScene.Instantiate();
-				this.AddChild(action);
-               	Actions.Add(action);
-            }   
+		// Process the list of files found in the directory.
+		string[] fileEntries = Directory.GetFiles(this.GetPath(), "*.tscn").ToArray();
+		foreach (string fileName in fileEntries)
+		{
+			var actionScene = (PackedScene)GD.Load(fileName);
+			var action = (SpellAction)actionScene.Instantiate();
+			this.AddChild(action);
+			Actions.Add(action);
+		}   
 	}
 	
 }

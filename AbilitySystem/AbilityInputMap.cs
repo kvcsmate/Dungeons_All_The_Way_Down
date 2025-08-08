@@ -14,7 +14,7 @@ namespace DungeonsAlltheWayDown.AbilitySystem
         {
             _spellBook = spellBook;
         }
-        public void HandleInput(InputEvent @event, Spell.SpellParams spellp)
+        public void HandleInput(InputEvent @event, SpellParams spellp)
         {
             int Spellindex= -1 ;
             Spellindex = @event.IsActionPressed("Ability0") ? 0 : Spellindex;

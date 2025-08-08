@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class SpellAction : Node
+public abstract partial class SpellAction : Node2D
 {
 
     [Export]
@@ -19,8 +19,7 @@ public abstract partial class SpellAction : Node
     [Export]
     public bool OverrideBaseAction = false;
 
-    public virtual void Execute(SpellAttributes attributes)
-    {
+    public Player Player;
 
-    }
+    public abstract void Execute(SpellParams spellParams);
 }

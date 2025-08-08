@@ -7,10 +7,10 @@ public partial class Fireball : Spell
     // Called when the node enters the scene tree for the first time.
     public override void Cast(SpellParams p)
     {
-        if (!IsReady) return;
+        if (!p.IsReady) return;
 
         // Spawn fireball effect
-        var spellEffect = (Node2D)SpellEffectScene.Instantiate();
+        var spellEffect = (Node2D)p.SpellEffectScene.Instantiate();
         GetTree().Root.AddChild(spellEffect);
         spellEffect.GlobalPosition = p.Position;
 
