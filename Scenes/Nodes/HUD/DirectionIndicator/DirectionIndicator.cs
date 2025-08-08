@@ -13,12 +13,12 @@ public partial class DirectionIndicator : Node2D
 	{
 		Vector2 direction = new Vector2(
 			Input.GetJoyAxis(0, JoyAxis.RightX),
-			Input.GetJoyAxis(0, JoyAxis.RightY));
+			Input.GetJoyAxis(0, JoyAxis.RightY)*-1);
 		if (direction.Length() ==0)
 		{
 				direction = new Vector2(
 				Input.GetJoyAxis(0, JoyAxis.LeftX),
-				Input.GetJoyAxis(0, JoyAxis.LeftY));
+				Input.GetJoyAxis(0, JoyAxis.LeftY) * -1);
 			
 		}
 		if(direction.Length() > 0.1f)

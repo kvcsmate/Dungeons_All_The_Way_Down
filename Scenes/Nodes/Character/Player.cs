@@ -46,6 +46,8 @@ public partial class Player : CharacterBody2D
         set { _isDisplaced = value; }
     }
 
+
+
     public Vector2 MovementTarget
     {
         get { return _navigationAgent.TargetPosition; }
@@ -73,6 +75,8 @@ public partial class Player : CharacterBody2D
     private Vector2 rotationvector;
     private Vector2 testvector;
 
+    private Vector2 _lastJoystickDirection = Vector2.Right;
+    private Vector2 _testJoystickDirection;
 
     public StateEnum CurrentState
     {
@@ -182,7 +186,7 @@ public partial class Player : CharacterBody2D
     {
         CharacterMovement(delta);
 
-        OnHit(1); //for testing purposes, remove later
+        //OnHit(1); //for testing purposes, remove later
     }
 
     public override void _Input(InputEvent @event)
@@ -246,7 +250,14 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            return GetJoystickTargetDirection();
+            _testJoystickDirection = GetJoystickTargetDirection();
+            if (_testJoystickDirection.Length() != 0)
+            {
+
+                _lastJoystickDirection = _testJoystickDirection;
+            }
+            
+            return this.Position+  _lastJoystickDirection;
         }
     }
     private void CharacterMovement(double delta)
@@ -288,7 +299,7 @@ public partial class Player : CharacterBody2D
     {
         Vector2 direction = new Vector2(
             Input.GetJoyAxis(0, JoyAxis.LeftX),
-            Input.GetJoyAxis(0, JoyAxis.LeftY)
+            Input.GetJoyAxis(0, JoyAxis.LeftY)*-1
         );
 
         if (Mathf.Abs(direction.X) < 0.1f)
@@ -394,18 +405,32 @@ public partial class Player : CharacterBody2D
 
     private Vector2 GetJoystickTargetDirection()
     {
-       Vector2 direction = new Vector2(
-			Input.GetJoyAxis(0, JoyAxis.RightX),
-			Input.GetJoyAxis(0, JoyAxis.RightY));
-            
-		if (direction.Length() == 0)
+        Vector2 testdirection = new Vector2(
+            Input.GetJoyAxis(0, JoyAxis.RightX),
+            Input.GetJoyAxis(0, JoyAxis.RightY) * -1);
+
+        if (Mathf.Abs(testdirection.X) < 0.1f)
+            testdirection.X = 0;
+        if (Mathf.Abs(testdirection.Y) < 0.1f)
+            testdirection.Y = 0;
+
+
+        if (testdirection.Length() == 0)
         {
-            direction = new Vector2(
+            testdirection = new Vector2(
                 Input.GetJoyAxis(0, JoyAxis.LeftX),
-                Input.GetJoyAxis(0, JoyAxis.LeftY));
+                Input.GetJoyAxis(0, JoyAxis.LeftY) * -1);
+
+            if (Mathf.Abs(testdirection.X) < 0.1f)
+                testdirection.X = 0;
+            if (Mathf.Abs(testdirection.Y) < 0.1f)
+                testdirection.Y = 0;
+
 
         }
-        return direction + this.GlobalPosition;
+
+        return testdirection;
+
     }
 }
 
