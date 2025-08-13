@@ -27,3 +27,6 @@ mono_crash.*.json
 .godot/editor/filesystem_update4
 .godot/editor/project_metadata.cfg
 /.godot
+
+*.vs
+*.vscode
