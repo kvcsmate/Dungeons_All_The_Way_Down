@@ -38,6 +38,9 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 
         private List<Node2D> testMarkers;
 
+        private CharacterBody2D _player;
+        private Rid _playerRID;
+
         public PlayerSight()
         {
             testvector = new Vector2(1, 0);
@@ -56,6 +59,8 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
 
         public override void _Ready()
         {
+            _player = GetParent() as CharacterBody2D;
+            _playerRID = _player.GetRid();
             MarkerScene = (PackedScene)GD.Load(MarkerLocation);
 
             if (ShowDebugMarkers)
@@ -88,13 +93,15 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
                     Vector2 direction = (rotationvector - GlobalPosition).Normalized();
                     Vector2 perpendicular = direction.Orthogonal() * RaycastRadius;
 
+
                     // First raycast: offset by +perpendicular
                     var result = spaceState.IntersectRay(
                         new PhysicsRayQueryParameters2D
                         {
                             From = GlobalPosition + perpendicular,
                             To = rotationvector + perpendicular,
-                            CollisionMask = 1 // Adjust as needed for your collision layers
+                            CollisionMask = 1, // Adjust as needed for your collision layers
+                            Exclude = new Godot.Collections.Array<Rid> { _playerRID } // Exclude self from raycast
                         }
                     );
 
@@ -110,7 +117,8 @@ namespace DungeonsAlltheWayDown.Scenes.Nodes.Character
                             {
                                 From = GlobalPosition - perpendicular,
                                 To = rotationvector - perpendicular,
-                                CollisionMask = 1 // Adjust as needed
+                                CollisionMask = 1, // Adjust as needed
+                                Exclude = new Godot.Collections.Array<Rid> { _playerRID } // Exclude self from raycast
                             }
                         );
 

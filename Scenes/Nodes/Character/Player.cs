@@ -46,15 +46,7 @@ public partial class Player : Character
 
     public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
 
-    /*
-    public PackedScene FireballScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Fireball//Fireball.tscn");
-    public PackedScene DashScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//Dash//Dash.tscn");
-    public PackedScene FireBoltScene = (PackedScene)GD.Load("res://Scenes//Nodes//Spells//FireBolt//FireBolt.tscn");
-
-    private Spell _fireballSpell;
-    private Spell _dashSpell;
-    private Spell _fireboltSpell;
-    */
+   
     public PackedScene IndicatorScene;
 
     private Vector2 rotationvector;
@@ -146,7 +138,6 @@ public partial class Player : Character
         if (_spellHUD != null)
         {
             _spellHUD.SpellBook = spellBook;
-
         }
 
         AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
@@ -156,17 +147,9 @@ public partial class Player : Character
         CurrentState = (int)StateEnum.Idle;
         _targetPosition = Position;
 
-        //playerSight = new PlayerSight(30,100,this);
-        //this.AddChild(playerSight);
-        //playerSight.Position = Position;
-
-        // DEBUG
-
-        GD.Print(spellLoader.SpellDirectory);
         UpdateSpellbook(0, "Firebolt");
         UpdateSpellbook(1, "Fireball");
         UpdateSpellbook(2, "Dash");
-
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -283,15 +266,7 @@ public partial class Player : Character
 
     private void JoystickMovement(double delta)
     {
-        Vector2 direction = new Vector2(
-            Input.GetJoyAxis(0, JoyAxis.LeftX),
-            Input.GetJoyAxis(0, JoyAxis.LeftY)
-        );
-
-        if (Mathf.Abs(direction.X) < 0.1f)
-            direction.X = 0;
-        if (Mathf.Abs(direction.Y) < 0.1f)
-            direction.Y = 0;
+        Vector2 direction = GetJoystickDirection();
 
         Velocity = direction * Speed;
         MoveAndSlide();
@@ -403,16 +378,7 @@ public partial class Player : Character
 
         if (testdirection.Length() == 0)
         {
-            testdirection = new Vector2(
-                Input.GetJoyAxis(0, JoyAxis.LeftX),
-                Input.GetJoyAxis(0, JoyAxis.LeftY));
-
-            if (Mathf.Abs(testdirection.X) < 0.1f)
-                testdirection.X = 0;
-            if (Mathf.Abs(testdirection.Y) < 0.1f)
-                testdirection.Y = 0;
-
-
+            testdirection = GetJoystickDirection();
         }
 
         return testdirection;
@@ -425,6 +391,21 @@ public partial class Player : Character
         {
             CurrentState = StateEnum.Death;
         }
+    }
+
+    public Vector2 GetJoystickDirection()
+    {
+        Vector2 joystickDirection = new Vector2(
+            Input.GetJoyAxis(0, JoyAxis.LeftX),
+            Input.GetJoyAxis(0, JoyAxis.LeftY));
+        
+        if (Mathf.Abs(joystickDirection.X) < 0.1f)
+            joystickDirection.X = 0;
+        
+        if (Mathf.Abs(joystickDirection.Y) < 0.1f)
+            joystickDirection.Y = 0;
+        
+        return joystickDirection;
     }
 }
 

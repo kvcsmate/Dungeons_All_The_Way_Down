@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://gmqb5quovbw8"]
+[gd_scene load_steps=3 format=3 uid="uid://bnp3xuxvxbkdm"]
 
 [ext_resource type="Script" uid="uid://cxkvxuja3dqnk" path="res://Scenes/Nodes/Spells/Firebolt/Firebolt.cs" id="1_tah8b"]
 [ext_resource type="PackedScene" uid="uid://xc820pkr0dg1" path="res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.tscn" id="2_psvem"]
