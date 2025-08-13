@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using static DungeonsAlltheWayDown.AbilitySystem.SpellBook;
 
-public partial class Spell : Node2D
+public abstract partial class Spell : Node2D
 {
     private float _channelTime = 0;
     private int _manaCost = 10;
@@ -14,6 +15,7 @@ public partial class Spell : Node2D
     private float _cooldownRemaining;
     private PackedScene _spellEffectScene;
     private readonly List<SpellAction> _actions = new List<SpellAction>();
+    private float _speed = 500f;
 
     [Export]
     public float ChannelTime
@@ -63,6 +65,13 @@ public partial class Spell : Node2D
         set => _spellEffectScene = value;
     }
 
+    [Export]
+    public float Speed
+    {
+        get => _speed;
+        set => _speed = value;
+    }
+
     public List<SpellAction> Actions => _actions;
 
     public virtual void Cast(SpellParams Params)
@@ -75,8 +84,10 @@ public partial class Spell : Node2D
             SpellRange = _spellRange,
             IsReady = _isReady,
             CooldownRemaining = _cooldownRemaining,
-            Position = Position,
-            SpellEffectScene = _spellEffectScene
+            Position = Params.Position,
+            Caster = Params.Caster,
+            SpellEffectScene = _spellEffectScene,
+            Speed = Speed,
         };
 
         if (_isReady)
@@ -100,6 +111,8 @@ public partial class Spell : Node2D
     public override void _Ready()
     {
         // Initialize the spell (e.g., load resources, set up effects)
+        base._Ready();
+        LoadActions();
     }
 
     protected void StartCooldown()
@@ -121,15 +134,23 @@ public partial class Spell : Node2D
         }
     }
 
+   // public abstract void GetSpellPath();
+
     public void LoadActions()
     {
-        string[] fileEntries = Directory.GetFiles(this.GetPath(), "*.tscn").ToArray();
+        string ActionPath = $"Scenes//Nodes//Spells//{this.GetType().Name}//Actions";
+        GD.Print("Loading actions from path: " + ActionPath);
+        string[] fileEntries = Directory.GetFiles(ActionPath, "*.tscn").ToArray();
+        GD.Print(fileEntries);
         foreach (string fileName in fileEntries)
         {
-            var actionScene = (PackedScene)GD.Load(fileName);
-            var action = (SpellAction)actionScene.Instantiate();
-            this.AddChild(action);
-            _actions.Add(action);
+            if (fileName.EndsWith("Action.tscn"))
+            {
+                var actionScene = (PackedScene)GD.Load(fileName);
+                var action = (SpellAction)actionScene.Instantiate();
+                this.AddChild(action);
+                _actions.Add(action);
+            }
         }
     }
 }

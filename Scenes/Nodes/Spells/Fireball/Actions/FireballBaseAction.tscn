@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmo8kwvgskils"]
+
+[ext_resource type="Script" uid="uid://bfy7g873827bg" path="res://Scenes/Nodes/Spells/Fireball/Actions/FireballBaseAction.cs" id="1_kdhet"]
+
+[node name="FireballBaseAction" type="Node2D"]
+script = ExtResource("1_kdhet")
+Enabled = true

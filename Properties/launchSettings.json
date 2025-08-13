@@ -3,6 +3,13 @@
     "Dungeons All the Way Down": {
       "commandName": "Project",
       "commandLineArgs": "-e --path 'D:\\Dungeons_All_The_Way_Down'"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\User\\Downloads\\Godot_v4.4.1-stable_mono_win64\\Godot_v4.4.1-stable_mono_win64\\Godot_v4.4.1-stable_mono_win64.exe",
+      "commandLineArgs": "--path . --verbose",
+      "workingDirectory": ".",
+      "nativeDebugging": true
     }
   }
 }

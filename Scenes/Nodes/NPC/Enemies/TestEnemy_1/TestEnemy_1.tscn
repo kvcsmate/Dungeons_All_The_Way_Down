@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0c8yvt0i3w5v" path="res://Scenes/Nodes/NPC/Enemies/TestEnemy_1/Testenemy_1Script.cs" id="1_fnm3s"]
 [ext_resource type="Texture2D" uid="uid://blv25nnpswb6f" path="res://Game Assets/Enemy/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png" id="1_x3wkd"]
-[ext_resource type="PackedScene" uid="uid://xatyopoan4ag" path="res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.tscn" id="2_5hr1x"]
+[ext_resource type="PackedScene" uid="uid://xc820pkr0dg1" path="res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.tscn" id="2_5hr1x"]
 [ext_resource type="Texture2D" uid="uid://g876huqlmrdx" path="res://Game Assets/Enemy/Skeleton Crew/Skeleton - Base/Idle/Idle-Sheet.png" id="2_xkkas"]
 [ext_resource type="Texture2D" uid="uid://ctqrsohtq0kfy" path="res://Game Assets/Enemy/Skeleton Crew/Skeleton - Base/Death/Death-Sheet.png" id="3_ge1ai"]
 [ext_resource type="PackedScene" uid="uid://c24l8bk68rhyc" path="res://Scenes/Nodes/HUD/EnemyHealthBar.tscn" id="4_ehb"]

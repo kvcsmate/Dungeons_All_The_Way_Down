@@ -480,6 +480,7 @@ debug_path_custom_point_size = 0.47
 
 [node name="PlayerSight" type="Node2D" parent="."]
 script = ExtResource("4_ymb08")
+ShowDebugMarkers = true
 
 [node name="PlayerHealthBar" parent="." instance=ExtResource("5_phb")]
 position = Vector2(0, -30)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxlphhim7lp4e"]
+
+[ext_resource type="Script" uid="uid://dpcya5wpgtcrs" path="res://Scenes/Nodes/Spells/Firebolt/Actions/FireboltBaseAction.cs" id="1_7ydtl"]
+
+[node name="FireboltBaseAction" type="Node2D"]
+script = ExtResource("1_7ydtl")
+Enabled = true

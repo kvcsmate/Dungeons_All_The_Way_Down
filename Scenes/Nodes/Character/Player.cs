@@ -285,7 +285,7 @@ public partial class Player : Character
     {
         Vector2 direction = new Vector2(
             Input.GetJoyAxis(0, JoyAxis.LeftX),
-            Input.GetJoyAxis(0, JoyAxis.LeftY)*-1
+            Input.GetJoyAxis(0, JoyAxis.LeftY)
         );
 
         if (Mathf.Abs(direction.X) < 0.1f)
@@ -393,7 +393,7 @@ public partial class Player : Character
     {
         Vector2 testdirection = new Vector2(
             Input.GetJoyAxis(0, JoyAxis.RightX),
-            Input.GetJoyAxis(0, JoyAxis.RightY) * -1);
+            Input.GetJoyAxis(0, JoyAxis.RightY));
 
         if (Mathf.Abs(testdirection.X) < 0.1f)
             testdirection.X = 0;
@@ -405,7 +405,7 @@ public partial class Player : Character
         {
             testdirection = new Vector2(
                 Input.GetJoyAxis(0, JoyAxis.LeftX),
-                Input.GetJoyAxis(0, JoyAxis.LeftY) * -1);
+                Input.GetJoyAxis(0, JoyAxis.LeftY));
 
             if (Mathf.Abs(testdirection.X) < 0.1f)
                 testdirection.X = 0;
