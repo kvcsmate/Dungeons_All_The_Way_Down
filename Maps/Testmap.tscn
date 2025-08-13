@@ -1,10 +1,18 @@
-[gd_scene load_steps=10 format=4 uid="uid://c06mp3pp5r7oh"]
+[gd_scene load_steps=11 format=4 uid="uid://c06mp3pp5r7oh"]
 
 [ext_resource type="Texture2D" uid="uid://md1yfo5tws75" path="res://Game Assets/TileMaps/PixelArt TopDown Basic/TX Tileset Stone Ground.png" id="2_dsi3k"]
 [ext_resource type="PackedScene" uid="uid://c58b6jo2a4h40" path="res://Scenes/Nodes/Character/Player.tscn" id="2_ptplq"]
 [ext_resource type="PackedScene" uid="uid://c0jcwm1hcf0mh" path="res://Scenes/Nodes/NPC/Enemies/TestEnemy_1/TestEnemy_1.tscn" id="3_7ss2s"]
 [ext_resource type="Texture2D" uid="uid://0t432y1hfsvr" path="res://Game Assets/TileMaps/PixelArt TopDown Basic/TX Tileset Grass.png" id="3_jplkg"]
 [ext_resource type="PackedScene" uid="uid://b01xxa8164feo" path="res://Scenes/Nodes/Pathfinding/navigation_region_2d.tscn" id="10_0fnm3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_utvcj"]
+vertices = PackedVector2Array(-1525.14, 685.141, -1205.14, 685.141, -1205.14, 845.141, -874.859, 845.141, -874.859, 685.141, 2485.14, 685.141, -725.141, -594.859, 714.859, -594.859, 714.859, 394.859, -874.859, 394.859, -874.859, -1394.86, -725.141, -885.141, 2634.86, -1394.86, 1045.14, -885.141, 2634.86, -725.141, 1834.86, -725.141, 1834.86, -434.859, 1685.14, -434.859, 1685.14, -725.141, 1194.86, -725.141, 1045.14, 394.859, 1194.86, -434.859, 2485.14, 394.859, 2634.86, -434.859, 2634.86, 1034.86, 85.1406, 1034.86, 85.1406, 914.859, -245.141, 914.859, -245.141, 1034.86, -1834.86, 1034.86, -1834.86, -114.859, -1525.14, 394.859, -1354.86, -114.859, -1205.14, 394.859, -1205.14, -1394.86, -1354.86, -405.141, -1834.86, -405.141, -1834.86, -1005.14, -3754.86, -1394.86, -2165.14, -1005.14, -3754.86, 1034.86, -2165.14, 1034.86)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8), PackedInt32Array(6, 8, 9), PackedInt32Array(6, 9, 10), PackedInt32Array(11, 6, 10), PackedInt32Array(11, 10, 12), PackedInt32Array(13, 11, 12), PackedInt32Array(13, 12, 14), PackedInt32Array(13, 14, 15), PackedInt32Array(15, 16, 17), PackedInt32Array(15, 17, 18), PackedInt32Array(13, 15, 18), PackedInt32Array(13, 18, 19), PackedInt32Array(20, 13, 19), PackedInt32Array(20, 19, 21), PackedInt32Array(22, 20, 21), PackedInt32Array(22, 21, 17), PackedInt32Array(22, 17, 16), PackedInt32Array(22, 16, 23), PackedInt32Array(22, 23, 24), PackedInt32Array(5, 22, 24), PackedInt32Array(5, 24, 25), PackedInt32Array(5, 25, 26), PackedInt32Array(3, 5, 26), PackedInt32Array(3, 26, 27), PackedInt32Array(27, 28, 29), PackedInt32Array(3, 27, 29), PackedInt32Array(2, 3, 29), PackedInt32Array(0, 2, 29), PackedInt32Array(0, 29, 30), PackedInt32Array(31, 0, 30), PackedInt32Array(31, 30, 32), PackedInt32Array(33, 31, 32), PackedInt32Array(34, 33, 32), PackedInt32Array(34, 32, 35), PackedInt32Array(35, 36, 37), PackedInt32Array(34, 35, 37), PackedInt32Array(38, 34, 37), PackedInt32Array(38, 37, 39), PackedInt32Array(40, 38, 39), PackedInt32Array(40, 39, 41)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4035, -1790, 3095, -1755, 3070, 1290, -4110, 1295)])
+sample_partition_type = 1
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 85.14
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ms3u6"]
 
@@ -824,7 +832,8 @@ Spells = Array[Node2D]([null, null])
 [node name="NavigationRegion2D" parent="." instance=ExtResource("10_0fnm3")]
 z_index = 0
 position = Vector2(2, 0)
-navigation_layers = 1
+navigation_polygon = SubResource("NavigationPolygon_utvcj")
+navigation_layers = 3
 
 [node name="Wall" type="TileMapLayer" parent="NavigationRegion2D"]
 y_sort_enabled = true
