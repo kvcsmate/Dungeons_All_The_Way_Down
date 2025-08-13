@@ -115,8 +115,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -140,8 +144,7 @@
               "RelativeToolTip": "AbilitySystem\\SpellBook.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAYwCIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T12:45:28.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T12:45:28.024Z"
             },
             {
               "$type": "Document",
@@ -153,8 +156,7 @@
               "RelativeToolTip": "Scenes\\Nodes\\Spells\\Firebolt\\FireboltBaseAction.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwB8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T12:40:06.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T12:40:06.716Z"
             },
             {
               "$type": "Document",
@@ -166,8 +168,7 @@
               "RelativeToolTip": "Scenes\\Nodes\\Spells\\Fireball\\FireballBaseAction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAYwA4AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T10:38:58.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T10:38:58.814Z"
             },
             {
               "$type": "Document",
@@ -179,8 +180,7 @@
               "RelativeToolTip": "BaseClasses\\SpellHandling\\Spell.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T09:23:39.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T09:23:39.92Z"
             },
             {
               "$type": "Document",
@@ -192,21 +192,19 @@
               "RelativeToolTip": "Scenes\\Nodes\\Spells\\Fireball\\Fireball.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T18:47:37.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-21T18:47:37.266Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Firebolt.cs",
-              "DocumentMoniker": "C:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
-              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
-              "ToolTip": "C:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
-              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Firebolt\\Firebolt.cs",
+              "Title": "FireBolt.cs",
+              "DocumentMoniker": "C:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\FireBolt.cs",
+              "RelativeDocumentMoniker": "Scenes\\Nodes\\Spells\\Firebolt\\FireBolt.cs",
+              "ToolTip": "C:\\Dungeons_All_The_Way_Down\\Scenes\\Nodes\\Spells\\Firebolt\\FireBolt.cs",
+              "RelativeToolTip": "Scenes\\Nodes\\Spells\\Firebolt\\FireBolt.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T22:21:49.044Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T22:21:49.044Z"
             },
             {
               "$type": "Document",
@@ -218,8 +216,7 @@
               "RelativeToolTip": "Scenes\\Nodes\\Character\\Player.cs",
               "ViewState": "AgIAAHgBAAAAAAAAAAAlwKIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T18:25:17.705Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T18:25:17.705Z"
             },
             {
               "$type": "Document",
@@ -231,8 +228,7 @@
               "RelativeToolTip": "Scenes\\Nodes\\Spells\\Dash\\Dash.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T18:47:02.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-21T18:47:02.448Z"
             },
             {
               "$type": "Document",
@@ -244,8 +240,7 @@
               "RelativeToolTip": "BaseClasses\\SpellHandling\\SpellAttributes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T09:26:44.311Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T09:26:44.311Z"
             },
             {
               "$type": "Document",
@@ -257,8 +252,7 @@
               "RelativeToolTip": "Scenes\\Nodes\\Spells\\Dash\\DashBaseAction.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAA5wGkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T09:41:14.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T09:41:14.948Z"
             },
             {
               "$type": "Document",
@@ -270,8 +264,7 @@
               "RelativeToolTip": "Scenes\\Nodes\\Spells\\Firebolt\\FireBoltEffect.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAzwDkAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T21:56:04.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T21:56:04.843Z"
             },
             {
               "$type": "Document",
@@ -354,8 +347,7 @@
               "ToolTip": "C:\\DUNGEONS_ALL_THE_WAY_DOWN\\Dungeons All the Way Down.csproj",
               "RelativeToolTip": "Dungeons All the Way Down.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-13T09:25:27.739Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T09:25:27.739Z"
             },
             {
               "$type": "Document",
