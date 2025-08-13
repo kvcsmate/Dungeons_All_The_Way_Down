@@ -1,13 +1,3 @@
-[gd_scene load_steps=3 format=3 uid="uid://gakfd2srbewv"]
-
-[ext_resource type="PackedScene" uid="uid://xatyopoan4ag" path="res://Scenes/Nodes/Spells/Firebolt/FireBoltEffect.tscn" id="2_vjdtq"]
-
-[sub_resource type="Resource" id="Resource_xw5lj"]
-metadata/__load_path__ = "res://Scenes/Nodes/Spells/Firebolt/Firebolt.cs"
+[gd_scene format=3 uid="uid://gakfd2srbewv"]
 
 [node name="Spell" type="Node2D"]
-script = SubResource("Resource_xw5lj")
-Damage = 50
-Speed = 2000.0
-SpellRange = 2000.0
-SpellEffectScene = ExtResource("2_vjdtq")

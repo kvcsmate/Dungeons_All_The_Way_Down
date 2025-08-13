@@ -21,5 +21,5 @@ public abstract partial class SpellAction : Node2D
 
     public Player Player;
 
-    public abstract void Execute(SpellParams spellParams);
+    public abstract void Execute(SpellAttributes spellAttributes);
 }

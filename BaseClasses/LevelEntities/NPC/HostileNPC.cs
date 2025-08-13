@@ -7,27 +7,12 @@ using DungeonsAlltheWayDown.Scenes.Nodes.Character;
 using Godot;
 using Godot.Collections;
 
-public abstract partial class HostileNPC : LevelEntity
+public abstract partial class HostileNPC : Character
 {
-    [Export]
-    public int MaxHealth = 100;
-
-    [Export]
-    public int Health = 100;
-
-    [Export]
-    public string Title;
-
-    [Export]
-    public string SpriteName;
-
-    [Export]
-    public float MovementSpeed = 500.0f;
+   
     [Export]
     public float SightRadius = 1000.0f;
 
-    [Export]
-    public Godot.Collections.Array<PackedScene> Spells;
 
     protected bool onAlert = false;
 
@@ -198,7 +183,7 @@ public abstract partial class HostileNPC : LevelEntity
         return A + AB * t;
     }
 
-    protected void StopMovement()
+    public override void StopMovement()
     {
         _navigationAgent.TargetPosition = GlobalPosition;
         Velocity = Vector2.Zero;

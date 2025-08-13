@@ -6,6 +6,8 @@ using System.Text;
 
 public partial class SpellHUD : CanvasLayer
 {
+    [Export]
+    public int NumberOfSlots = 3; // Number of slots in the spell HUD, can be adjusted as needed
     private class Slot
     {
         public Sprite2D Icon;
@@ -25,7 +27,7 @@ public partial class SpellHUD : CanvasLayer
             DefaultIcon = GD.Load<Texture2D>("res://Game Assets//HUD//Spell_icons//defaultIcon.png");
         }
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < NumberOfSlots; i++)
         {
             var slotNode = GetNode<Node2D>($"Control/Slot{i}");
             var icon = slotNode.GetNode<Sprite2D>("Icon");

@@ -6,89 +6,130 @@ using System.Linq;
 
 public partial class Spell : Node2D
 {
-	public SpellParams _params;
+    private float _channelTime = 0;
+    private int _manaCost = 10;
+    private float _cooldown = 0.5f;
+    private float _spellRange;
+    private bool _isReady = true;
+    private float _cooldownRemaining;
+    private PackedScene _spellEffectScene;
+    private readonly List<SpellAction> _actions = new List<SpellAction>();
 
-    
-    public Spell()
-	{
-		_params = new SpellParams();
-	}
-	
-	public List<SpellAction> Actions = new List<SpellAction>();
+    [Export]
+    public float ChannelTime
+    {
+        get => _channelTime;
+        set => _channelTime = value;
+    }
 
-	public virtual void Cast(SpellParams Params)
-	{
-		_params = new SpellParams
-		{
-			ChannelTime = Params.ChannelTime,
-			ManaCost = Params.ManaCost,
-			Cooldown = Params.Cooldown,
-			SpellRange = Params.SpellRange,
-			IsReady = Params.IsReady,
-			CooldownRemaining = Params.CooldownRemaining,
-			Position = Params.Position,
-			SpellEffectScene = _params.SpellEffectScene
-		};
-		
-		if (Params.IsReady)
-		{
-			/* because most of the Actions are modifying variables,
-			   it is really wasteful to call the whole list,
-			   effectively overwriting the same values every time.
-			   Since we've no idea how the actions will look like in the future,
-			   let's keep it this way for now. One way would be, to set the Enabled
-			   to false when it's done with its job. */
-			for (int i = 0; i < Actions.Count; i++)
-			{
+    [Export]
+    public int ManaCost
+    {
+        get => _manaCost;
+        set => _manaCost = value;
+    }
 
-				if (Actions[i].OverrideBaseAction)
-				{
-					Actions.First(a => a.Id == "base").Enabled = false;
-				}
+    [Export]
+    public float Cooldown
+    {
+        get => _cooldown;
+        set => _cooldown = value;
+    }
 
-				if (Actions[i].Enabled)
-				{
-					Actions[i].Execute(Params);
-				}
-			}
-		}
-	}
+    [Export]
+    public float SpellRange
+    {
+        get => _spellRange;
+        set => _spellRange = value;
+    }
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		// Initialize the spell (e.g., load resources, set up effects)
-	}
+    [Export]
+    public bool IsReady
+    {
+        get => _isReady;
+        set => _isReady = value;
+    }
 
-	protected void StartCooldown()
-	{
-        _params.IsReady = false;
-        _params.CooldownRemaining = _params.Cooldown;
-	}
+    public float CooldownRemaining
+    {
+        get => _cooldownRemaining;
+        set => _cooldownRemaining = value;
+    }
 
-	public override void _Process(double delta)
-	{
-		if (!_params.IsReady)
-		{
-            _params.CooldownRemaining -= (float)delta;
-			if (_params.CooldownRemaining <= 0)
-			{
-                _params.CooldownRemaining = 0;
-                _params.IsReady = true;
-			}
-		}
-	}
-	public void LoadActions()
-	{ 
-		// Process the list of files found in the directory.
-		string[] fileEntries = Directory.GetFiles(this.GetPath(), "*.tscn").ToArray();
-		foreach (string fileName in fileEntries)
-		{
-			var actionScene = (PackedScene)GD.Load(fileName);
-			var action = (SpellAction)actionScene.Instantiate();
-			this.AddChild(action);
-			Actions.Add(action);
-		}   
-	}
-	
+    [Export]
+    public PackedScene SpellEffectScene
+    {
+        get => _spellEffectScene;
+        set => _spellEffectScene = value;
+    }
+
+    public List<SpellAction> Actions => _actions;
+
+    public virtual void Cast(SpellParams Params)
+    {
+        SpellAttributes Attributes = new SpellAttributes
+        {
+            ChannelTime = _channelTime,
+            ManaCost = _manaCost,
+            Cooldown = _cooldown,
+            SpellRange = _spellRange,
+            IsReady = _isReady,
+            CooldownRemaining = _cooldownRemaining,
+            Position = Position,
+            SpellEffectScene = _spellEffectScene
+        };
+
+        if (_isReady)
+        {
+            for (int i = 0; i < _actions.Count; i++)
+            {
+                if (_actions[i].OverrideBaseAction)
+                {
+                    _actions.First(a => a.Id == "base").Enabled = false;
+                }
+
+                if (_actions[i].Enabled)
+                {
+                    _actions[i].Execute(Attributes);
+                }
+            }
+        }
+        StartCooldown();
+    }
+
+    public override void _Ready()
+    {
+        // Initialize the spell (e.g., load resources, set up effects)
+    }
+
+    protected void StartCooldown()
+    {
+        _isReady = false;
+        _cooldownRemaining = _cooldown;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!_isReady)
+        {
+            _cooldownRemaining -= (float)delta;
+            if (_cooldownRemaining <= 0)
+            {
+                _cooldownRemaining = 0;
+                _isReady = true;
+            }
+        }
+    }
+
+    public void LoadActions()
+    {
+        string[] fileEntries = Directory.GetFiles(this.GetPath(), "*.tscn").ToArray();
+        foreach (string fileName in fileEntries)
+        {
+            var actionScene = (PackedScene)GD.Load(fileName);
+            var action = (SpellAction)actionScene.Instantiate();
+            this.AddChild(action);
+            _actions.Add(action);
+        }
+    }
 }

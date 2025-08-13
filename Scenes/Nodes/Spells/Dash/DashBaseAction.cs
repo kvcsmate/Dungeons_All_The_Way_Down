@@ -10,25 +10,24 @@ public partial class DashBaseAction : SpellAction
     private float _dashDistance;
     private Vector2 _dashTarget;
     private bool _isDashing = false;
-    private Player _player;
     private Vector2 _movement;
     private float _previousDashDistance = 0f;
+    private Character _caster;
 
-    private SpellParams _spellParams;
+    private SpellAttributes _spellAttributes;
 
-    public override void Execute(SpellParams p)
+    public override void Execute(SpellAttributes attributes)
     {
-        _spellParams = p;
+        _spellAttributes = attributes;
 
-        if (!p.IsReady)
+        if (!_spellAttributes.IsReady)
             return;
-
-        _player = p.Player;
-        _player.IsDisplaced = true;
+        _caster = attributes.Caster;
+        _caster.IsDisplaced = true;
         _isDashing = true;
 
-        _player.StopMovement();
-        SetTravelPoint(p.Position);
+        _caster.StopMovement();
+        SetTravelPoint(attributes.Position);
 
         _movement = _dashDirection * DashSpeed;
         _previousDashDistance = 0f;
@@ -36,17 +35,17 @@ public partial class DashBaseAction : SpellAction
 
     private void SetTravelPoint(Vector2 position)
     {
-        _dashDirection = (position - _player.Position).Normalized();
+        _dashDirection = (position - _caster.Position).Normalized();
         _dashDistance = SpellRange;
 
         var spaceState = GetWorld2D().DirectSpaceState;
-        _dashTarget = _player.Position + _dashDirection * _dashDistance;
+        _dashTarget = _caster.Position + _dashDirection * _dashDistance;
 
         var result = spaceState.IntersectRay(new PhysicsRayQueryParameters2D
         {
-            From = _player.Position,
+            From = _caster.Position,
             To = _dashTarget,
-            Exclude = new Godot.Collections.Array<Godot.Rid> { _player.GetRid() },
+            Exclude = new Godot.Collections.Array<Godot.Rid> { _caster.GetRid() },
             CollisionMask = 1
         });
 
@@ -63,31 +62,30 @@ public partial class DashBaseAction : SpellAction
         if (!_isDashing)
             return;
 
-        float remainingDistance = _player.Position.DistanceTo(_dashTarget);
+        float remainingDistance = _caster.Position.DistanceTo(_dashTarget);
 
         if (!CheckDistance(remainingDistance))
         {
-            _player.Position = _dashTarget;
+            _caster.Position = _dashTarget;
         }
 
         if (remainingDistance <= 100)
         {
             _isDashing = false;
-            _player.Velocity = Vector2.Zero;
-            _player.MoveAndSlide();
-            _player.IsDisplaced = false;
-            StartCooldown();
+            _caster.Velocity = Vector2.Zero;
+            _caster.MoveAndSlide();
+            _caster.IsDisplaced = false;
         }
         else
         {
-            if (Engine.GetPhysicsFrames() % 3 == 0 && _spellParams.SpellEffectScene != null)
+            if (Engine.GetPhysicsFrames() % 3 == 0 && _spellAttributes.SpellEffectScene != null)
             {
-                var spellEffect = (Node2D)_spellParams.SpellEffectScene.Instantiate();
+                var spellEffect = (Node2D)_spellAttributes.SpellEffectScene.Instantiate();
                 GetTree().Root.AddChild(spellEffect);
-                spellEffect.GlobalPosition = _player.Position;
+                spellEffect.GlobalPosition = _caster.Position;
             }
-            _player.Velocity = _movement * 100;
-            _player.MoveAndSlide();
+            _caster.Velocity = _movement * 100;
+            _caster.MoveAndSlide();
         }
     }
 
@@ -105,14 +103,4 @@ public partial class DashBaseAction : SpellAction
             return true;
         }
     }
-    private void StartCooldown()
-    {
-        if (_spellParams != null)
-        {
-            _spellParams.IsReady = false;
-            _spellParams.CooldownRemaining = _spellParams.Cooldown;
-        }
-        
-    }
-
 }

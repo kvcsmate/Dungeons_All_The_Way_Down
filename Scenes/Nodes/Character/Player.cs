@@ -5,18 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-public partial class Player : CharacterBody2D
+public partial class Player : Character
 {
     [Export] public int Speed = 400;
-    [Export] public int MaxHealth = 100;
-    [Export] public int Health = 100;
 
     private PlayerHealthBar _healthBar;
     private SpellHUD _spellHUD;
     private Vector2 _targetPosition;
     private bool _isMoving = false;
-
-    private bool _isDisplaced;
 
     private Node2D _currentIndicator;
 
@@ -40,12 +36,6 @@ public partial class Player : CharacterBody2D
 
     [Export]
     public MovementMode CurrentMovementMode = MovementMode.Joystick;
-    public bool IsDisplaced
-    {
-        get { return _isDisplaced; }
-        set { _isDisplaced = value; }
-    }
-
     public Vector2 MovementTarget
     {
         get { return _navigationAgent.TargetPosition; }
@@ -67,9 +57,6 @@ public partial class Player : CharacterBody2D
     */
     public PackedScene IndicatorScene;
 
-    public AnimationTree AnimationTree;
-
-    public AnimationNodeStateMachinePlayback StateMachine;
     private Vector2 rotationvector;
     private Vector2 testvector;
 
@@ -103,7 +90,8 @@ public partial class Player : CharacterBody2D
     public enum StateEnum
     {
         Idle,
-        Run
+        Run,
+        Death
     }
 
 
@@ -194,10 +182,10 @@ public partial class Player : CharacterBody2D
 
         if (@event is InputEvent keyevent && keyevent.IsPressed())
         {
-            Spell.SpellParams spellParams = new Spell.SpellParams()
+            SpellParams spellParams = new SpellParams()
             {
                 Position = GetAimDirection(),
-                Player = this
+                Caster = this
             };
             abilityInputMap.HandleInput(@event, spellParams);
         }
@@ -348,7 +336,7 @@ public partial class Player : CharacterBody2D
             StateMachine.Travel(anim);
         }
     }
-    public void StopMovement()
+    public override void StopMovement()
     {
 
         //!_navigationAgent.IsNavigationFinished()
@@ -406,6 +394,14 @@ public partial class Player : CharacterBody2D
 
         }
         return direction + this.GlobalPosition;
+    }
+
+    public override void AnimHandler()
+    {
+        if (Disposable)
+        {
+            CurrentState = StateEnum.Death;
+        }
     }
 }
 
