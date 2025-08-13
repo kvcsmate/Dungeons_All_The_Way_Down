@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://jsmtdbowqa2e" path="res://Game Assets/Spells/Water Effect and Bullet 16x16.png" id="1_m33hf"]
 
 [node name="DirectionIndicator" type="Node2D"]
+z_index = 10
+z_as_relative = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)

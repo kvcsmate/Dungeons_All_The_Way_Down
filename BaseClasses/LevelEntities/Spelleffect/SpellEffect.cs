@@ -3,6 +3,16 @@ using System;
 
 public abstract partial class SpellEffect : LevelEntity
 {
+    public enum CallerType
+    {
+        NPC,
+        Player
+    }
+
+    public Node2D _callerEntity;
+
+    public CallerType Caller;
+
     public override void AnimHandler()
     {
         if (Disposable)
@@ -12,5 +22,9 @@ public abstract partial class SpellEffect : LevelEntity
                 StateMachine.Travel("Effect");
             }
         }
+    }
+    public override void _Ready()
+    {
+        base._Ready();
     }
 }

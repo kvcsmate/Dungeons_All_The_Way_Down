@@ -439,7 +439,8 @@ states/Running_Right/position = Vector2(734, 289)
 states/Start/position = Vector2(190, 90)
 transitions = ["Start", "Idle_Back", SubResource("AnimationNodeStateMachineTransition_gtr64")]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_m8ucb")
@@ -487,5 +488,6 @@ scale = Vector2(0.2, 0.2)
 [node name="SpellHUD" parent="." instance=ExtResource("6_sphud")]
 
 [node name="DirectionIndicator" parent="." instance=ExtResource("8_678xe")]
+z_index = 1
 scale = Vector2(0.6, 0.6)
 script = ExtResource("9_3jcuy")
