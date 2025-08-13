@@ -17,7 +17,7 @@ public abstract partial class HostileNPC : Character
     protected bool onAlert = false;
 
     protected NavigationAgent2D _navigationAgent;
-    private Player _target;
+    protected Player _target;
 
     public Sprite2D CharacterSprite;
 

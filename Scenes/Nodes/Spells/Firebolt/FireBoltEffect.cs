@@ -9,7 +9,7 @@ public partial class FireboltEffect : SpellEffect
     public float Speed;
     public float MaxDistance;
     CollisionObject2D _collider;
-    public GodotObject Caster;
+    public Node2D Caster;
     private Vector2 _startPosition;
     private float _distanceTraveled = 0f;
 
@@ -23,6 +23,7 @@ public partial class FireboltEffect : SpellEffect
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+        this.AddCollisionExceptionWith(Caster);
         Rotation = Direction.Angle();
         Vector2 movement = Direction * Speed * (float)delta;
   

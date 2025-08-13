@@ -82,3 +82,8 @@
 ### Add more enemy types, bosses, and spell variety
 
 ### Expand level themes and visuals
+
+
+
+ISSUES 
+Joystick firebolt not working 
