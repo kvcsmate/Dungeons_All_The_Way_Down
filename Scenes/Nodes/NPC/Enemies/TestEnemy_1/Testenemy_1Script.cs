@@ -10,7 +10,7 @@ public partial class Testenemy_1Script : HostileNPC
     [Export]
     public PackedScene FireballScene; // Drag your Fireball.tscn into this in the Inspector
 
-    private float _shootCooldown = 5f; // 5 seconds cooldown
+    private float _shootCooldown = 1f; // 5 seconds cooldown
     private float _shootTimer = 0f;
 
     public override void LoadSprite(string SpriteName)

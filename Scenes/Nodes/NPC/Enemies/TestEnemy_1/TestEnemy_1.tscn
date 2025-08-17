@@ -314,8 +314,8 @@ animations = [{
 radius = 17.022
 
 [node name="TestEnemy1" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 10
+collision_mask = 10
 script = ExtResource("1_fnm3s")
 FireballScene = ExtResource("2_5hr1x")
 MovementSpeed = 0.0
@@ -333,7 +333,7 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8uahh")
-animation = &"Death"
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3

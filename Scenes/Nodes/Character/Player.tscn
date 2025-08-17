@@ -441,8 +441,9 @@ transitions = ["Start", "Idle_Back", SubResource("AnimationNodeStateMachineTrans
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
-collision_layer = 5
-collision_mask = 5
+collision_layer = 13
+collision_mask = 13
+platform_on_leave = 2
 script = ExtResource("1_m8ucb")
 
 [node name="Camera2D" type="Camera2D" parent="."]

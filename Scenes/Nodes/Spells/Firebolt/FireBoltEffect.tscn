@@ -146,8 +146,8 @@ transitions = ["Effect", "End", SubResource("AnimationNodeStateMachineTransition
 z_index = 2
 y_sort_enabled = true
 scale = Vector2(10, 10)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_o6cj4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

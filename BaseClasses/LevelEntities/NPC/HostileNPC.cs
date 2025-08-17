@@ -138,7 +138,7 @@ public abstract partial class HostileNPC : Character
 
     private void MoveUntilPlayerInSight()
     {
-        if (!CheckForPlayerInSight())
+        if (!CheckForPlayerInSight() || _navigationAgent.TargetPosition != GlobalPosition)
         {
             //GD.Print(_target);
             //GD.Print(_target.playerSight);
@@ -217,7 +217,7 @@ public abstract partial class HostileNPC : Character
             {
                 From = Position,
                 To = _target.Position,
-                CollisionMask = 2, // Adjust as needed for your collision layers
+                CollisionMask = 1, // Adjust as needed for your collision layers
                 Exclude = new Array<Rid> { this.GetRid() } // Exclude self from raycast
             }
         );
