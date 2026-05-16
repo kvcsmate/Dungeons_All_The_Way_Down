@@ -20,6 +20,7 @@ public abstract partial class SpellEffect : LevelEntity
             if (StateMachine.GetCurrentNode() != "Effect")
             {
                 StateMachine.Travel("Effect");
+                
             }
         }
     }

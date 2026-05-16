@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c0jcwm1hcf0mh"]
+[gd_scene format=3 uid="uid://c0jcwm1hcf0mh"]
 
 [ext_resource type="Script" uid="uid://b0c8yvt0i3w5v" path="res://Scenes/Nodes/NPC/Enemies/TestEnemy_1/Testenemy_1Script.cs" id="1_fnm3s"]
 [ext_resource type="Texture2D" uid="uid://blv25nnpswb6f" path="res://Game Assets/Enemy/Skeleton Crew/Skeleton - Base/Run/Run-Sheet.png" id="1_x3wkd"]

@@ -17,6 +17,7 @@ public partial class FireboltEffect : SpellEffect
     {
         base._Ready();
         _startPosition = GlobalPosition;
+        
         //_collider = this.GetParent<StaticBody2D>();
     }
 
@@ -24,25 +25,30 @@ public partial class FireboltEffect : SpellEffect
     {
         base._PhysicsProcess(delta);
         this.AddCollisionExceptionWith(Caster);
+        
         Rotation = Direction.Angle();
         Vector2 movement = Direction * Speed * (float)delta;
   
         _distanceTraveled += movement.Length();
 
+
         if (Disposable)
         {
             movement = Vector2.Zero;
         }
-        else
+
+
+        if(!Disposable)
         {
             if (_distanceTraveled >= MaxDistance)
             {
                 Disposable = true;
+                GD.Print("Max distance reached, disposing Firebolt.");
             }
 
             var collision = MoveAndCollide(movement);
             
-            if (collision != null && collision.GetCollider() != Caster)
+            if (collision != null && collision.GetCollider() != Caster && collision.GetCollider() != this)
             {
                 GD.Print("HIT");
                 //Velocity = Velocity.Bounce(collision.GetNormal());
@@ -54,13 +60,30 @@ public partial class FireboltEffect : SpellEffect
                 }
                 Disposable = true;
             }
-            if (collision !=null)
+            if (collision != null)
             {
-                GD.Print(collision.GetCollider());
+                PrintCollider(collision);
             }
         }
        
         //Position += movement;
 
     }
+    private void PrintCollider(KinematicCollision2D collision)
+    {
+                        if (collision.GetCollider() is Node colliderNode)
+                {
+                    var owner = colliderNode.GetOwner();
+                    string scenePath = !string.IsNullOrEmpty(owner?.SceneFilePath) ? owner.SceneFilePath : colliderNode.SceneFilePath;
+                    string sceneName = !string.IsNullOrEmpty(scenePath)
+                        ? System.IO.Path.GetFileName(scenePath)
+                        : colliderNode.Name;
+                    GD.Print($"Hit scene: {sceneName} (node: {colliderNode.Name})");
+                }
+                else
+                {
+                    GD.Print(collision.GetCollider());
+                }
+    }
+
 }

@@ -26,19 +26,28 @@ namespace DungeonsAlltheWayDown.AbilitySystem
 
         public void Update(int key, string _spellId)
         {
-            // burnt in spell picking, we'll update it later
-            if (Pages.ContainsKey(key))
+            try
             {
-                Pages[key].Spell.Dispose();
-            }
+                // burnt in spell picking, we'll update it later
+                if (Pages.ContainsKey(key))
+                {
+                    Pages[key].Spell.Dispose();
+                }
 
-            Pages[key] = new Page
+                Pages[key] = new Page
+                {
+                    SpellId = _spellId,
+                    Spell = (Spell)_spellLoader.SpellScenes[_spellId].Instantiate()
+                };
+                GD.Print("Instantiated spell: " + Pages[key].Spell.Name);
+                Pages[key].Spell._Ready();
+                Pages[key].Spell.SpellEffectScene = _spellLoader.SpellEffectScenes[_spellId];
+                _node.AddChild(Pages[key].Spell);
+            }
+            catch (Exception e)
             {
-                SpellId = _spellId,
-                Spell = (Spell)_spellLoader.SpellScenes[_spellId].Instantiate()
-            };
-            Pages[key].Spell.SpellEffectScene = _spellLoader.SpellEffectScenes[_spellId];
-            _node.AddChild(Pages[key].Spell);
+                GD.PrintErr("Error loading spell: " + _spellId + " - " + e.Message);
+            }
         }
 
 

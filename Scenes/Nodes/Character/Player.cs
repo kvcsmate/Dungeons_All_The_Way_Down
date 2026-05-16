@@ -7,405 +7,405 @@ using System.Diagnostics;
 
 public partial class Player : Character
 {
-    [Export] public int Speed = 400;
+	[Export] public int Speed = 400;
 
-    private PlayerHealthBar _healthBar;
-    private SpellHUD _spellHUD;
-    private Vector2 _targetPosition;
-    private bool _isMoving = false;
+	private PlayerHealthBar _healthBar;
+	private SpellHUD _spellHUD;
+	private Vector2 _targetPosition;
+	private bool _isMoving = false;
 
-    private Node2D _currentIndicator;
+	private Node2D _currentIndicator;
 
-    private StateEnum _currentState;
+	private StateEnum _currentState;
 
-    public NavigationAgent2D _navigationAgent;
+	public NavigationAgent2D _navigationAgent;
 
-    public PlayerSight playerSight;
+	public PlayerSight playerSight;
 
-    SpellLoader spellLoader;
+	SpellLoader spellLoader;
 
-    SpellBook spellBook;
+	SpellBook spellBook;
 
-    AbilityInputMap abilityInputMap;
+	AbilityInputMap abilityInputMap;
 
-    public enum MovementMode
-    {
-        Click,
-        Joystick
-    }
+	public enum MovementMode
+	{
+		Click,
+		Joystick
+	}
 
-    [Export]
-    public MovementMode CurrentMovementMode = MovementMode.Joystick;
-    public Vector2 MovementTarget
-    {
-        get { return _navigationAgent.TargetPosition; }
-        set { _navigationAgent.TargetPosition = value; }
-    }
+	[Export]
+	public MovementMode CurrentMovementMode = MovementMode.Joystick;
+	public Vector2 MovementTarget
+	{
+		get { return _navigationAgent.TargetPosition; }
+		set { _navigationAgent.TargetPosition = value; }
+	}
 
-    public Sprite2D PlayerSprite;
+	public Sprite2D PlayerSprite;
 
-    public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
+	public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
 
    
-    public PackedScene IndicatorScene;
+	public PackedScene IndicatorScene;
 
-    private Vector2 rotationvector;
-    private Vector2 testvector;
+	private Vector2 rotationvector;
+	private Vector2 testvector;
 
-    private Vector2 _lastJoystickDirection = Vector2.Right;
-    private Vector2 _testJoystickDirection;
+	private Vector2 _lastJoystickDirection = Vector2.Right;
+	private Vector2 _testJoystickDirection;
 
-    public StateEnum CurrentState
-    {
-        get { return _currentState; }
-        set
-        {
-            if (_currentState != value)
-            {
-                _currentState = value;
+	public StateEnum CurrentState
+	{
+		get { return _currentState; }
+		set
+		{
+			if (_currentState != value)
+			{
+				_currentState = value;
 
-                switch (CurrentState)
-                {
-                    case StateEnum.Run: StateMachine.Travel("Running"); break;
-                    default: StateMachine.Travel("Idle"); break;
-                }
+				switch (CurrentState)
+				{
+					case StateEnum.Run: StateMachine.Travel("Running"); break;
+					default: StateMachine.Travel("Idle"); break;
+				}
 
-            }
-        }
-    }
+			}
+		}
+	}
 
-    public string MarkerLocation = "res://Scenes/Nodes/HUD/Marker.tscn";
-
-
-    public PackedScene MarkerScene;
-
-    private List<Node2D> testMarkers;
-
-    public enum StateEnum
-    {
-        Idle,
-        Run,
-        Death
-    }
+	public string MarkerLocation = "res://Scenes/Nodes/HUD/Marker.tscn";
 
 
-    private FacingDirection _facing = FacingDirection.Front;
-    private Vector2 _aimDirection;
+	public PackedScene MarkerScene;
+
+	private List<Node2D> testMarkers;
+
+	public enum StateEnum
+	{
+		Idle,
+		Run,
+		Death
+	}
 
 
-    public FacingDirection Facing
-    {
-        get { return _facing; }
-        set
-        {
-            if (_facing != value)
-            {
-                _facing = value;
-                // Use StateMachine to travel to the correct facing state if needed
-                // (Optional: you can use this for future expansion)
-            }
-        }
-    }
-
-    public enum FacingDirection
-    {
-        Front,
-        Back,
-        Left,
-        Right
-    }
-
-    public override void _Ready()
-    {
-        GD.Print(OS.GetExecutablePath());
-        spellLoader = new SpellLoader();
-        spellBook = new SpellBook(spellLoader, this);
-        abilityInputMap = new AbilityInputMap(spellBook);
-        _navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
-        _navigationAgent.PathDesiredDistance = 1.0f;
-
-        IndicatorScene = (PackedScene)GD.Load(IndicatorLocation);
-
-        PlayerSprite = this.GetNode<Sprite2D>("Sprite");
-
-        _healthBar = GetNode<PlayerHealthBar>("PlayerHealthBar");
-        if (_healthBar != null)
-        {
-            _healthBar.UpdateHealth(Health, MaxHealth);
-        }
-
-        _spellHUD = GetNode<SpellHUD>("SpellHUD");
-        if (_spellHUD != null)
-        {
-            _spellHUD.SpellBook = spellBook;
-        }
-
-        AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
-        // get State machine 
-        StateMachine = (AnimationNodeStateMachinePlayback)AnimationTree.Get("parameters/playback");
-
-        CurrentState = (int)StateEnum.Idle;
-        _targetPosition = Position;
-
-        UpdateSpellbook(0, "Firebolt");
-        UpdateSpellbook(1, "Fireball");
-        UpdateSpellbook(2, "Dash");
-    }
-    public override void _PhysicsProcess(double delta)
-    {
-        CharacterMovement(delta);
-
-        //OnHit(1); //for testing purposes, remove later
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        if (CurrentMovementMode == MovementMode.Click)
-        {
-            HandlePointClickInput(@event);
-        }
-
-        if (@event is InputEvent keyevent && keyevent.IsPressed())
-        {
-            SpellParams spellParams = new SpellParams()
-            {
-                Position = GetAimDirection(),
-                Caster = this
-            };
-            abilityInputMap.HandleInput(@event, spellParams);
-        }
-    }
-
-    private void HandlePointClickInput(InputEvent @event)
-    {
-        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Right)
-        {
-            Vector2 clickedPosition = GetGlobalMousePosition();
-
-            _navigationAgent.TargetPosition = clickedPosition;
-            if (!_navigationAgent.IsTargetReachable())
-            {
-                var navMap = _navigationAgent.GetNavigationMap();
-                clickedPosition = NavigationServer2D.MapGetClosestPoint(navMap, clickedPosition);
-                _navigationAgent.TargetPosition = clickedPosition;
-            }
-
-            _targetPosition = clickedPosition;
-            _isMoving = true;
-
-            CreateIndicator(_targetPosition);
-        }
-    }
+	private FacingDirection _facing = FacingDirection.Front;
+	private Vector2 _aimDirection;
 
 
-        public void CreateIndicator(Vector2 position)
-    {
-        if (_currentIndicator != null)
-        {
-            _currentIndicator.QueueFree();
-            _currentIndicator = null;
-        }
+	public FacingDirection Facing
+	{
+		get { return _facing; }
+		set
+		{
+			if (_facing != value)
+			{
+				_facing = value;
+				// Use StateMachine to travel to the correct facing state if needed
+				// (Optional: you can use this for future expansion)
+			}
+		}
+	}
 
-        _currentIndicator = (Node2D)IndicatorScene.Instantiate();
-        _currentIndicator.Position = position;
-        GetParent().AddChild(_currentIndicator);
-    }
+	public enum FacingDirection
+	{
+		Front,
+		Back,
+		Left,
+		Right
+	}
 
-    private Vector2 GetAimDirection()
-    {
-        if (CurrentMovementMode == MovementMode.Click)
-        {
-            return GetGlobalMousePosition();
-        }
-        else
-        {
-            _testJoystickDirection = GetJoystickTargetDirection();
-            if (_testJoystickDirection.Length() != 0)
-            {
+	public override void _Ready()
+	{
+		GD.Print(OS.GetExecutablePath());
+		spellLoader = new SpellLoader();
+		spellBook = new SpellBook(spellLoader, this);
+		abilityInputMap = new AbilityInputMap(spellBook);
+		_navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+		_navigationAgent.PathDesiredDistance = 1.0f;
 
-                _lastJoystickDirection = _testJoystickDirection;
-            }
-            
-            return this.Position+  _lastJoystickDirection;
-        }
-    }
-    private void CharacterMovement(double delta)
-    {
-        if (CurrentMovementMode == MovementMode.Click)
-        {
-            ClickMovement(delta);
-        }
-        else
-        {
-            JoystickMovement(delta);
-        }
+		IndicatorScene = (PackedScene)GD.Load(IndicatorLocation);
 
-        HandleAnimation();
-    }
+		PlayerSprite = this.GetNode<Sprite2D>("Sprite");
 
-    private void ClickMovement(double delta)
-    {
-        _navigationAgent.TargetPosition = _targetPosition;
+		_healthBar = GetNode<PlayerHealthBar>("PlayerHealthBar");
+		if (_healthBar != null)
+		{
+			_healthBar.UpdateHealth(Health, MaxHealth);
+		}
 
-        if (_isMoving && !IsDisplaced)
-        {
-            Vector2 currentAgentPosition = GlobalTransform.Origin;
-            Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
+		_spellHUD = GetNode<SpellHUD>("SpellHUD");
+		if (_spellHUD != null)
+		{
+			_spellHUD.SpellBook = spellBook;
+		}
 
-            if (Position.DistanceTo(_targetPosition) <= 20)
-            {
-                StopMovement();
-            }
-            else
-            {
-                Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * Speed;
-                MoveAndSlide();
-            }
-        }
-    }
+		AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
+		// get State machine 
+		StateMachine = (AnimationNodeStateMachinePlayback)AnimationTree.Get("parameters/playback");
 
-    private void JoystickMovement(double delta)
-    {
-        Vector2 direction = GetJoystickDirection();
+		CurrentState = (int)StateEnum.Idle;
+		_targetPosition = Position;
+		
+		UpdateSpellbook(0, "Firebolt");
+		UpdateSpellbook(1, "Fireball");
+		UpdateSpellbook(2, "Dash");
+	}
+	public override void _PhysicsProcess(double delta)
+	{
+		CharacterMovement(delta);
 
-        Velocity = direction * Speed;
-        MoveAndSlide();
-        _targetPosition = Position;
-        _isMoving = direction != Vector2.Zero;
-    }
+		//OnHit(1); //for testing purposes, remove later
+	}
 
-    private void HandleAnimation()
-    {
-        // Determine facing direction based on velocity
-        if (Velocity.Length() == 0)
-        {
-            // Keep previous facing direction
-        }
-        else if (Mathf.Abs(Velocity.X) > Mathf.Abs(Velocity.Y))
-        {
-            Facing = Velocity.X > 0 ? FacingDirection.Right : FacingDirection.Left;
-        }
-        else
-        {
-            Facing = Velocity.Y > 0 ? FacingDirection.Front : FacingDirection.Back;
-        }
+	public override void _Input(InputEvent @event)
+	{
+		if (CurrentMovementMode == MovementMode.Click)
+		{
+			HandlePointClickInput(@event);
+		}
 
-        // Set state and play correct animation
-        if (Velocity == Vector2.Zero)
-        {
-            CurrentState = StateEnum.Idle;
-            PlayDirectionalAnimation("Idle");
-        }
-        else
-        {
-            CurrentState = StateEnum.Run;
-            PlayDirectionalAnimation("Running");
-        }
-    }
+		if (@event is InputEvent keyevent && keyevent.IsPressed())
+		{
+			SpellParams spellParams = new SpellParams()
+			{
+				Position = GetAimDirection(),
+				Caster = this
+			};
+			abilityInputMap.HandleInput(@event, spellParams);
+		}
+	}
 
-    private void PlayDirectionalAnimation(string baseName)
-    {
-        string anim = baseName + "_";
-        switch (Facing)
-        {
-            case FacingDirection.Front: anim += "Front"; break;
-            case FacingDirection.Back: anim += "Back"; break;
-            case FacingDirection.Left: anim += "Left"; break;
-            case FacingDirection.Right: anim += "Right"; break;
-        }
+	private void HandlePointClickInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Right)
+		{
+			Vector2 clickedPosition = GetGlobalMousePosition();
 
-        // Use StateMachine to travel to the correct animation node
-        if (StateMachine != null)
-        {
-            StateMachine.Travel(anim);
-        }
-    }
-    public override void StopMovement()
-    {
+			_navigationAgent.TargetPosition = clickedPosition;
+			if (!_navigationAgent.IsTargetReachable())
+			{
+				var navMap = _navigationAgent.GetNavigationMap();
+				clickedPosition = NavigationServer2D.MapGetClosestPoint(navMap, clickedPosition);
+				_navigationAgent.TargetPosition = clickedPosition;
+			}
 
-        //!_navigationAgent.IsNavigationFinished()
-        if (CurrentMovementMode == MovementMode.Click)
-        {
+			_targetPosition = clickedPosition;
+			_isMoving = true;
 
-            _targetPosition = Position; // Reset target position to current position
-        }
-
-        _isMoving = false;
-        this.Velocity = Vector2.Zero;
-
-        if (_currentIndicator != null)
-        {
-            _currentIndicator.QueueFree();
-            _currentIndicator = null;
-        }
-    }
-
-    public void OnHit(int damage)
-    {
-        Health -= damage;
-        if (Health < 0)
-            Health = 0;
-
-        if (_healthBar != null)
-        {
-            _healthBar.UpdateHealth(Health, MaxHealth);
-        }
-    }
-    public void UpdateSpellbook(int index, string spellName)
-    {
-        if (spellBook != null)
-        {
-            spellBook.Update(index, spellName);
-            _spellHUD.UpdateSpellHUD(index);
-        }
-        else
-        {
-            GD.PrintErr("SpellBook is not initialized.");
-        }
-    }
-
-    private Vector2 GetJoystickTargetDirection()
-    {
-        Vector2 testdirection = new Vector2(
-            Input.GetJoyAxis(0, JoyAxis.RightX),
-            Input.GetJoyAxis(0, JoyAxis.RightY));
-
-        if (Mathf.Abs(testdirection.X) < 0.1f)
-            testdirection.X = 0;
-        if (Mathf.Abs(testdirection.Y) < 0.1f)
-            testdirection.Y = 0;
+			CreateIndicator(_targetPosition);
+		}
+	}
 
 
-        if (testdirection.Length() == 0)
-        {
-            testdirection = GetJoystickDirection();
-        }
+		public void CreateIndicator(Vector2 position)
+	{
+		if (_currentIndicator != null)
+		{
+			_currentIndicator.QueueFree();
+			_currentIndicator = null;
+		}
 
-        return testdirection;
+		_currentIndicator = (Node2D)IndicatorScene.Instantiate();
+		_currentIndicator.Position = position;
+		GetParent().AddChild(_currentIndicator);
+	}
 
-    }
+	private Vector2 GetAimDirection()
+	{
+		if (CurrentMovementMode == MovementMode.Click)
+		{
+			return GetGlobalMousePosition();
+		}
+		else
+		{
+			_testJoystickDirection = GetJoystickTargetDirection();
+			if (_testJoystickDirection.Length() != 0)
+			{
 
-    public override void AnimHandler()
-    {
-        if (Disposable)
-        {
-            CurrentState = StateEnum.Death;
-        }
-    }
+				_lastJoystickDirection = _testJoystickDirection;
+			}
+			
+			return this.Position+  _lastJoystickDirection;
+		}
+	}
+	private void CharacterMovement(double delta)
+	{
+		if (CurrentMovementMode == MovementMode.Click)
+		{
+			ClickMovement(delta);
+		}
+		else
+		{
+			JoystickMovement(delta);
+		}
 
-    public Vector2 GetJoystickDirection()
-    {
-        Vector2 joystickDirection = new Vector2(
-            Input.GetJoyAxis(0, JoyAxis.LeftX),
-            Input.GetJoyAxis(0, JoyAxis.LeftY));
-        
-        if (Mathf.Abs(joystickDirection.X) < 0.1f)
-            joystickDirection.X = 0;
-        
-        if (Mathf.Abs(joystickDirection.Y) < 0.1f)
-            joystickDirection.Y = 0;
-        
-        return joystickDirection;
-    }
+		HandleAnimation();
+	}
+
+	private void ClickMovement(double delta)
+	{
+		_navigationAgent.TargetPosition = _targetPosition;
+
+		if (_isMoving && !IsDisplaced)
+		{
+			Vector2 currentAgentPosition = GlobalTransform.Origin;
+			Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
+
+			if (Position.DistanceTo(_targetPosition) <= 20)
+			{
+				StopMovement();
+			}
+			else
+			{
+				Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * Speed;
+				MoveAndSlide();
+			}
+		}
+	}
+
+	private void JoystickMovement(double delta)
+	{
+		Vector2 direction = GetJoystickDirection();
+
+		Velocity = direction * Speed;
+		MoveAndSlide();
+		_targetPosition = Position;
+		_isMoving = direction != Vector2.Zero;
+	}
+
+	private void HandleAnimation()
+	{
+		// Determine facing direction based on velocity
+		if (Velocity.Length() == 0)
+		{
+			// Keep previous facing direction
+		}
+		else if (Mathf.Abs(Velocity.X) > Mathf.Abs(Velocity.Y))
+		{
+			Facing = Velocity.X > 0 ? FacingDirection.Right : FacingDirection.Left;
+		}
+		else
+		{
+			Facing = Velocity.Y > 0 ? FacingDirection.Front : FacingDirection.Back;
+		}
+
+		// Set state and play correct animation
+		if (Velocity == Vector2.Zero)
+		{
+			CurrentState = StateEnum.Idle;
+			PlayDirectionalAnimation("Idle");
+		}
+		else
+		{
+			CurrentState = StateEnum.Run;
+			PlayDirectionalAnimation("Running");
+		}
+	}
+
+	private void PlayDirectionalAnimation(string baseName)
+	{
+		string anim = baseName + "_";
+		switch (Facing)
+		{
+			case FacingDirection.Front: anim += "Front"; break;
+			case FacingDirection.Back: anim += "Back"; break;
+			case FacingDirection.Left: anim += "Left"; break;
+			case FacingDirection.Right: anim += "Right"; break;
+		}
+
+		// Use StateMachine to travel to the correct animation node
+		if (StateMachine != null)
+		{
+			StateMachine.Travel(anim);
+		}
+	}
+	public override void StopMovement()
+	{
+
+		//!_navigationAgent.IsNavigationFinished()
+		if (CurrentMovementMode == MovementMode.Click)
+		{
+
+			_targetPosition = Position; // Reset target position to current position
+		}
+
+		_isMoving = false;
+		this.Velocity = Vector2.Zero;
+
+		if (_currentIndicator != null)
+		{
+			_currentIndicator.QueueFree();
+			_currentIndicator = null;
+		}
+	}
+
+	public void OnHit(int damage)
+	{
+		Health -= damage;
+		if (Health < 0)
+			Health = 0;
+
+		if (_healthBar != null)
+		{
+			_healthBar.UpdateHealth(Health, MaxHealth);
+		}
+	}
+	public void UpdateSpellbook(int index, string spellName)
+	{
+		if (spellBook != null)
+		{
+			GD.Print("Spell loading: " + spellName);
+			spellBook.Update(index, spellName);
+			_spellHUD.UpdateSpellHUD(index);
+		}
+		else
+		{
+			GD.PrintErr("SpellBook is not initialized.");
+		}
+	}
+
+	private Vector2 GetJoystickTargetDirection()
+	{
+		Vector2 testdirection = new Vector2(
+			Input.GetJoyAxis(0, JoyAxis.RightX),
+			Input.GetJoyAxis(0, JoyAxis.RightY));
+
+		if (Mathf.Abs(testdirection.X) < 0.1f)
+			testdirection.X = 0;
+		if (Mathf.Abs(testdirection.Y) < 0.1f)
+			testdirection.Y = 0;
+
+
+		if (testdirection.Length() == 0)
+		{
+			testdirection = GetJoystickDirection();
+		}
+
+		return testdirection;
+
+	}
+
+	public override void AnimHandler()
+	{
+		if (Disposable)
+		{
+			CurrentState = StateEnum.Death;
+		}
+	}
+
+	public Vector2 GetJoystickDirection()
+	{
+		Vector2 joystickDirection = new Vector2(
+			Input.GetJoyAxis(0, JoyAxis.LeftX),
+			Input.GetJoyAxis(0, JoyAxis.LeftY));
+		
+		if (Mathf.Abs(joystickDirection.X) < 0.1f)
+			joystickDirection.X = 0;
+		
+		if (Mathf.Abs(joystickDirection.Y) < 0.1f)
+			joystickDirection.Y = 0;
+		
+		return joystickDirection;
+	}
 }
-

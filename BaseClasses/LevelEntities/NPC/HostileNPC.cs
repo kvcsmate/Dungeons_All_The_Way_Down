@@ -60,6 +60,7 @@ public abstract partial class HostileNPC : Character
         if (Health <= 0)
         {
             Disposable = true;
+            MovementSpeed = 0;
         }
     }
 

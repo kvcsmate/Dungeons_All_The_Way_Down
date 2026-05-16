@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bnp3xuxvxbkdm"]
+
+[ext_resource type="Script" uid="uid://cxkvxuja3dqnk" path="res://Scenes/Nodes/Spells/Firebolt/Firebolt.cs" id="1_5shs7"]
+
+[node name="Spell" type="Node2D" unique_id=1977302081]
+script = ExtResource("1_5shs7")
+SpellRange = 1000.0
+Speed = 1000.0

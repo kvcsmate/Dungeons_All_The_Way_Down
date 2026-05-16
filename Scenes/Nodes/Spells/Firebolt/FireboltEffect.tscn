@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xc820pkr0dg1"]
+[gd_scene format=3 uid="uid://xc820pkr0dg1"]
 
 [ext_resource type="Script" uid="uid://dxk4e5hcmypfy" path="res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.cs" id="1_o6cj4"]
 [ext_resource type="Texture2D" uid="uid://djesp1n8uovi6" path="res://Game Assets/Spells/firebolt.png" id="2_6uioj"]
@@ -142,25 +142,23 @@ transitions = ["Effect", "End", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r76dt"]
 
-[node name="SpellEffect" type="CharacterBody2D"]
+[node name="SpellEffect" type="CharacterBody2D" unique_id=1644182626]
 z_index = 2
 y_sort_enabled = true
 scale = Vector2(10, 10)
-collision_layer = 6
+collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_o6cj4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1188201753]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_ktl8f")
-}
+libraries/ = SubResource("AnimationLibrary_ktl8f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1291860505]
 texture = ExtResource("2_6uioj")
 hframes = 15
 
-[node name="EffectSprite" type="Sprite2D" parent="."]
+[node name="EffectSprite" type="Sprite2D" parent="." unique_id=476736694]
 visible = false
 position = Vector2(2.38419e-07, 0)
 scale = Vector2(0.5, 0.5)
@@ -170,11 +168,11 @@ frame = 1
 region_enabled = true
 region_rect = Rect2(160, 16, 64, 16)
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=316953406]
 root_node = NodePath("../Sprite2D")
 tree_root = SubResource("AnimationNodeStateMachine_g6bln")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1478715029]
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_r76dt")
