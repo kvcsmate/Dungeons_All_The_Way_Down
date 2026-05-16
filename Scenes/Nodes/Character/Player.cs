@@ -1,5 +1,4 @@
 using DungeonsAlltheWayDown.AbilitySystem;
-using DungeonsAlltheWayDown.Scenes.Nodes.Character;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -19,8 +18,6 @@ public partial class Player : Character
 	private StateEnum _currentState;
 
 	public NavigationAgent2D _navigationAgent;
-
-	public PlayerSight playerSight;
 
 	SpellLoader spellLoader;
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DungeonsAlltheWayDown.Scenes.Nodes.Character;
 using Godot;
 using Godot.Collections;
 
@@ -12,6 +11,18 @@ public abstract partial class HostileNPC : Character
    
     [Export]
     public float SightRadius = 1000.0f;
+
+    [Export]
+    public float PreferredAttackRange = 650.0f;
+
+    [Export]
+    public float AttackRangeTolerance = 75.0f;
+
+    [Export]
+    public uint SightCollisionMask = 1;
+
+    [Export]
+    public int SightPositionSampleCount = 24;
 
 
     protected bool onAlert = false;
@@ -117,19 +128,31 @@ public abstract partial class HostileNPC : Character
 
     public void MoveToRangeOrLastKnownPosition()
     {
-        if (GlobalPosition.DistanceTo(_target.GlobalPosition) > SightRadius)
+        bool canSeePlayer = CheckForPlayerInSight();
+
+        // If the player is visible, keep the enemy at its preferred firing distance.
+        // If sight is blocked, search for a nearby navigable position that can see the player.
+        if (canSeePlayer)
         {
-            MoveUntilPlayerInSight();
+            lastKnownPosition = _target.GlobalPosition;
+
+            if (IsPlayerInPreferredAttackRange())
+            {
+                StopMovement();
+                return;
+            }
+
+            MoveToAttackRange();
         }
         else
-        { 
-            MoveToLastKnownPosition();
+        {
+            MoveUntilPlayerInSight();
         }
     }
 
     private void MoveToPlayer()
     {
-        _navigationAgent.TargetPosition = _target.Position;
+        _navigationAgent.TargetPosition = _target.GlobalPosition;
     }
 
     private void MoveToLastKnownPosition()
@@ -139,39 +162,126 @@ public abstract partial class HostileNPC : Character
 
     private void MoveUntilPlayerInSight()
     {
-        if (!CheckForPlayerInSight() || _navigationAgent.TargetPosition != GlobalPosition)
+        if (TryGetClosestVisibleAttackPosition(_target.GlobalPosition, out Vector2 sightPosition))
         {
-            //GD.Print(_target);
-            //GD.Print(_target.playerSight);
-            _navigationAgent.TargetPosition = GetClosestSightPoint(_target.GlobalPosition);
-            lastKnownPosition = _target.GlobalPosition;
+            SetNavigationTarget(sightPosition);
         }
         else
         {
-            StopMovement();
+            MoveToLastKnownPosition();
         }
     }
 
-    public Vector2 GetClosestSightPoint(Vector2 position)
+    private void MoveToAttackRange()
     {
-        List<Vector2> SightMatrix = _target.GetNode<PlayerSight>("PlayerSight").SightMatrix;
-        Vector2 closestPoint = SightMatrix[0];
-        float closestDistance = position.DistanceTo(closestPoint);
-
-            foreach (var point in SightMatrix)
-            {
-                _navigationAgent.TargetPosition = point;
-                float distance = _navigationAgent.DistanceToTarget();
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestPoint = point;
-                }
-            }
-            _navigationAgent.TargetPosition = closestPoint;
-            return closestPoint;
+        Vector2 directionFromPlayer = (_target.GlobalPosition - GlobalPosition).Normalized();
+        if (directionFromPlayer == Vector2.Zero)
+        {
+            directionFromPlayer = Vector2.Right;
         }
 
+        Vector2 desiredPosition = _target.GlobalPosition - directionFromPlayer * PreferredAttackRange;
+        desiredPosition = GetClosestNavigationPoint(desiredPosition);
+        SetNavigationTarget(desiredPosition);
+    }
+
+    public bool IsPlayerInPreferredAttackRange()
+    {
+        return GlobalPosition.DistanceTo(_target.GlobalPosition) <= PreferredAttackRange + AttackRangeTolerance;
+    }
+
+    private bool TryGetClosestVisibleAttackPosition(Vector2 targetPosition, out Vector2 bestPosition)
+    {
+        bestPosition = GlobalPosition;
+
+        Rid navMap = _navigationAgent.GetNavigationMap();
+
+        // Sample rings around the player, then snap each sample to the navigation map.
+        // A candidate is useful only if it stays inside sight range, has direct line of sight,
+        // and can be reached through the nav map.
+        float[] sampleRadii =
+        {
+            PreferredAttackRange,
+            Mathf.Max(PreferredAttackRange - AttackRangeTolerance, PreferredAttackRange * 0.75f),
+            Mathf.Min(SightRadius * 0.9f, PreferredAttackRange + AttackRangeTolerance),
+            SightRadius * 0.5f
+        };
+
+        float bestScore = float.MaxValue;
+        foreach (float radius in sampleRadii)
+        {
+            if (radius <= 0.0f)
+            {
+                continue;
+            }
+
+            for (int i = 0; i < SightPositionSampleCount; i++)
+            {
+                float angle = Mathf.Tau * i / SightPositionSampleCount;
+                Vector2 samplePosition = targetPosition + Vector2.FromAngle(angle) * radius;
+                Vector2 navigationPosition = GetClosestNavigationPoint(samplePosition);
+
+                if (navigationPosition.DistanceTo(targetPosition) > SightRadius)
+                {
+                    continue;
+                }
+
+                if (!HasLineOfSightToTarget(navigationPosition, targetPosition))
+                {
+                    continue;
+                }
+
+                float pathLength = GetNavigationPathLength(navMap, GlobalPosition, navigationPosition);
+                if (pathLength < 0.0f)
+                {
+                    continue;
+                }
+
+                // Prefer short paths, but slightly favor spots close to the desired attack range.
+                float rangeDifference = Mathf.Abs(navigationPosition.DistanceTo(targetPosition) - PreferredAttackRange);
+                float score = pathLength + rangeDifference * 0.5f;
+
+                if (score < bestScore)
+                {
+                    bestScore = score;
+                    bestPosition = navigationPosition;
+                }
+            }
+        }
+
+        return bestScore < float.MaxValue;
+    }
+
+    private Vector2 GetClosestNavigationPoint(Vector2 position)
+    {
+        return NavigationServer2D.MapGetClosestPoint(_navigationAgent.GetNavigationMap(), position);
+    }
+
+    private float GetNavigationPathLength(Rid navMap, Vector2 from, Vector2 to)
+    {
+        Vector2[] path = NavigationServer2D.MapGetPath(navMap, from, to, true, _navigationAgent.NavigationLayers);
+
+        if (path.Length < 2)
+        {
+            return from.DistanceTo(to) <= _navigationAgent.TargetDesiredDistance ? 0.0f : -1.0f;
+        }
+
+        float length = 0.0f;
+        for (int i = 1; i < path.Length; i++)
+        {
+            length += path[i - 1].DistanceTo(path[i]);
+        }
+
+        return length;
+    }
+
+    private void SetNavigationTarget(Vector2 targetPosition)
+    {
+        if (_navigationAgent.TargetPosition.DistanceTo(targetPosition) > 5.0f)
+        {
+            _navigationAgent.TargetPosition = targetPosition;
+        }
+    }
 
     public static Vector2 ClosestPointOnSegment(Vector2 A, Vector2 B, Vector2 C)
     {
@@ -210,37 +320,36 @@ public abstract partial class HostileNPC : Character
         if (GlobalPosition.DistanceTo(_target.GlobalPosition) > SightRadius)
             return false;
 
-        // Raycast to player
+        bool hasLineOfSight = HasLineOfSightToTarget(GlobalPosition, _target.GlobalPosition);
+        if (hasLineOfSight)
+        {
+            onAlert = true;
+        }
+
+        return hasLineOfSight;
+    }
+
+    private bool HasLineOfSightToTarget(Vector2 from, Vector2 to)
+    {
         var spaceState = GetWorld2D().DirectSpaceState;
 
         var result = spaceState.IntersectRay(
             new PhysicsRayQueryParameters2D
             {
-                From = Position,
-                To = _target.Position,
-                CollisionMask = 1, // Adjust as needed for your collision layers
+                From = from,
+                To = to,
+                CollisionMask = SightCollisionMask,
                 Exclude = new Array<Rid> { this.GetRid() } // Exclude self from raycast
             }
         );
 
-        // If nothing blocks the ray or the first hit is the player, player is in sight
         if (result.Count == 0)
         {
-            onAlert = true;
             return true;
         }
 
         Node2D collider = result["collider"].As<Node2D>();
-        //GD.Print("Collider detected: " + collider.Name);
-        if (collider is Player)
-        {
-            onAlert = true;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return collider is Player;
     }
     public string GetSpriteName()
     {
@@ -293,4 +402,3 @@ public abstract partial class HostileNPC : Character
         }
     }
 }
-

@@ -41,7 +41,7 @@ public partial class Testenemy_1Script : HostileNPC
             MoveToRangeOrLastKnownPosition();
         }
 
-        if (playerInSight)
+        if (playerInSight && IsPlayerInPreferredAttackRange())
         {
             StopMovement();
             TryShootFireball();

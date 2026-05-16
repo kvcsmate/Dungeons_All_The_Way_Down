@@ -318,7 +318,7 @@ collision_layer = 10
 collision_mask = 10
 script = ExtResource("1_fnm3s")
 FireballScene = ExtResource("2_5hr1x")
-MovementSpeed = 0.0
+MovementSpeed = 300.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")

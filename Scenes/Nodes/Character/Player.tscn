@@ -1,10 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://c58b6jo2a4h40"]
+[gd_scene format=3 uid="uid://c58b6jo2a4h40"]
 
 [ext_resource type="Script" uid="uid://ddvn83lpxv65c" path="res://Scenes/Nodes/Character/Player.cs" id="1_m8ucb"]
 [ext_resource type="Texture2D" uid="uid://chyahuewyct2g" path="res://Game Assets/Wizard_assetpack.png" id="2_dsu3v"]
 [ext_resource type="Texture2D" uid="uid://b5mt146ibcwyc" path="res://Game Assets/wizard_anims/idle.png" id="3_kbbyf"]
 [ext_resource type="Texture2D" uid="uid://c1mgeayn8x1wh" path="res://Game Assets/wizard_anims/run.png" id="4_y7enw"]
-[ext_resource type="Script" uid="uid://ba2t54slixtbk" path="res://Scenes/Nodes/Character/PlayerSight.cs" id="4_ymb08"]
 [ext_resource type="PackedScene" uid="uid://yik37x68b1ek" path="res://Scenes/Nodes/HUD/PlayerHealthBar.tscn" id="5_phb"]
 [ext_resource type="PackedScene" uid="uid://y0og8l57cq8u" path="res://Scenes/Nodes/HUD/SpellHUD.tscn" id="6_sphud"]
 [ext_resource type="PackedScene" uid="uid://diwqvyc7rwo3v" path="res://Scenes/Nodes/HUD/DirectionIndicator/DirectionIndicator.tscn" id="8_678xe"]
@@ -439,57 +438,52 @@ states/Running_Right/position = Vector2(734, 289)
 states/Start/position = Vector2(190, 90)
 transitions = ["Start", "Idle_Back", SubResource("AnimationNodeStateMachineTransition_gtr64")]
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=728948694 groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 13
 platform_on_leave = 2
 script = ExtResource("1_m8ucb")
+Spells = Array[PackedScene]([])
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1273111664]
 zoom = Vector2(0.2, 0.2)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2112393081]
 position = Vector2(0, -3)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_dsu3v")
 hframes = 6
 vframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=484154197]
 position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_iabyq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1yvqg")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1931493422]
+libraries/ = SubResource("AnimationLibrary_1yvqg")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1908362228]
 tree_root = SubResource("AnimationNodeStateMachine_vgbgk")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=669542542]
 target_desired_distance = 20.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_point_size = 0.47
 
-[node name="PlayerSight" type="Node2D" parent="."]
-script = ExtResource("4_ymb08")
-ShowDebugMarkers = true
-
-[node name="PlayerHealthBar" parent="." instance=ExtResource("5_phb")]
+[node name="PlayerHealthBar" parent="." unique_id=1849726976 instance=ExtResource("5_phb")]
 position = Vector2(0, -30)
 scale = Vector2(0.2, 0.2)
 
-[node name="SpellHUD" parent="." instance=ExtResource("6_sphud")]
+[node name="SpellHUD" parent="." unique_id=1782479074 instance=ExtResource("6_sphud")]
 
-[node name="DirectionIndicator" parent="." instance=ExtResource("8_678xe")]
+[node name="DirectionIndicator" parent="." unique_id=398676101 instance=ExtResource("8_678xe")]
 z_index = 1
 scale = Vector2(0.6, 0.6)
 script = ExtResource("9_3jcuy")
