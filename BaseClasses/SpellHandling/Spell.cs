@@ -104,8 +104,8 @@ public abstract partial class Spell : Node2D
                     _actions[i].Execute(Attributes);
                 }
             }
-        }
         StartCooldown();
+        }
     }
 
     public override void _Ready()
@@ -139,7 +139,7 @@ public abstract partial class Spell : Node2D
     public void LoadActions()
     {
         string ActionPath = $"Scenes//Nodes//Spells//{this.GetType().Name}//Actions";
-        GD.Print("Loading actions from path: " + ActionPath);
+        //GD.Print("Loading actions from path: " + ActionPath);
         string[] fileEntries = Directory.GetFiles(ActionPath, "*.tscn").ToArray();
         GD.Print(fileEntries);
         foreach (string fileName in fileEntries)
