@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿// Shared entity foundation.
+using Godot;
 using System;
 
 public abstract partial class LevelEntity : CharacterBody2D
@@ -59,5 +60,4 @@ public abstract partial class LevelEntity : CharacterBody2D
     }
 
 }
-
 

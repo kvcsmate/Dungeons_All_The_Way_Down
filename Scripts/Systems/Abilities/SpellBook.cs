@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿// Ability-system infrastructure.
+using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;

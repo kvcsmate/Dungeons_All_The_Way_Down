@@ -1,4 +1,5 @@
-﻿using Dungeons_All_The_Way_Down.BaseClasses.LevelEntities;
+﻿// Shared entity foundation.
+using Dungeons_All_The_Way_Down.BaseClasses.LevelEntities;
 using Godot;
 using System;
 using System.Collections.Generic;

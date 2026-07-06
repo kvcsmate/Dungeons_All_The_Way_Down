@@ -1,3 +1,4 @@
+// Shared entity foundation.
 namespace Dungeons_All_The_Way_Down.BaseClasses.LevelEntities
 {
     public enum StatusEffect

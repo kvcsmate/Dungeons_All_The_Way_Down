@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Shared spell foundation.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,4 +14,3 @@ public partial class SpellParams
 
     public Vector2 Position;
 }
-

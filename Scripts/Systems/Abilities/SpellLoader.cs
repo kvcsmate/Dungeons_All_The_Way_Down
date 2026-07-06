@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿// Ability-system infrastructure.
+using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace DungeonsAlltheWayDown.AbilitySystem
         public Dictionary<String, PackedScene> SpellScenes = [];
         public Dictionary<String, PackedScene> SpellEffectScenes = [];
 
-        public string SpellDirectory = "Scenes//Nodes//Spells";
+        public string SpellDirectory = "Scenes/Nodes/Spells";
 
         // static private readonly string Root = ":res/";
         public SpellLoader()

@@ -1,3 +1,4 @@
+// Shared spell foundation.
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -138,7 +139,7 @@ public abstract partial class Spell : Node2D
 
     public void LoadActions()
     {
-        string ActionPath = $"Scenes//Nodes//Spells//{this.GetType().Name}//Actions";
+        string ActionPath = $"Scenes/Nodes/Spells/{this.GetType().Name}/Actions";
         //GD.Print("Loading actions from path: " + ActionPath);
         string[] fileEntries = Directory.GetFiles(ActionPath, "*.tscn").ToArray();
         GD.Print(fileEntries);

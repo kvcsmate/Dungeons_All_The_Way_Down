@@ -41,7 +41,7 @@ public partial class Player : Character
 
 	public Sprite2D PlayerSprite;
 
-	public String IndicatorLocation = "res://Scenes//Nodes//HUD//Indicator//Indicator.tscn";
+	public String IndicatorLocation = "res://Scenes/Nodes/HUD/Indicator/Indicator.tscn";
 
    
 	public PackedScene IndicatorScene;

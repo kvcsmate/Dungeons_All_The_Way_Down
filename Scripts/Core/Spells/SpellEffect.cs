@@ -1,3 +1,4 @@
+// Shared spell foundation.
 using Godot;
 using System;
 
