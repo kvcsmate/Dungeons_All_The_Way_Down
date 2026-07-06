@@ -7,7 +7,7 @@ using System.Text;
 public partial class SpellHUD : CanvasLayer
 {
     [Export]
-    public int NumberOfSlots = 3; // Number of slots in the spell HUD, can be adjusted as needed
+    public int NumberOfSlots = 4; // Number of slots in the spell HUD, can be adjusted as needed
     private class Slot
     {
         public Sprite2D Icon;
@@ -127,8 +127,12 @@ public partial class SpellHUD : CanvasLayer
             return DefaultIcon;
         }
         string iconPath = $"res://Scenes/Nodes/Spells/{page.SpellId}/Icon.png";
+        if (!ResourceLoader.Exists(iconPath))
+        {
+            iconPath = $"res://Scenes/Nodes/Spells/{page.SpellId}/Icon.svg";
+        }
         GD.Print("Icon path: " + iconPath);
-        var Icon =  GD.Load<Texture2D>(iconPath);
+        var Icon = ResourceLoader.Exists(iconPath) ? GD.Load<Texture2D>(iconPath) : null;
 
         
         // Fallback if no icon is found
@@ -137,4 +141,3 @@ public partial class SpellHUD : CanvasLayer
 
 
 }
-

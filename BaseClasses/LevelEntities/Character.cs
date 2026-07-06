@@ -26,6 +26,8 @@ public abstract partial class Character : LevelEntity
 
     private int _activeSlowCount;
     private float _movementSpeedBeforeSlow;
+    private int _activeFreezeCount;
+    private float _movementSpeedBeforeFreeze;
 
     [Export]
     public float MovementSpeed = 500.0f;
@@ -74,6 +76,30 @@ public abstract partial class Character : LevelEntity
 
     private void HandleStatusEffectChanged(StatusEffect statusType, bool applied)
     {
+        if (statusType == StatusEffect.Freeze)
+        {
+            if (applied)
+            {
+                if (_activeFreezeCount == 0)
+                {
+                    _movementSpeedBeforeFreeze = MovementSpeed;
+                    MovementSpeed = 0.0f;
+                    StopMovement();
+                }
+
+                _activeFreezeCount++;
+            }
+            else
+            {
+                _activeFreezeCount--;
+                if (_activeFreezeCount == 0 && !Disposable)
+                {
+                    MovementSpeed = _movementSpeedBeforeFreeze;
+                }
+            }
+            return;
+        }
+
         if (statusType != StatusEffect.Slow)
         {
             return;

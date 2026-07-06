@@ -147,6 +147,7 @@ public partial class Player : Character
 		UpdateSpellbook(0, "Firebolt");
 		UpdateSpellbook(1, "Fireball");
 		UpdateSpellbook(2, "Dash");
+		UpdateSpellbook(3, "FrostNova");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
