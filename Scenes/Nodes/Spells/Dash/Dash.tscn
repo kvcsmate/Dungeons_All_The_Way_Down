@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxhbjyj8hldot"]
+[gd_scene load_steps=4 format=3 uid="uid://bxhbjyj8hldot"]
 
 [ext_resource type="Script" uid="uid://p8pmj8aai5rc" path="res://Scenes/Nodes/Spells/Dash/Dash.cs" id="1_7157p"]
+[ext_resource type="PackedScene" uid="uid://cel2t007xgoyr" path="res://Scenes/Nodes/Spells/Dash/DashEffect.tscn" id="2_h5ma1"]
+[ext_resource type="Texture2D" path="res://Scenes/Nodes/Spells/Dash/Icon.png" id="3_2snnk"]
 
 [node name="Dash" type="Node2D"]
 script = ExtResource("1_7157p")
 Cooldown = 10.0
 SpellRange = 500.0
+Icon = ExtResource("3_2snnk")
+
+[node name="SpellEffects" type="Node" parent="."]
+
+[node name="DashEffect" parent="SpellEffects" instance=ExtResource("2_h5ma1")]

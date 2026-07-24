@@ -2,14 +2,28 @@ using Godot;
 using System.Collections.Generic;
 using Dungeons_All_The_Way_Down.BaseClasses.LevelEntities;
 
-public partial class FrostNovaEffect : Node2D
+public partial class FrostNovaEffect : SpellEffect
 {
     private const float AnimationDuration = 0.45f;
+    [Export] public int Damage = 30;
+    [Export] public float FreezeDuration = 2.0f;
+
     private float _radius;
     private float _elapsed;
 
+    public override void Activate(SpellAttributes spellAttributes)
+    {
+        Activate(spellAttributes.Caster, Damage, spellAttributes.SpellRange, FreezeDuration);
+    }
+
     public void Activate(Character caster, int damage, float radius, float freezeDuration)
     {
+        if (caster == null)
+        {
+            FinishEffect();
+            return;
+        }
+
         _radius = radius;
         GlobalPosition = caster.GlobalPosition;
         QueueRedraw();
@@ -47,6 +61,7 @@ public partial class FrostNovaEffect : Node2D
         QueueRedraw();
         if (_elapsed >= AnimationDuration)
         {
+            FinishEffect();
             QueueFree();
         }
     }

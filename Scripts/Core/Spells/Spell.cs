@@ -1,22 +1,99 @@
 // Shared spell foundation.
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using static DungeonsAlltheWayDown.AbilitySystem.SpellBook;
 
 public abstract partial class Spell : Node2D
 {
+    private const string SpellEffectsNodeName = "SpellEffects";
+
     private float _channelTime = 0;
+
     private int _manaCost = 10;
+
     private float _cooldown = 0.5f;
+
     private float _spellRange;
+
     private bool _isReady = true;
+
     private float _cooldownRemaining;
-    private PackedScene _spellEffectScene;
-    private readonly List<SpellAction> _actions = new List<SpellAction>();
+
+    private SpellAttributes _activeSpellAttributes;
+
+    private int _currentEffectIndex = -1;
+
     private float _speed = 500f;
+
+    private readonly List<SpellEffect> _spellEffectTemplates = new();
+
+    [Export]
+    public Texture2D Icon { get; set; }
+
+    private void StartNextEffect()
+    {
+        if (_activeSpellAttributes == null)
+        {
+            return;
+        }
+
+        _currentEffectIndex++;
+        while (_currentEffectIndex < _spellEffectTemplates.Count)
+        {
+            SpellEffect effectTemplate = _spellEffectTemplates[_currentEffectIndex];
+            if (effectTemplate == null)
+            {
+                _currentEffectIndex++;
+                continue;
+            }
+
+            SpellEffect effect = effectTemplate.Duplicate() as SpellEffect;
+            if (effect == null)
+            {
+                _currentEffectIndex++;
+                continue;
+            }
+
+            GetTree().Root.AddChild(effect);
+            effect.EffectFinished += () => OnEffectFinished(effect);
+            effect.Activate(_activeSpellAttributes);
+            return;
+        }
+
+        _currentEffectIndex = -1;
+        _activeSpellAttributes = null;
+    }
+
+    private void OnEffectFinished(SpellEffect effect)
+    {
+        if (IsInstanceValid(effect) && !effect.IsQueuedForDeletion())
+        {
+            effect.QueueFree();
+        }
+
+        StartNextEffect();
+    }
+
+    private void LoadSpellEffectTemplates()
+    {
+        _spellEffectTemplates.Clear();
+
+        Node effectsRoot = GetNodeOrNull(SpellEffectsNodeName);
+        if (effectsRoot == null)
+        {
+            return;
+        }
+
+        foreach (Node child in effectsRoot.GetChildren())
+        {
+            if (child is not SpellEffect effect)
+            {
+                continue;
+            }
+
+            effectsRoot.RemoveChild(effect);
+            _spellEffectTemplates.Add(effect);
+        }
+    }
 
     [Export]
     public float ChannelTime
@@ -60,20 +137,11 @@ public abstract partial class Spell : Node2D
     }
 
     [Export]
-    public PackedScene SpellEffectScene
-    {
-        get => _spellEffectScene;
-        set => _spellEffectScene = value;
-    }
-
-    [Export]
     public float Speed
     {
         get => _speed;
         set => _speed = value;
     }
-
-    public List<SpellAction> Actions => _actions;
 
     public virtual void Cast(SpellParams Params)
     {
@@ -87,33 +155,22 @@ public abstract partial class Spell : Node2D
             CooldownRemaining = _cooldownRemaining,
             Position = Params.Position,
             Caster = Params.Caster,
-            SpellEffectScene = _spellEffectScene,
             Speed = Speed,
         };
 
-        if (_isReady)
+        if (_isReady && _spellEffectTemplates.Count > 0)
         {
-            for (int i = 0; i < _actions.Count; i++)
-            {
-                if (_actions[i].OverrideBaseAction)
-                {
-                    _actions.First(a => a.Id == "base").Enabled = false;
-                }
-
-                if (_actions[i].Enabled)
-                {
-                    _actions[i].Execute(Attributes);
-                }
-            }
-        StartCooldown();
+            _activeSpellAttributes = Attributes;
+            _currentEffectIndex = -1;
+            StartNextEffect();
+            StartCooldown();
         }
     }
 
     public override void _Ready()
     {
-        // Initialize the spell (e.g., load resources, set up effects)
         base._Ready();
-        LoadActions();
+        LoadSpellEffectTemplates();
     }
 
     protected void StartCooldown()
@@ -135,23 +192,4 @@ public abstract partial class Spell : Node2D
         }
     }
 
-   // public abstract void GetSpellPath();
-
-    public void LoadActions()
-    {
-        string ActionPath = $"Scenes/Nodes/Spells/{this.GetType().Name}/Actions";
-        //GD.Print("Loading actions from path: " + ActionPath);
-        string[] fileEntries = Directory.GetFiles(ActionPath, "*.tscn").ToArray();
-        GD.Print(fileEntries);
-        foreach (string fileName in fileEntries)
-        {
-            if (fileName.EndsWith("Action.tscn"))
-            {
-                var actionScene = (PackedScene)GD.Load(fileName);
-                var action = (SpellAction)actionScene.Instantiate();
-                this.AddChild(action);
-                _actions.Add(action);
-            }
-        }
-    }
 }

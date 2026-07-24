@@ -1,8 +1,6 @@
 using Godot;
 using System.Collections.Generic;
 using DungeonsAlltheWayDown.AbilitySystem;
-using System;
-using System.Text;
 
 public partial class SpellHUD : CanvasLayer
 {
@@ -121,22 +119,12 @@ public partial class SpellHUD : CanvasLayer
 
     private Texture2D LoadIcon(SpellBook.Page page)
     {
-        GD.Print("Loading icon for spell: " + page.SpellId);
-        if (page == null || page.Spell == null || page.Spell.SpellEffectScene == null)
+        if (page?.Spell?.Icon == null)
         {
             return DefaultIcon;
         }
-        string iconPath = $"res://Scenes/Nodes/Spells/{page.SpellId}/Icon.png";
-        if (!ResourceLoader.Exists(iconPath))
-        {
-            iconPath = $"res://Scenes/Nodes/Spells/{page.SpellId}/Icon.svg";
-        }
-        GD.Print("Icon path: " + iconPath);
-        var Icon = ResourceLoader.Exists(iconPath) ? GD.Load<Texture2D>(iconPath) : null;
 
-        
-        // Fallback if no icon is found
-        return Icon ?? DefaultIcon;
+        return page.Spell.Icon;
     }
 
 

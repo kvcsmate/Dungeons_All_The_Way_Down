@@ -1,6 +1,5 @@
 // Shared spell foundation.
 using Godot;
-using System;
 
 public partial class SpellAttributes
 {
@@ -14,8 +13,7 @@ public partial class SpellAttributes
     public bool IsReady = true;
 
     public float CooldownRemaining { get; set; }
-    [Export] public PackedScene SpellEffectScene;
-    
+
     public Vector2 Position;
 
     public Character Caster;

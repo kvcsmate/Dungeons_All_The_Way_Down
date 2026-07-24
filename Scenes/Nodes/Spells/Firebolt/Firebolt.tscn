@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://bnp3xuxvxbkdm"]
 
 [ext_resource type="Script" uid="uid://cxkvxuja3dqnk" path="res://Scenes/Nodes/Spells/Firebolt/Firebolt.cs" id="1_5shs7"]
+[ext_resource type="PackedScene" uid="uid://xc820pkr0dg1" path="res://Scenes/Nodes/Spells/Firebolt/FireboltEffect.tscn" id="2_mk0oi"]
+[ext_resource type="Texture2D" uid="uid://et2h2cx0mc6s" path="res://Scenes/Nodes/Spells/Firebolt/Icon.png" id="3_sqq3m"]
+[ext_resource type="PackedScene" path="res://Scenes/Nodes/Spells/FrostNova/FrostNovaEffect.tscn" id="4_2sjtr"]
 
 [node name="Spell" type="Node2D" unique_id=1977302081]
 script = ExtResource("1_5shs7")
+Icon = ExtResource("3_sqq3m")
 SpellRange = 1000.0
 Speed = 1000.0
+
+[node name="SpellEffects" type="Node" parent="." unique_id=1798302441]
+
+[node name="FireboltEffect" parent="SpellEffects" unique_id=856709561 instance=ExtResource("2_mk0oi")]
+
+[node name="FrostNovaEffect" parent="SpellEffects" unique_id=122765031 instance=ExtResource("4_2sjtr")]

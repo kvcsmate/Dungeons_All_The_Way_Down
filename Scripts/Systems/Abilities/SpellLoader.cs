@@ -3,17 +3,13 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Collections;
 
 namespace DungeonsAlltheWayDown.AbilitySystem
 {
     public class SpellLoader
     {
         public Dictionary<String, PackedScene> SpellScenes = [];
-        public Dictionary<String, PackedScene> SpellEffectScenes = [];
 
         public string SpellDirectory = "Scenes/Nodes/Spells";
 
@@ -48,11 +44,13 @@ namespace DungeonsAlltheWayDown.AbilitySystem
         {
 
             string spellName = Path.GetFileNameWithoutExtension(filename);
-            
-            if (spellName.EndsWith("Effect"))
-                SpellEffectScenes.Add(spellName[..^6], (PackedScene)GD.Load(filename));
-            else
-                SpellScenes.Add(spellName, (PackedScene)GD.Load(filename));
+
+            if (spellName.EndsWith("Effect") || spellName.EndsWith("Action"))
+            {
+                return;
+            }
+
+            SpellScenes.Add(spellName, (PackedScene)GD.Load(filename));
 
         }
 

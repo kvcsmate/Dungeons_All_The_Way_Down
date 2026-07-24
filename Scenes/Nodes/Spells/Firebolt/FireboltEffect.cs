@@ -21,6 +21,23 @@ public partial class FireboltEffect : SpellEffect
         //_collider = this.GetParent<StaticBody2D>();
     }
 
+    public override void Activate(SpellAttributes spellAttributes)
+    {
+        if (!spellAttributes.IsReady || spellAttributes.Caster == null)
+        {
+            FinishEffect();
+            return;
+        }
+
+        Direction = (spellAttributes.Position - spellAttributes.Caster.GlobalPosition).Normalized();
+        Damage = spellAttributes.Damage;
+        Speed = spellAttributes.Speed;
+        MaxDistance = spellAttributes.SpellRange;
+        Caster = spellAttributes.Caster;
+        GlobalPosition = spellAttributes.Caster.GlobalPosition + Direction * 150;
+        _startPosition = GlobalPosition;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);

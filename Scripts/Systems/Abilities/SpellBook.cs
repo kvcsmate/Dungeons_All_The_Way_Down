@@ -2,9 +2,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DungeonsAlltheWayDown.AbilitySystem
 {
@@ -41,8 +38,6 @@ namespace DungeonsAlltheWayDown.AbilitySystem
                     Spell = (Spell)_spellLoader.SpellScenes[_spellId].Instantiate()
                 };
                 GD.Print("Instantiated spell: " + Pages[key].Spell.Name);
-                Pages[key].Spell._Ready();
-                Pages[key].Spell.SpellEffectScene = _spellLoader.SpellEffectScenes[_spellId];
                 _node.AddChild(Pages[key].Spell);
             }
             catch (Exception e)

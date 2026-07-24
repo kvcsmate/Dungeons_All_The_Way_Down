@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/Nodes/Spells/FrostNova/FrostNovaEffect.cs" id="1_effect"]
 
-[node name="FrostNovaEffect" type="Node2D"]
+[node name="FrostNovaEffect" type="CharacterBody2D"]
 z_index = 3
 script = ExtResource("1_effect")
