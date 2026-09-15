@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c06mp3pp5r7oh"]
+[gd_scene format=4 uid="uid://c06mp3pp5r7oh"]
 
 [ext_resource type="Texture2D" uid="uid://md1yfo5tws75" path="res://Game Assets/TileMaps/PixelArt TopDown Basic/TX Tileset Stone Ground.png" id="2_dsi3k"]
 [ext_resource type="PackedScene" uid="uid://c58b6jo2a4h40" path="res://Scenes/Nodes/Character/Player.tscn" id="2_ptplq"]
@@ -816,14 +816,15 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_7ljse")
 sources/1 = SubResource("TileSetAtlasSource_2q888")
 
-[node name="Testmap" type="Node2D"]
+[node name="Testmap" type="Node2D" unique_id=1350899680]
 
-[node name="Player" parent="." instance=ExtResource("2_ptplq")]
+[node name="Player" parent="." unique_id=1605871764 instance=ExtResource("2_ptplq")]
 position = Vector2(2075, -857)
 scale = Vector2(10, 10)
 slide_on_ceiling = false
+CurrentMovementMode = 0
 
-[node name="TestEnemy1" parent="." instance=ExtResource("3_7ss2s")]
+[node name="TestEnemy1" parent="." unique_id=742921843 instance=ExtResource("3_7ss2s")]
 position = Vector2(1294, -1)
 scale = Vector2(10, 10)
 collision_layer = 11
@@ -831,13 +832,13 @@ collision_mask = 11
 MovementSpeed = 500.0
 Spells = Array[Node2D]([null, null])
 
-[node name="NavigationRegion2D" parent="." instance=ExtResource("10_0fnm3")]
+[node name="NavigationRegion2D" parent="." unique_id=964840171 instance=ExtResource("10_0fnm3")]
 z_index = 0
 position = Vector2(2, 0)
 navigation_polygon = SubResource("NavigationPolygon_utvcj")
 navigation_layers = 3
 
-[node name="Wall" type="TileMapLayer" parent="NavigationRegion2D"]
+[node name="Wall" type="TileMapLayer" parent="NavigationRegion2D" unique_id=717174391]
 y_sort_enabled = true
 use_parent_material = true
 scale = Vector2(10, 10)
@@ -845,7 +846,7 @@ tile_map_data = PackedByteArray("AADn//b/AQAAAAUAAADo//b/AQAEAAUAAADp//b/AQAEAAU
 tile_set = SubResource("TileSet_cl5vn")
 navigation_enabled = false
 
-[node name="Grass" type="TileMapLayer" parent="NavigationRegion2D"]
+[node name="Grass" type="TileMapLayer" parent="NavigationRegion2D" unique_id=2070910486]
 z_index = -1
 use_parent_material = true
 scale = Vector2(10, 10)

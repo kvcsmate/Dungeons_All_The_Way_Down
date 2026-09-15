@@ -54,6 +54,7 @@ public abstract partial class Spell : Node2D
             }
 
             GetTree().Root.AddChild(effect);
+            effect.TargetPosition = _activeSpellAttributes.Position;
             effect.EffectFinished += () => OnEffectFinished(effect);
             effect.Activate(_activeSpellAttributes);
             return;
@@ -65,6 +66,11 @@ public abstract partial class Spell : Node2D
 
     private void OnEffectFinished(SpellEffect effect)
     {
+        if (_activeSpellAttributes != null)
+        {
+            _activeSpellAttributes.Position = effect.TargetPosition;
+        }
+
         if (IsInstanceValid(effect) && !effect.IsQueuedForDeletion())
         {
             effect.QueueFree();

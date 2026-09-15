@@ -8,15 +8,27 @@ public partial class FrostNovaEffect : SpellEffect
     [Export] public int Damage = 30;
     [Export] public float FreezeDuration = 2.0f;
 
+    public enum InstantiatePosition
+    {
+        CasterPosition,
+        TargetPosition
+    }
+
+    [Export] public InstantiatePosition PositionType = InstantiatePosition.CasterPosition;
+
     private float _radius;
     private float _elapsed;
 
     public override void Activate(SpellAttributes spellAttributes)
     {
-        Activate(spellAttributes.Caster, Damage, spellAttributes.SpellRange, FreezeDuration);
+        Vector2 effectPosition = PositionType == InstantiatePosition.TargetPosition
+            ? spellAttributes.Position
+            : spellAttributes.Caster?.GlobalPosition ?? spellAttributes.Position;
+
+        Activate(spellAttributes.Caster, effectPosition, Damage, spellAttributes.SpellRange, FreezeDuration);
     }
 
-    public void Activate(Character caster, int damage, float radius, float freezeDuration)
+    public void Activate(Character caster, Vector2 effectPosition, int damage, float radius, float freezeDuration)
     {
         if (caster == null)
         {
@@ -25,7 +37,8 @@ public partial class FrostNovaEffect : SpellEffect
         }
 
         _radius = radius;
-        GlobalPosition = caster.GlobalPosition;
+        TargetPosition = effectPosition;
+        GlobalPosition = effectPosition;
         QueueRedraw();
 
         var shape = new CircleShape2D { Radius = radius };

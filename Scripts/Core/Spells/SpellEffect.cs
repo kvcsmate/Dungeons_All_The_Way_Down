@@ -38,10 +38,13 @@ public abstract partial class SpellEffect : CharacterBody2D
 
     public bool Disposable = false;
 
+    public Vector2 TargetPosition { get; set; }
+
     private bool _finished;
 
     public virtual void Activate(SpellAttributes spellAttributes)
     {
+        TargetPosition = spellAttributes.Position;
         GlobalPosition = spellAttributes.Position;
 
         if (StateMachine != null)

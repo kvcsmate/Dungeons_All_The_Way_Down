@@ -15,4 +15,5 @@ Speed = 1000.0
 
 [node name="FireboltEffect" parent="SpellEffects" unique_id=856709561 instance=ExtResource("2_mk0oi")]
 
-[node name="FrostNovaEffect" parent="SpellEffects" unique_id=122765031 instance=ExtResource("4_2sjtr")]
+[node name="FrostNovaEffect" parent="SpellEffects" unique_id=894422884 instance=ExtResource("4_2sjtr")]
+PositionType = 1

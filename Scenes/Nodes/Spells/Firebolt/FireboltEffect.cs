@@ -34,6 +34,7 @@ public partial class FireboltEffect : SpellEffect
         Speed = spellAttributes.Speed;
         MaxDistance = spellAttributes.SpellRange;
         Caster = spellAttributes.Caster;
+        TargetPosition = spellAttributes.Position;
         GlobalPosition = spellAttributes.Caster.GlobalPosition + Direction * 150;
         _startPosition = GlobalPosition;
     }
@@ -64,6 +65,7 @@ public partial class FireboltEffect : SpellEffect
             }
 
             var collision = MoveAndCollide(movement);
+            TargetPosition = GlobalPosition;
             
             if (collision != null && collision.GetCollider() != Caster && collision.GetCollider() != this)
             {

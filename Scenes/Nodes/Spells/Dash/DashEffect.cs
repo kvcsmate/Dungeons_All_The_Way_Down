@@ -80,6 +80,8 @@ public partial class DashEffect : SpellEffect
         {
             _dashTarget = result["position"].AsVector2() - _dashDirection * 30;
         }
+
+        TargetPosition = _dashTarget;
     }
 
     private bool CheckDistance(float distance)
